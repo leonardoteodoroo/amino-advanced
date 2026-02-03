@@ -59,7 +59,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen font-sans selection:bg-purple-500/30 selection:text-purple-200 bg-[#020617] text-slate-50 overflow-x-hidden relative w-full">
+    <div className="min-h-screen font-sans selection:bg-blue-200 selection:text-blue-900 bg-surface-page text-text-primary overflow-x-hidden relative w-full">
 
       {/* --- Global Background (Scientific/Clinical) --- */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -67,14 +67,14 @@ const App: React.FC = () => {
       </div>
 
       {/* --- Navigation --- */}
-      <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-[#020617]/80 backdrop-blur-xl">
+      <nav className="fixed top-0 w-full z-50 border-b border-border-subtle bg-white/90 backdrop-blur-xl shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex-shrink-0 font-serif font-bold text-xl tracking-wider text-white">
-              ADVANCED<span className="text-purple-400">BIO</span>
+            <div className="flex-shrink-0 font-serif font-bold text-xl tracking-wider text-brand-navy">
+              ADVANCED<span className="text-brand-blue">BIO</span>
             </div>
             <div className="hidden md:block">
-              <button onClick={scrollToOffer} className="px-6 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-xs font-semibold uppercase tracking-widest">
+              <button onClick={scrollToOffer} className="px-6 py-2 rounded-full bg-brand-navy hover:bg-blue-800 text-white transition-all text-xs font-semibold uppercase tracking-widest shadow-md hover:shadow-lg">
                 Check Availability
               </button>
             </div>
@@ -95,23 +95,23 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={VIEWPORT_CONFIG}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center self-start px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-6"
+              className="inline-flex items-center self-start px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-600 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-6"
             >
-              <AlertTriangle size={14} className="mr-2" />
+              <AlertTriangle size={14} className="mr-2 text-red-600" />
               Muscle Health Alert
             </motion.div>
 
             <LetterStagger
               text={`Maybe it's not "old age". Maybe your muscles are just starving.`}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.1] mb-6 text-white drop-shadow-2xl"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.1] mb-6 text-brand-navy drop-shadow-sm"
               delay={0.2}
               highlightWords={["starving."]}
             />
 
-            <div className="mb-8 border-l-4 border-purple-500 pl-4 bg-white/5 p-4 rounded-r-lg backdrop-blur-sm">
+            <div className="mb-8 border-l-4 border-brand-blue pl-4 bg-blue-50/50 p-4 rounded-r-lg">
               <StaggerText
                 text='"I saw my active uncle struggle to open a jar, and he was drinking two protein shakes a day. That&apos;s when I realized something was very wrong."'
-                className="text-sm md:text-lg text-gray-200 italic leading-relaxed font-medium"
+                className="text-sm md:text-lg text-text-secondary italic leading-relaxed font-medium"
               />
             </div>
 
@@ -119,22 +119,22 @@ const App: React.FC = () => {
               onClick={scrollToOffer}
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 0 40px rgba(124, 58, 237, 0.6)"
+                boxShadow: "0 10px 40px rgba(30, 58, 138, 0.4)"
               }}
               whileTap={{ scale: 0.95 }}
               animate={{
                 scale: [1, 1.02, 1],
                 boxShadow: [
-                  "0 0 0px rgba(79, 70, 229, 0)",
-                  "0 0 20px rgba(79, 70, 229, 0.3)",
-                  "0 0 0px rgba(79, 70, 229, 0)"
+                  "0 0 0px rgba(37, 99, 235, 0)",
+                  "0 0 20px rgba(37, 99, 235, 0.2)",
+                  "0 0 0px rgba(37, 99, 235, 0)"
                 ]
               }}
               transition={{
                 scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
                 boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
               }}
-              className="w-full md:w-auto group relative px-8 py-4 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-600 hover:to-indigo-600 text-white rounded-full font-bold shadow-[0_0_30px_rgba(79,70,229,0.4)] transition-all flex items-center justify-center border border-white/20 text-sm md:text-base"
+              className="w-full md:w-auto group relative px-8 py-4 bg-brand-navy hover:bg-blue-800 text-white rounded-full font-bold shadow-xl transition-all flex items-center justify-center border border-white/20 text-sm md:text-base"
             >
               Discover The Solution
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -198,17 +198,17 @@ const App: React.FC = () => {
       </section>
 
       {/* --- Intro Text for Reviews --- */}
-      <section className="relative z-20 bg-[#020617] pt-8 pb-4">
+      <section className="relative z-20 bg-surface-page pt-8 pb-4">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT_CONFIG}
-            className="text-gray-300 font-serif text-lg md:text-2xl leading-relaxed font-light px-2"
+            className="text-text-secondary font-serif text-lg md:text-2xl leading-relaxed font-light px-2"
           >
-            <span className="text-purple-400 text-3xl mr-2">"</span>
+            <span className="text-brand-blue text-3xl mr-2">"</span>
             Before we dive into the clinical science, witness what happens when the body finally gets the fuel it's been starving for.
-            <span className="text-purple-400 text-3xl ml-2">"</span>
+            <span className="text-brand-blue text-3xl ml-2">"</span>
           </motion.p>
         </div>
       </section>
@@ -225,7 +225,7 @@ const App: React.FC = () => {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-red-900/5 blur-[100px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-4 relative z-10">
-          <GlassCard className="p-6 md:p-12 border border-white/5 relative overflow-hidden">
+          <GlassCard className="p-6 md:p-12 border border-border-subtle relative overflow-hidden shadow-lg bg-surface-card">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-50" />
 
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
@@ -235,20 +235,20 @@ const App: React.FC = () => {
 
                 {/* 1. The Frustration (Emotional Hook) */}
                 <div className="relative">
-                  <div className="absolute left-0 top-2 bottom-2 w-1 bg-gradient-to-b from-gray-700 to-transparent rounded-full opacity-50" />
+                  <div className="absolute left-0 top-2 bottom-2 w-1 bg-gradient-to-b from-gray-300 to-transparent rounded-full" />
                   <div className="pl-6">
-                    <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-6 font-light italic">
-                      "It’s a quiet frustration. You walk every morning, you try to eat right, but your legs feel a bit <span className="text-gray-300 font-normal not-italic">"heavier"</span> each year."
+                    <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6 font-light italic">
+                      "It’s a quiet frustration. You walk every morning, you try to eat right, but your legs feel a bit <span className="text-text-primary font-normal not-italic">"heavier"</span> each year."
                     </p>
 
-                    <div className="p-4 rounded-xl bg-red-500/[0.08] border border-red-500/20 backdrop-blur-sm flex gap-4 items-start">
-                      <div className="p-2 bg-red-500/10 rounded-full shrink-0">
-                        <AlertTriangle className="text-red-400" size={20} />
+                    <div className="p-4 rounded-xl bg-red-50 border border-red-100 flex gap-4 items-start">
+                      <div className="p-2 bg-red-100 rounded-full shrink-0">
+                        <AlertTriangle className="text-red-500" size={20} />
                       </div>
                       <div>
-                        <p className="text-red-200 text-xs font-bold uppercase tracking-widest mb-1">The Ugly Truth</p>
-                        <p className="text-white font-medium text-base md:text-lg leading-snug">
-                          Nobody in the supplement industry wants to admit this: <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-200 to-white font-bold">After 50, your body treats most protein like garbage.</span>
+                        <p className="text-red-600 text-xs font-bold uppercase tracking-widest mb-1">The Ugly Truth</p>
+                        <p className="text-text-primary font-medium text-base md:text-lg leading-snug">
+                          Nobody in the supplement industry wants to admit this: <span className="font-bold text-red-700">After 50, your body treats most protein like garbage.</span>
                         </p>
                       </div>
                     </div>
@@ -257,13 +257,16 @@ const App: React.FC = () => {
 
                 {/* 2. The Logic (Scientific Explanation) */}
                 <div>
-                  <h2 className="text-2xl md:text-4xl font-serif font-bold mb-4 text-white break-words">The "17% Trap"</h2>
+                  <h2 className="text-2xl md:text-4xl font-serif font-bold mb-4 text-brand-navy break-words">The "17% Trap"</h2>
+                  <p className="text-text-secondary text-base md:text-lg mb-4">
+                    The average person loses <strong className="text-text-primary">30% of their muscle mass</strong> by the time they’re 70. The reason isn't just age—it's absorption.
+                  </p>
                   <StaggerText
                     text="When you drink Whey or Soy protein, your body only uses about 17% to actually build muscle."
-                    className="text-lg md:text-xl text-purple-200 mb-6 font-medium leading-relaxed"
+                    className="text-lg md:text-xl text-brand-blue mb-6 font-medium leading-relaxed"
                   />
-                  <p className="text-gray-400 leading-relaxed text-base md:text-lg">
-                    The other 83%? It’s converted into sugar or metabolic waste that stresses your kidneys. You aren't lacking protein. <span className="text-white font-bold border-b-2 border-red-500">You are lacking absorption.</span>
+                  <p className="text-text-secondary leading-relaxed text-base md:text-lg">
+                    The other 83%? It’s converted into sugar or metabolic waste that stresses your kidneys. You aren't lacking protein. <span className="text-brand-navy font-bold border-b-2 border-red-500">You are lacking absorption.</span>
                   </p>
                 </div>
 
@@ -271,9 +274,9 @@ const App: React.FC = () => {
 
               {/* Right Column: Chart */}
               <div className="w-full lg:w-5/12 flex flex-col justify-center items-center relative shrink-0 mt-4 lg:mt-12">
-                <div className="w-full bg-[#020617]/50 rounded-2xl p-4 md:p-6 border border-white/10 shadow-2xl backdrop-blur-md relative overflow-hidden">
+                <div className="w-full bg-surface-card rounded-2xl p-4 md:p-6 border border-border-subtle shadow-lg relative overflow-hidden">
                   {/* Subtle glow behind chart */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-orange-500/10 blur-[60px]" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-blue-100 blur-[80px]" />
                   <ComparisonChart />
                 </div>
               </div>
@@ -306,8 +309,8 @@ const App: React.FC = () => {
 
         <div className="relative z-20">
           <div className="text-center mb-16 relative z-10">
-            <BlurText text="Life After 50 Transformation" className="text-3xl md:text-5xl font-serif font-bold text-white mt-2 mb-4" />
-            <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base px-4">Not just about biceps. It's about independence.</p>
+            <BlurText text="Life After 50 Transformation" className="text-3xl md:text-5xl font-serif font-bold text-brand-navy mt-2 mb-4" />
+            <p className="text-text-secondary max-w-2xl mx-auto text-sm md:text-base px-4">Not just about biceps. It's about independence.</p>
           </div>
 
           {/* FIXED GRID: Replaced masonry layout with uniform grid for better reliability */}
@@ -320,8 +323,8 @@ const App: React.FC = () => {
               className="h-full"
             >
               <GlassCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                <h4 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-white mb-3">Developing Muscle at 68</h4>
-                <p className="text-gray-300 italic leading-relaxed text-sm md:text-base">"Edmund R. began developing biceps and forearms for the first time in his life after age 60."</p>
+                <h4 className="text-xl md:text-2xl font-bold text-brand-navy mb-3">Developing Muscle at 68</h4>
+                <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Edmund R. began developing biceps and forearms for the first time in his life after age 60."</p>
               </GlassCard>
             </motion.div>
 
@@ -333,8 +336,8 @@ const App: React.FC = () => {
               className="h-full"
             >
               <GlassCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                <h4 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-white mb-3">Consistent Energy</h4>
-                <p className="text-gray-300 italic leading-relaxed text-sm md:text-base">"Brad A. (63) stopped feeling aches at night and regained the energy to train without feeling depleted the next day."</p>
+                <h4 className="text-xl md:text-2xl font-bold text-brand-navy mb-3">Consistent Energy</h4>
+                <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Brad A. (63) stopped feeling aches at night and regained the energy to train without feeling depleted the next day."</p>
               </GlassCard>
             </motion.div>
 
@@ -346,8 +349,8 @@ const App: React.FC = () => {
               className="h-full"
             >
               <GlassCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                <h4 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-white mb-3">The "Look Younger" Effect</h4>
-                <p className="text-gray-300 italic leading-relaxed text-sm md:text-base">"Gene K. (72) constantly hears he looks younger; he credits this to improved skin tone and body composition."</p>
+                <h4 className="text-xl md:text-2xl font-bold text-brand-navy mb-3">Stamina in My 70s</h4>
+                <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Patrick V. (Mid 70s) takes five pills before the gym. He says his recuperation after heavy sets is unbelievably quick."</p>
               </GlassCard>
             </motion.div>
 
@@ -359,8 +362,8 @@ const App: React.FC = () => {
               className="h-full"
             >
               <GlassCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                <h4 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-white mb-3">Long-Term Game Changer</h4>
-                <p className="text-gray-300 italic leading-relaxed text-sm md:text-base">"Benny Z. has used the formula for years, claiming it keeps his strength and healing capacity far above average for his age."</p>
+                <h4 className="text-xl md:text-2xl font-bold text-brand-navy mb-3">Long-Term Game Changer</h4>
+                <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Benny Z. has used the formula for years, claiming it keeps his strength and healing capacity far above average for his age."</p>
               </GlassCard>
             </motion.div>
           </div>
@@ -370,7 +373,7 @@ const App: React.FC = () => {
       {/* --- Section 4: Authority --- */}
       <section className="py-20 md:py-32 relative overflow-hidden">
 
-        <div className="absolute inset-0 bg-white/[0.02] -skew-y-3 transform origin-top-left pointer-events-none" />
+        <div className="absolute inset-0 bg-surface-section -skew-y-3 transform origin-top-left pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row gap-12 md:gap-16 items-center relative z-20">
           <div className="md:w-5/12 w-full px-4 md:px-0">
@@ -379,7 +382,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={VIEWPORT_CONFIG}
               transition={{ duration: 0.8 }}
-              className="relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 aspect-[3/4] md:aspect-auto"
+              className="relative rounded-2xl overflow-hidden shadow-xl border border-border-subtle aspect-[3/4] md:aspect-auto"
             >
               {/* LAZY LOAD FOR SECTION 4 IMAGE */}
               <img
@@ -387,43 +390,43 @@ const App: React.FC = () => {
                 alt="Dr. Frank Shallenberger"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover grayscale-0 hover:grayscale transition-all duration-700"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 text-center">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-navy/90 to-transparent p-6 text-center">
                 <p className="font-bold text-xl text-white">Dr. Frank Shallenberger</p>
-                <p className="text-sm text-purple-400">Integrative Medicine Expert</p>
+                <p className="text-sm text-blue-100">Integrative Medicine Expert</p>
               </div>
             </motion.div>
           </div>
           <div className="md:w-7/12 w-full px-2">
-            <h3 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-white text-center md:text-left">Science You Can Trust</h3>
-            <p className="text-gray-300 mb-8 text-lg leading-relaxed text-center md:text-left">
-              This formula was refined by Dr. Frank Shallenberger, a physician with decades of clinical experience. He didn't just want another supplement; he wanted a tool to maintain the <strong className="text-white">functional independence</strong> of his patients as they age.
+            <h3 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-brand-navy text-center md:text-left">Science You Can Trust</h3>
+            <p className="text-text-secondary mb-8 text-lg leading-relaxed text-center md:text-left">
+              This formula was refined by Dr. Frank Shallenberger, a physician with decades of clinical experience. He didn't just want another supplement; he wanted a tool to maintain the <strong className="text-text-primary">functional independence</strong> of his patients as they age.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
               <div className="flex items-center gap-3">
-                <div className="p-1.5 bg-green-500/20 rounded-full shrink-0">
-                  <ShieldCheck className="text-green-400" size={18} />
+                <div className="p-1.5 bg-blue-100 rounded-full shrink-0">
+                  <ShieldCheck className="text-brand-blue" size={18} />
                 </div>
-                <span className="text-sm font-semibold text-gray-200">GMP Certified USA</span>
+                <span className="text-sm font-semibold text-text-primary">GMP Certified USA</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="p-1.5 bg-green-500/20 rounded-full shrink-0">
-                  <Activity className="text-green-400" size={18} />
+                <div className="p-1.5 bg-blue-100 rounded-full shrink-0">
+                  <Activity className="text-brand-blue" size={18} />
                 </div>
-                <span className="text-sm font-semibold text-gray-200">Vegan Friendly</span>
+                <span className="text-sm font-semibold text-text-primary">Vegan Friendly</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="p-1.5 bg-green-500/20 rounded-full shrink-0">
-                  <CheckCircle2 className="text-green-400" size={18} />
+                <div className="p-1.5 bg-blue-100 rounded-full shrink-0">
+                  <CheckCircle2 className="text-brand-blue" size={18} />
                 </div>
-                <span className="text-sm font-semibold text-gray-200">Non-GMO</span>
+                <span className="text-sm font-semibold text-text-primary">Non-GMO</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="p-1.5 bg-green-500/20 rounded-full shrink-0">
-                  <CheckCircle2 className="text-green-400" size={18} />
+                <div className="p-1.5 bg-blue-100 rounded-full shrink-0">
+                  <CheckCircle2 className="text-brand-blue" size={18} />
                 </div>
-                <span className="text-sm font-semibold text-gray-200">Dairy & Gluten Free</span>
+                <span className="text-sm font-semibold text-text-primary">Dairy & Gluten Free</span>
               </div>
             </div>
           </div>
@@ -436,9 +439,9 @@ const App: React.FC = () => {
         <BackgroundLayers variant="data" className="opacity-40" />
 
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <GlassCard className="p-8 md:p-12 text-center" hoverEffect>
+          <GlassCard className="p-8 md:p-12 text-center bg-brand-navy border-none shadow-lg" hoverEffect>
             <h3 className="text-2xl md:text-4xl font-serif font-bold text-white mb-6">Why This Matters</h3>
-            <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+            <p className="text-blue-100 text-base md:text-lg leading-relaxed">
               Proper protein absorption isn't just about gym gains. It's the biological foundation for immune health, cognitive sharpness, and maintaining the metabolic engine that keeps you active. Without it, the body catabolizes its own tissue to survive, leading to the frailty we often mistake for inevitable aging.
             </p>
           </GlassCard>
@@ -452,16 +455,16 @@ const App: React.FC = () => {
       </section>
 
       {/* --- Section 5: Offer (Risk Free) --- */}
-      <section id="offer-section" className="relative overflow-hidden">
+      <section id="offer-section" className="relative overflow-hidden bg-surface-page pb-20">
 
         {/* Subtle bottom glow instead of EKG */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-purple-900/10 blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-blue-500/5 blur-[80px] pointer-events-none" />
 
         <PricingOptions />
       </section>
 
       {/* --- Footer --- */}
-      <footer className="py-12 border-t border-white/5 bg-[#01030b] text-gray-600 text-[10px] md:text-xs text-center px-4 relative">
+      <footer className="py-12 border-t border-border-subtle bg-surface-section text-text-muted text-[10px] md:text-xs text-center px-4 relative">
 
         <div className="max-w-4xl mx-auto space-y-4 relative z-10">
           <p>
@@ -470,7 +473,7 @@ const App: React.FC = () => {
           <p>
             Affiliate Disclosure: I may receive a commission if you purchase through the links on this page, which helps support our research into high-quality health solutions for seniors.
           </p>
-          <p className="pt-8 text-gray-700 font-serif italic">
+          <p className="pt-8 text-text-primary font-serif italic">
             Advanced Amino Formula - Restore Your Strength
           </p>
         </div>

@@ -46,19 +46,19 @@ export const FAQ: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4">
       <div className="text-center mb-12">
-         <span className="text-purple-400 font-semibold tracking-wider text-sm uppercase mb-2 block">Common Questions</span>
-         <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
-            Stop Guessing. <br /> Start Absorbing.
-         </h2>
+        <span className="text-brand-blue font-semibold tracking-wider text-sm uppercase mb-2 block">Common Questions</span>
+        <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6">
+          Stop Guessing. <br /> Start Absorbing.
+        </h2>
       </div>
 
       <div className="space-y-4">
         {faqData.map((item, index) => (
-          <AccordionItem 
-            key={index} 
-            item={item} 
-            isOpen={openIndex === index} 
-            onClick={() => toggleFAQ(index)} 
+          <AccordionItem
+            key={index}
+            item={item}
+            isOpen={openIndex === index}
+            onClick={() => toggleFAQ(index)}
           />
         ))}
       </div>
@@ -74,7 +74,7 @@ interface AccordionItemProps {
 
 const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) => {
   return (
-    <motion.div 
+    <motion.div
       initial={false}
       className="relative z-10"
     >
@@ -89,15 +89,15 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
         className="w-full text-left focus:outline-none group"
         aria-expanded={isOpen}
       >
-        <GlassCard 
-          className={`transition-all duration-300 ${isOpen ? 'bg-white/10 border-purple-500/50' : 'hover:bg-white/10'}`}
+        <GlassCard
+          className={`transition-all duration-300 ${isOpen ? 'bg-white border-brand-blue shadow-md' : 'bg-surface-card border-border-subtle hover:border-blue-200'}`}
         >
           <div className="p-6 md:p-8 flex items-start justify-between gap-6">
             <div className="flex-1">
-              <h3 className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? 'text-white' : 'text-gray-200 group-hover:text-white'}`}>
+              <h3 className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? 'text-brand-navy' : 'text-text-primary group-hover:text-brand-navy'}`}>
                 {item.question}
               </h3>
-              
+
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
@@ -107,7 +107,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="mt-4 text-gray-300 text-base md:text-lg leading-relaxed font-light border-t border-white/10 pt-4">
+                    <p className="mt-4 text-text-secondary text-base md:text-lg leading-relaxed font-light border-t border-border-subtle pt-4">
                       {item.answer}
                     </p>
                   </motion.div>
@@ -116,8 +116,8 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
             </div>
 
             {/* Icon Wrapper - Big & Clear */}
-            <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${isOpen ? 'bg-purple-600 border-purple-400 text-white rotate-180' : 'bg-white/5 border-white/20 text-gray-400 group-hover:bg-white/10 group-hover:text-white'}`}>
-               {isOpen ? <Minus size={24} /> : <Plus size={24} />}
+            <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${isOpen ? 'bg-brand-navy border-brand-navy text-white rotate-180' : 'bg-blue-50 border-blue-100 text-brand-blue group-hover:bg-blue-100'}`}>
+              {isOpen ? <Minus size={24} /> : <Plus size={24} />}
             </div>
           </div>
         </GlassCard>

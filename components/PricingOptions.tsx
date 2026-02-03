@@ -38,26 +38,26 @@ const PricingCard: React.FC<PricingCardProps> = ({
             className={`relative h-full ${isPopular || isBestValue ? 'z-10' : 'z-0'}`}
         >
             {isBestValue && (
-                <div className="absolute -top-4 left-0 right-0 mx-auto w-fit px-4 py-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20">
+                <div className="absolute -top-4 left-0 right-0 mx-auto w-fit px-4 py-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-full text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20">
                     Best Value - Save $40.20
                 </div>
             )}
             {isPopular && (
-                <div className="absolute -top-4 left-0 right-0 mx-auto w-fit px-4 py-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20">
+                <div className="absolute -top-4 left-0 right-0 mx-auto w-fit px-4 py-1 bg-brand-navy rounded-full text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20">
                     Most Popular
                 </div>
             )}
 
             <GlassCard
-                className={`h-full flex flex-col p-6 relative overflow-hidden ${isBestValue
-                    ? 'border-red-500/30 bg-red-900/10'
+                className={`h-full flex flex-col p-6 relative overflow-hidden transition-all duration-300 ${isBestValue
+                    ? 'border-2 border-red-100 bg-white shadow-xl shadow-red-900/5'
                     : isPopular
-                        ? 'border-purple-500/30 bg-purple-900/10'
-                        : 'border-white/10'
+                        ? 'border-2 border-brand-navy bg-white shadow-xl shadow-blue-900/10'
+                        : 'border border-border-subtle bg-surface-card'
                     }`}
             >
-                {/* Background Glow */}
-                <div className={`absolute top-0 left-0 w-full h-1/2 opacity-20 bg-gradient-to-b ${isBestValue ? 'from-red-500/20' : isPopular ? 'from-purple-500/20' : 'from-gray-500/10'
+                {/* Background Glow - Subtle Light Theme */}
+                <div className={`absolute top-0 left-0 w-full h-1/2 opacity-30 bg-gradient-to-b ${isBestValue ? 'from-red-50/50' : isPopular ? 'from-blue-50/50' : 'from-transparent'
                     } to-transparent pointer-events-none`} />
 
                 <div className="text-center mb-6 relative z-10">
@@ -66,22 +66,22 @@ const PricingCard: React.FC<PricingCardProps> = ({
                         <img
                             src={image}
                             alt={`${title} Bottles`}
-                            className="h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                            className="h-full object-contain filter drop-shadow-xl hover:scale-105 transition-transform duration-500"
                             loading="lazy"
                         />
                     </div>
 
-                    <h3 className={`text-xl font-bold mb-2 ${isBestValue ? 'text-red-300' : isPopular ? 'text-purple-300' : 'text-white'
+                    <h3 className={`text-xl font-bold mb-2 ${isBestValue ? 'text-red-700' : isPopular ? 'text-brand-navy' : 'text-text-primary'
                         }`}>
                         {title}
                     </h3>
                     <div className="flex items-baseline justify-center gap-1 mb-1">
-                        <span className="text-4xl font-serif font-bold text-white">{perBottle}</span>
-                        <span className="text-sm text-gray-400">/bottle</span>
+                        <span className="text-4xl font-serif font-bold text-brand-navy">{perBottle}</span>
+                        <span className="text-sm text-text-secondary">/bottle</span>
                     </div>
-                    <p className="text-sm text-gray-400">Total: {price}</p>
+                    <p className="text-sm text-text-muted">Total: {price}</p>
                     {savings && (
-                        <div className="mt-2 inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-green-400 font-semibold">
+                        <div className="mt-2 inline-block px-3 py-1 rounded-full bg-green-50 border border-green-200 text-xs text-green-700 font-bold">
                             {savings}
                         </div>
                     )}
@@ -90,11 +90,11 @@ const PricingCard: React.FC<PricingCardProps> = ({
                 <div className="space-y-3 mb-8 flex-grow relative z-10">
                     {features.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                            <div className={`p-1 rounded-full shrink-0 ${isBestValue ? 'bg-red-500/20 text-red-400' : 'bg-green-500/20 text-green-400'
+                            <div className={`p-1 rounded-full shrink-0 ${isBestValue ? 'bg-red-50 text-red-600' : 'bg-blue-50 text-brand-blue'
                                 }`}>
                                 <Check size={12} strokeWidth={3} />
                             </div>
-                            <span className="text-sm text-gray-300 leading-snug">{feature}</span>
+                            <span className="text-sm text-text-secondary leading-snug font-medium">{feature}</span>
                         </div>
                     ))}
                 </div>
@@ -105,17 +105,17 @@ const PricingCard: React.FC<PricingCardProps> = ({
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`w-full py-4 rounded-xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 transition-all shadow-lg ${isBestValue
-                        ? 'bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white shadow-red-900/30'
+                    className={`w-full py-4 rounded-xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg ${isBestValue
+                        ? 'bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white shadow-red-500/20'
                         : isPopular
-                            ? 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-purple-900/30'
-                            : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
+                            ? 'bg-brand-navy hover:bg-blue-800 text-white shadow-blue-900/20'
+                            : 'bg-surface-section hover:bg-white text-brand-navy border border-border-subtle'
                         }`}
                 >
                     Add To Cart <ArrowRight size={16} />
                 </motion.a>
 
-                <div className="mt-4 flex items-center justify-center gap-2 text-[10px] text-gray-500">
+                <div className="mt-4 flex items-center justify-center gap-2 text-[10px] text-text-muted">
                     <ShieldCheck size={12} /> 90-Day Money-Back Guarantee
                 </div>
             </GlassCard>
@@ -128,8 +128,8 @@ export const PricingOptions: React.FC = () => {
         <section className="py-20 relative z-20">
             <div className="max-w-6xl mx-auto px-4">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Choose Your Supply</h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto">
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-4">Choose Your Supply</h2>
+                    <p className="text-text-secondary max-w-2xl mx-auto">
                         Select the package that fits your goals. Most new customers start with the 3-month supply to fully experience the muscle-waking effects.
                     </p>
                 </div>
@@ -190,13 +190,13 @@ export const PricingOptions: React.FC = () => {
                     />
                 </div>
 
-                <div className="mt-12 max-w-2xl mx-auto bg-blue-900/10 border border-blue-500/20 rounded-2xl p-4 flex items-start gap-4 backdrop-blur-sm">
-                    <div className="bg-blue-500/20 p-2 rounded-full shrink-0 text-blue-400">
+                <div className="mt-12 max-w-2xl mx-auto bg-blue-50 border border-blue-100 rounded-2xl p-4 flex items-start gap-4">
+                    <div className="bg-blue-100 p-2 rounded-full shrink-0 text-brand-blue">
                         <ShieldCheck size={24} />
                     </div>
                     <div>
-                        <h4 className="text-blue-200 font-bold text-sm uppercase tracking-wide mb-1">Doctor's Guarantee</h4>
-                        <p className="text-gray-300 text-sm leading-relaxed">
+                        <h4 className="text-brand-navy font-bold text-sm uppercase tracking-wide mb-1">Doctor's Guarantee</h4>
+                        <p className="text-text-secondary text-sm leading-relaxed">
                             "If you don't feel a distinct difference in your energy and muscle firmness within 90 days, I don't want your money. Return the empty bottles for a full refund." — Dr. Frank Shallenberger
                         </p>
                     </div>

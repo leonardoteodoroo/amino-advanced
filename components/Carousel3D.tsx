@@ -240,20 +240,20 @@ export const Carousel3D: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 {/* Left Column: Text Content */}
                 <div className="text-left space-y-6 relative z-20">
-                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-white leading-tight">
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-navy leading-tight">
                         See what happens when the body finally wakes up.
                     </h2>
-                    <p className="text-gray-400 text-lg leading-relaxed max-w-md">
+                    <p className="text-text-secondary text-lg leading-relaxed max-w-md">
                         These aren't just reviews. These are people reclaiming their independence, strength, and confidence after years of feeling "slowed down".
                     </p>
                     <div className="flex items-center gap-4 pt-4">
                         <div className="flex -space-x-3">
                             {["/images/reviews/jacqui.webp", "/images/reviews/carolyn.webp", "/images/reviews/dr-simmons.webp"].map((src, i) => (
-                                <img key={i} src={src} className="w-10 h-10 rounded-full border-2 border-[#020617] object-cover bg-gray-700" alt="Verified User" />
+                                <img key={i} src={src} className="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" alt="Verified User" />
                             ))}
                         </div>
-                        <div className="text-sm text-gray-300">
-                            <span className="text-white font-bold">12,400+</span> Active Users
+                        <div className="text-sm text-text-muted">
+                            <span className="text-brand-navy font-bold">12,400+</span> Active Users
                         </div>
                     </div>
 
@@ -261,15 +261,15 @@ export const Carousel3D: React.FC = () => {
                     <div className="hidden md:flex gap-4 mt-8">
                         <button
                             onClick={prevSlide}
-                            className="w-12 h-12 rounded-full border border-purple-500/30 flex items-center justify-center bg-white/5 hover:bg-purple-500/20 transition-all group"
+                            className="w-12 h-12 rounded-full border border-border-subtle flex items-center justify-center bg-white hover:bg-blue-50 hover:border-blue-200 transition-all group shadow-sm"
                         >
-                            <ChevronLeft className="text-gray-300 group-hover:text-white" size={24} />
+                            <ChevronLeft className="text-text-secondary group-hover:text-brand-blue" size={24} />
                         </button>
                         <button
                             onClick={nextSlide}
-                            className="w-12 h-12 rounded-full border border-purple-500/30 flex items-center justify-center bg-white/5 hover:bg-purple-500/20 transition-all group"
+                            className="w-12 h-12 rounded-full border border-border-subtle flex items-center justify-center bg-white hover:bg-blue-50 hover:border-blue-200 transition-all group shadow-sm"
                         >
-                            <ChevronRight className="text-gray-300 group-hover:text-white" size={24} />
+                            <ChevronRight className="text-text-secondary group-hover:text-brand-blue" size={24} />
                         </button>
                     </div>
                 </div>
@@ -311,21 +311,21 @@ export const Carousel3D: React.FC = () => {
                         <div className="flex gap-8 pointer-events-auto">
                             <button
                                 onClick={prevSlide}
-                                className="w-10 h-10 rounded-full border border-purple-500/30 flex items-center justify-center bg-black/50 backdrop-blur-md transition-opacity hover:bg-black/70"
+                                className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-md transition-all hover:bg-white shadow-md"
                             >
-                                <ChevronLeft className="text-gray-300" size={20} />
+                                <ChevronLeft className="text-brand-navy" size={20} />
                             </button>
                             <button
                                 onClick={nextSlide}
-                                className="w-10 h-10 rounded-full border border-purple-500/30 flex items-center justify-center bg-black/50 backdrop-blur-md transition-opacity hover:bg-black/70"
+                                className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-md transition-all hover:bg-white shadow-md"
                             >
-                                <ChevronRight className="text-gray-300" size={20} />
+                                <ChevronRight className="text-brand-navy" size={20} />
                             </button>
                         </div>
 
                         <div className="flex items-center gap-2 opacity-80">
-                            <span className="text-purple-300 font-serif italic text-xs tracking-wide">Swipe to read</span>
-                            <MoveRight className="text-purple-400 animate-pulse" size={20} />
+                            <span className="text-brand-blue font-serif italic text-xs tracking-wide">Swipe to read</span>
+                            <MoveRight className="text-brand-blue animate-pulse" size={20} />
                         </div>
                     </div>
                 </div>

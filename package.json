@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "http://advanced-amino-formula.semprenamoda.com.br",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

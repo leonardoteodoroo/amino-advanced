@@ -10,51 +10,51 @@ const reviews = [
     {
         name: "Jacqui",
         age: 67,
-        text: "It feels like my muscles are finally waking up. My workouts improved and recovery became much faster after just two months.",
-        highlight: "Muscles waking up",
+        text: "It feels like my muscles are waking up and working. My digestion improved and I have more energy.",
+        highlight: "Muscles Waking Up",
         image: "/images/reviews/jacqui.webp"
     },
     {
-        name: "Carolyn H.",
-        age: 72,
-        text: "I feel more stable on long walks. After three months, my joints felt less sore and my stability increased significantly.",
-        highlight: "More stable",
-        image: "/images/reviews/carolyn.webp"
-    },
-    {
-        name: "Dr. Simmons",
-        age: 55,
-        text: "My doctor noticed the difference. Many users report their doctors are surprised by the improvement in muscle tone and general vitality.",
-        highlight: "Doctor impressed",
-        image: "/images/reviews/dr-simmons.webp"
-    },
-    {
-        name: "James P.",
-        age: 69,
-        text: "My grip strength was fading—jars were impossible to open. Now I'm doing it for my wife again effortlessly.",
-        highlight: "Grip strength back",
-        image: "/images/reviews/james.webp"
-    },
-    {
-        name: "David B.",
+        name: "Robert M.",
         age: 71,
-        text: "The 'heavy leg' feeling is gone. I walk my dog every morning without needing to stop for breaks anymore.",
-        highlight: "No more heavy legs",
+        text: "Started feeling much more active and awake in the mornings. A general state of well-being returned.",
+        highlight: "Active & Awake",
         image: "/images/reviews/david.webp"
     },
     {
-        name: "Margaret T.",
-        age: 64,
-        text: "I was buying expensive whey protein for years with zero results. This formula changed my leg strength in just weeks.",
-        highlight: "Leg strength returned",
+        name: "Edmund R.",
+        age: 68,
+        text: "At age 68 I am developing biceps and forearms for the first time. I look forward to lifting weights now.",
+        highlight: "Developing Muscle",
+        image: "/images/reviews/james.webp"
+    },
+    {
+        name: "Kim G.",
+        age: 49,
+        text: "People tell me how fit I look and I genuinely believe this supplement has so much to do with it.",
+        highlight: "Looking Fit",
+        image: "/images/reviews/sarah.webp"
+    },
+    {
+        name: "Bobbie H.",
+        age: 74,
+        text: "I have had both hips replaced. Since taking the Aminos, the uncomfortable popping and clicking stopped.",
+        highlight: "Joint Relief",
         image: "/images/reviews/margaret.webp"
     },
     {
-        name: "Sarah L.",
-        age: 58,
-        text: "I thought my weakness was just 'getting old'. Turns out my muscles were just hungry. Amazing difference.",
-        highlight: "Not just 'old age'",
-        image: "/images/reviews/sarah.webp"
+        name: "Brad A.",
+        age: 63,
+        text: "I feel more energy, better workouts, and better recovery. I'm not sore during the day or at night anymore.",
+        highlight: "Better Recovery",
+        image: "/images/reviews/carolyn.webp"
+    },
+    {
+        name: "Patrick V.",
+        age: 75,
+        text: "I take five pills every day before the gym. My recuperation after heavy sets is unbelievably quick.",
+        highlight: "Quick Recuperation",
+        image: "/images/reviews/dr-simmons.webp"
     }
 ];
 
@@ -111,18 +111,18 @@ export const ReviewTicker: React.FC = () => {
     });
 
     return (
-        <div className="w-full py-10 overflow-hidden bg-[#020617] border-y border-white/5 relative z-20">
+        <div className="w-full py-10 overflow-hidden bg-surface-section border-y border-border-subtle relative z-20">
             {/* Section Header */}
             <div className="max-w-7xl mx-auto px-4 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
                     <div className="flex -space-x-2">
                         {["/images/reviews/jacqui.webp", "/images/reviews/david.webp", "/images/reviews/sarah.webp"].map((src, i) => (
-                            <img key={i} src={src} className="w-8 h-8 rounded-full border-2 border-[#020617] object-cover" alt="Verified User" />
+                            <img key={i} src={src} className="w-8 h-8 rounded-full border-2 border-white object-cover" alt="Verified User" />
                         ))}
                     </div>
-                    <p className="text-sm text-gray-400">Trusted by <span className="text-white font-bold">12,400+</span> active seniors</p>
+                    <p className="text-sm text-text-secondary">Trusted by <span className="text-text-primary font-bold">12,400+</span> active seniors</p>
                 </div>
-                <div className="flex items-center gap-2 text-green-400 text-xs font-bold bg-green-400/10 px-3 py-1.5 rounded-full border border-green-400/20">
+                <div className="flex items-center gap-2 text-brand-navy text-xs font-bold bg-blue-100 px-3 py-1.5 rounded-full border border-blue-200">
                     <ShieldCheck size={14} /> 100% Verified Reviews
                 </div>
             </div>
@@ -147,34 +147,34 @@ export const ReviewTicker: React.FC = () => {
                     dragMomentum={false} // We handle momentum/looping manually via animation frame
                 >
                     {tickerReviews.map((review, i) => (
-                        <div key={i} className="w-[300px] md:w-[320px] flex-shrink-0 p-5 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] transition-colors relative group select-none">
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500/0 via-purple-500/50 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div key={i} className="w-[300px] md:w-[320px] flex-shrink-0 p-5 rounded-xl bg-surface-card border border-border-subtle shadow-sm hover:shadow-md transition-shadow relative group select-none">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
 
                             <div className="flex items-center justify-between mb-3">
-                                <div className="flex text-yellow-400 gap-0.5">
+                                <div className="flex text-yellow-500 gap-0.5">
                                     {[1, 2, 3, 4, 5].map(s => <Star key={s} size={12} fill="currentColor" strokeWidth={0} />)}
                                 </div>
-                                <span className="text-[10px] text-purple-300 font-medium px-2 py-0.5 bg-purple-500/10 rounded border border-purple-500/20">
+                                <span className="text-[10px] text-brand-navy font-medium px-2 py-0.5 bg-blue-50 rounded border border-blue-100">
                                     {review.highlight}
                                 </span>
                             </div>
 
-                            <p className="text-gray-300 text-sm leading-relaxed mb-4 min-h-[60px] pointer-events-none">"{review.text}"</p>
+                            <p className="text-text-secondary text-sm leading-relaxed mb-4 min-h-[60px] pointer-events-none">"{review.text}"</p>
 
-                            <div className="flex items-center gap-3 pt-3 border-t border-white/5 pointer-events-none">
-                                <img src={review.image} alt={review.name} className="w-8 h-8 rounded-full object-cover border border-white/20" />
+                            <div className="flex items-center gap-3 pt-3 border-t border-border-subtle pointer-events-none">
+                                <img src={review.image} alt={review.name} className="w-8 h-8 rounded-full object-cover border border-border-subtle" />
                                 <div>
-                                    <p className="text-white font-bold text-xs">{review.name}</p>
-                                    <p className="text-[10px] text-gray-500">{review.age} years old • Verified Buyer</p>
+                                    <p className="text-text-primary font-bold text-xs">{review.name}</p>
+                                    <p className="text-[10px] text-text-muted">{review.age} years old • Verified Buyer</p>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </motion.div>
 
-                {/* Fade Edges */}
-                <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-[#020617] to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none" />
+                {/* Fade Edges - Light Gradient */}
+                <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-surface-section to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-surface-section to-transparent z-10 pointer-events-none" />
             </div>
         </div>
     );
