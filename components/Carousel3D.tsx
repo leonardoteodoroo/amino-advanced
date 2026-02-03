@@ -101,7 +101,7 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => {
     return (
         <div className="w-full h-full bg-white flex flex-col p-5 md:p-6 font-sans relative overflow-hidden select-none pointer-events-none">
             {/* Decorative Quote Icon background */}
-            <Quote className="absolute top-4 right-4 text-gray-100 rotate-180" size={80} strokeWidth={1} />
+            <Quote className="absolute top-4 right-4 text-indigo-100/50 rotate-180" size={80} strokeWidth={1} />
 
             {/* Header: Avatar + Name/Age */}
             <div className="flex items-center gap-3 mb-4 relative z-10">
@@ -109,7 +109,7 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => {
                     <img
                         src={review.image}
                         alt={`Portrait of ${review.name} - ${review.quote}`}
-                        className="w-12 h-12 rounded-full object-cover border border-purple-200 shadow-sm shrink-0 bg-gray-100"
+                        className="w-12 h-12 rounded-full object-cover border border-purple-200 shadow-sm shrink-0 bg-gray-200"
                         loading="lazy"
                         decoding="async"
                     />

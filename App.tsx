@@ -144,14 +144,14 @@ const App: React.FC = () => {
                 transition={{ delay: 1, duration: 0.8 }}
                 className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-8 z-20"
               >
-                <GlassCard className="p-4 md:p-6 backdrop-blur-xl bg-black/60 border-white/20">
+                <GlassCard className="p-4 md:p-6 backdrop-blur-xl bg-white/90 border-white/40 shadow-xl">
                   <div className="flex items-start gap-3 md:gap-4">
-                    <div className="p-2 md:p-3 bg-red-500/20 rounded-full mt-1 shrink-0">
-                      <Zap className="text-red-400" size={18} />
+                    <div className="p-2 md:p-3 bg-red-100 rounded-full mt-1 shrink-0 border border-red-200">
+                      <Zap className="text-red-600" size={18} />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[10px] md:text-xs text-red-400 font-bold uppercase tracking-widest mb-1">The Hidden Problem</p>
-                      <p className="font-bold text-sm md:text-lg text-white leading-tight break-words">After 50, your body treats most protein like garbage.</p>
+                      <p className="text-[10px] md:text-xs text-red-600 font-bold uppercase tracking-widest mb-1">The Hidden Problem</p>
+                      <p className="font-bold text-sm md:text-lg text-brand-navy leading-tight break-words">After 50, your body treats most protein like garbage.</p>
                     </div>
                   </div>
                 </GlassCard>
@@ -403,9 +403,9 @@ const App: React.FC = () => {
         <BackgroundLayers variant="data" className="opacity-40" />
 
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <GlassCard className="p-8 md:p-12 text-center bg-brand-navy border-none shadow-lg" hoverEffect>
-            <h3 className="text-2xl md:text-4xl font-serif font-bold text-white mb-6">Why This Matters</h3>
-            <p className="text-blue-100 text-base md:text-lg leading-relaxed">
+          <GlassCard className="p-8 md:p-12 text-center bg-white border border-border-subtle shadow-lg" hoverEffect>
+            <h3 className="text-2xl md:text-4xl font-serif font-bold text-brand-navy mb-6">Why This Matters</h3>
+            <p className="text-text-secondary text-base md:text-lg leading-relaxed">
               Proper protein absorption isn't just about gym gains. It's the biological foundation for immune health, cognitive sharpness, and maintaining the metabolic engine that keeps you active. Without it, the body catabolizes its own tissue to survive, leading to the frailty we often mistake for inevitable aging.
             </p>
           </GlassCard>
