@@ -177,8 +177,8 @@ export const LetterStagger: React.FC<LetterStaggerProps> = ({ text, className = 
           visible: {
             y: [0, -15, 0],
             scale: [1, 1.15, 1],
-            color: ["#ffffff", "#c084fc", "#ffffff"], // Flash purple
-            textShadow: ["0px 0px 0px rgba(192, 132, 252, 0)", "0px 0px 20px rgba(192, 132, 252, 0.6)", "0px 0px 0px rgba(192, 132, 252, 0)"],
+            color: ["#1e3a8a", "#2563eb", "#1e3a8a"], // Flash Brand Blue
+            textShadow: ["0px 0px 0px rgba(37, 99, 235, 0)", "0px 0px 20px rgba(37, 99, 235, 0.4)", "0px 0px 0px rgba(37, 99, 235, 0)"],
             transition: {
               delay: estimatedRevealTime, // Wait for text to finish
               duration: 0.8,

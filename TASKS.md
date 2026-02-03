@@ -2,7 +2,8 @@
 
 ## 🚀 Prioridade Alta (Imediato)
 - [x] **Consolidar Deploy**: Salvar (commit) os arquivos modificados para garantir segurança e deploy futuro.
-- [ ] **Verificar Contraste (Clinical Light)**: Revisar `UI.tsx` e componentes para garantir legibilidade total no tema claro.
+- [x] **Limpeza de Arquivos**: Remoção de parallax, efeitos desnecessários e exemplos (Google AI Studio leftovers).
+- [x] **Verificar Contraste (Clinical Light)**: Revisar `UI.tsx` e componentes para garantir legibilidade total no tema claro.
 - [ ] **Testar Domínio**: Validar se `advanced-amino-formula.semprenamoda.com.br` reflete as últimas alterações.
 
 ## 🧠 Brainstorming & Conteúdo (NotebookLM)

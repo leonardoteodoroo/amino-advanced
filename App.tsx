@@ -78,7 +78,7 @@ const App: React.FC = () => {
                 Check Availability
               </button>
             </div>
-            <div className="md:hidden text-white">
+            <div className="md:hidden text-brand-navy">
               <Menu />
             </div>
           </div>
