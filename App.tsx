@@ -11,7 +11,7 @@ import {
   TrendingUp,
   Battery
 } from 'lucide-react';
-import { GlassCard, BlurText, StaggerText, Toast, BackgroundHeading, HeroToastCard, LetterStagger } from './components/UI';
+import { GlassCard, BlurText, StaggerText, BackgroundHeading, LetterStagger } from './components/UI';
 import { BackgroundLayers } from './components/BackgroundLayers';
 import { ScienceTimeline } from './components/Timeline';
 import { Carousel3D } from './components/Carousel3D';
@@ -32,28 +32,6 @@ const VIEWPORT_CONFIG = {
 };
 
 const App: React.FC = () => {
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState({ msg: "", sub: "" });
-
-  // Simulate Recent Purchases
-  useEffect(() => {
-    const locations = ["Florida", "Texas", "California", "Arizona", "Ohio", "New York", "Colorado"];
-    const names = ["Robert", "Mary", "James", "Patricia", "John", "Jennifer", "Michael"];
-
-    const triggerToast = () => {
-      const loc = locations[Math.floor(Math.random() * locations.length)];
-      const name = names[Math.floor(Math.random() * names.length)];
-      setToastMessage({ msg: `New Verification`, sub: `${name} from ${loc} just secured their supply.` });
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 5000);
-    };
-
-    const interval = setInterval(triggerToast, 12000); // Every 12s
-    setTimeout(triggerToast, 3000); // First one
-
-    return () => clearInterval(interval);
-  }, []);
-
   const scrollToOffer = () => {
     const el = document.getElementById('offer-section');
     el?.scrollIntoView({ behavior: 'smooth' });
@@ -156,22 +134,7 @@ const App: React.FC = () => {
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-[#020617] opacity-60" />
 
-              {/* --- HERO TOAST CARDS (Responsive Positioning) --- */}
-              <HeroToastCard
-                icon={<TrendingUp size={20} />}
-                title="Absorption +99%"
-                subtitle="Protein Synthesis Active"
-                className="top-[8%] right-[5%] md:top-12 md:right-8 rotate-1 scale-90 md:scale-100 origin-top-right"
-                delay={1.2}
-              />
 
-              <HeroToastCard
-                icon={<Battery size={20} />}
-                title="Energy Restored"
-                subtitle="Cellular uptake optimized"
-                className="top-[45%] left-[5%] md:top-[45%] md:left-8 -translate-y-1/2 opacity-90 scale-90 md:scale-100 origin-left"
-                delay={1.4}
-              />
 
               {/* Floating Card (Bottom Summary) */}
               <motion.div
@@ -480,12 +443,7 @@ const App: React.FC = () => {
         </div>
       </footer >
 
-      <Toast
-        isVisible={showToast}
-        message={toastMessage.msg}
-        subMessage={toastMessage.sub}
-        onClose={() => setShowToast(false)}
-      />
+
     </div >
   );
 };
