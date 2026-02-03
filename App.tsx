@@ -15,7 +15,7 @@ import { GlassCard, BlurText, StaggerText, Toast, BackgroundHeading, HeroToastCa
 import { BackgroundLayers } from './components/BackgroundLayers';
 import { ScienceTimeline } from './components/Timeline';
 import { Carousel3D } from './components/Carousel3D';
-import { ReviewTicker } from './components/ReviewTicker';
+
 import { ComparisonChart } from './components/ComparisonChart';
 import { FAQ } from './components/FAQ';
 import { PricingOptions } from './components/PricingOptions';
@@ -213,10 +213,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* --- NEW: Review Ticker (Social Proof) --- */}
-      <section className="relative">
-        <ReviewTicker />
-      </section>
+
 
       {/* --- Section: The 17% Trap --- */}
       <section className="py-20 md:py-24 relative z-10 overflow-hidden">
