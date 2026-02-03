@@ -11,50 +11,55 @@ const reviews = [
         name: "Jacqui",
         age: 67,
         text: "It feels like my muscles are finally waking up. My workouts improved and recovery became much faster after just two months.",
-        highlight: "Muscles waking up"
+        highlight: "Muscles waking up",
+        image: "/images/reviews/jacqui.webp"
     },
     {
         name: "Carolyn H.",
         age: 72,
         text: "I feel more stable on long walks. After three months, my joints felt less sore and my stability increased significantly.",
-        highlight: "More stable"
+        highlight: "More stable",
+        image: "/images/reviews/carolyn.webp"
     },
     {
         name: "Dr. Simmons",
         age: 55,
         text: "My doctor noticed the difference. Many users report their doctors are surprised by the improvement in muscle tone and general vitality.",
-        highlight: "Doctor impressed"
+        highlight: "Doctor impressed",
+        image: "/images/reviews/dr-simmons.webp"
     },
     {
         name: "James P.",
         age: 69,
         text: "My grip strength was fading—jars were impossible to open. Now I'm doing it for my wife again effortlessly.",
-        highlight: "Grip strength back"
+        highlight: "Grip strength back",
+        image: "/images/reviews/james.webp"
     },
     {
         name: "David B.",
         age: 71,
         text: "The 'heavy leg' feeling is gone. I walk my dog every morning without needing to stop for breaks anymore.",
-        highlight: "No more heavy legs"
+        highlight: "No more heavy legs",
+        image: "/images/reviews/david.webp"
     },
     {
         name: "Margaret T.",
         age: 64,
         text: "I was buying expensive whey protein for years with zero results. This formula changed my leg strength in just weeks.",
-        highlight: "Leg strength returned"
+        highlight: "Leg strength returned",
+        image: "/images/reviews/margaret.webp"
     },
     {
         name: "Sarah L.",
         age: 58,
         text: "I thought my weakness was just 'getting old'. Turns out my muscles were just hungry. Amazing difference.",
-        highlight: "Not just 'old age'"
+        highlight: "Not just 'old age'",
+        image: "/images/reviews/sarah.webp"
     }
 ];
 
 // Triplicate the array to ensure smooth infinite looping even on large screens
 const tickerReviews = [...reviews, ...reviews, ...reviews];
-
-const AVATAR_COLORS = ['bg-gray-300', 'bg-gray-400', 'bg-gray-500'];
 
 export const ReviewTicker: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -108,12 +113,17 @@ export const ReviewTicker: React.FC = () => {
             {/* Section Header */}
             <div className="max-w-7xl mx-auto px-4 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
-                    <div className="flex -space-x-2">
-                        {[0, 1, 2].map((i) => (
-                            <div key={i} className={`w-8 h-8 rounded-full border-2 border-[#020617] ${AVATAR_COLORS[i]}`} />
+                    <div className="flex -space-x-3">
+                        {[reviews[0], reviews[1], reviews[2]].map((r, i) => (
+                            <img
+                                key={i}
+                                src={r.image}
+                                alt="User"
+                                className="w-8 h-8 rounded-full border-2 border-brand-navy object-cover bg-gray-700"
+                            />
                         ))}
                     </div>
-                    <p className="text-sm text-gray-400">Trusted by <span className="text-white font-bold">12,400+</span> active seniors</p>
+                    <p className="text-sm text-blue-200/80">Trusted by <span className="text-white font-bold">12,400+</span> active seniors</p>
                 </div>
                 <div className="flex items-center gap-2 text-green-400 text-xs font-bold bg-green-400/10 px-3 py-1.5 rounded-full border border-green-400/20">
                     <ShieldCheck size={14} /> 100% Verified Reviews
@@ -155,9 +165,12 @@ export const ReviewTicker: React.FC = () => {
                             <p className="text-gray-300 text-sm leading-relaxed mb-4 min-h-[60px] pointer-events-none">"{review.text}"</p>
 
                             <div className="flex items-center gap-3 pt-3 border-t border-white/5 pointer-events-none">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 flex items-center justify-center text-xs font-bold text-white">
-                                    {review.name.charAt(0)}
-                                </div>
+                                <img
+                                    src={review.image}
+                                    alt={review.name}
+                                    className="w-10 h-10 rounded-full object-cover border border-white/10 bg-gray-700"
+                                    loading="lazy"
+                                />
                                 <div>
                                     <p className="text-white font-bold text-xs">{review.name}</p>
                                     <p className="text-[10px] text-gray-500">{review.age} years old • Verified Buyer</p>
@@ -168,8 +181,8 @@ export const ReviewTicker: React.FC = () => {
                 </motion.div>
 
                 {/* Fade Edges */}
-                <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-[#020617] to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-brand-navy to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-8 md:w-32 bg-gradient-to-l from-brand-navy to-transparent z-10 pointer-events-none" />
             </div>
         </div>
     );
