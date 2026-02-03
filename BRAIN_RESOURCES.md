@@ -15,6 +15,7 @@ Access your external brain banks below. These notebooks contain your curated kno
 ## 2. Estratégia Mestre - Reposição Muscular Idosos
 *   **Link**: [Access Notebook](https://notebooklm.google.com/notebook/736a6bc9-4474-443d-b0c2-d67ee70bdcdf)
 *   **Status**: Initialization Phase (0 Sources)
+*   **Active Research Task**: `6d0baae0-1bcc-4937-87c7-a017bef80ba5` (Sarcopenia Deep Research)
 *   **Next Actions**:
     - Add research papers on sarcopenia.
     - Upload competitor analysis for muscle recovery supplements.

@@ -19,6 +19,7 @@ import { Carousel3D } from './components/Carousel3D';
 import { ComparisonChart } from './components/ComparisonChart';
 import { FAQ } from './components/FAQ';
 import { PricingOptions } from './components/PricingOptions';
+import { ReviewTicker } from './components/ReviewTicker';
 
 // --- Assets ---
 const HERO_BG = "https://images.unsplash.com/photo-1552674605-469523254d5d?q=80&w=2000&auto=format&fit=crop";
@@ -213,6 +214,9 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* --- Review Ticker (Trust Strip) --- */}
+      <ReviewTicker />
+
 
 
       {/* --- Section: The 17% Trap --- */}
@@ -280,27 +284,27 @@ const App: React.FC = () => {
             </div>
           </GlassCard>
         </div>
-      </section>
+      </section >
 
       {/* --- Section 1: Reviews (Carousel) --- */}
-      <section className="relative py-12 md:py-20 overflow-hidden">
+      < section className="relative py-12 md:py-20 overflow-hidden" >
 
         {/* Giant Background Text similar to reference */}
-        <BackgroundHeading text="STORIES" className="opacity-[0.04]" />
+        < BackgroundHeading text="STORIES" className="opacity-[0.04]" />
         <div className="relative z-10">
           <Carousel3D />
         </div>
-      </section>
+      </section >
 
       {/* --- Section 2: Science Timeline --- */}
-      <section className="relative overflow-hidden py-12">
+      < section className="relative overflow-hidden py-12" >
 
         <BackgroundHeading text="SCIENCE" className="opacity-[0.03] top-1/4" />
         <ScienceTimeline />
-      </section>
+      </section >
 
       {/* --- Section 3: Transformation (Grid) --- */}
-      <section className="py-20 md:py-32 max-w-7xl mx-auto px-4 relative overflow-hidden">
+      < section className="py-20 md:py-32 max-w-7xl mx-auto px-4 relative overflow-hidden" >
 
         <BackgroundHeading text="RESULTS" className="opacity-[0.03] top-1/2" />
 
@@ -365,10 +369,10 @@ const App: React.FC = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* --- Section 4: Authority --- */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
+      < section className="py-20 md:py-32 relative overflow-hidden" >
 
         <div className="absolute inset-0 bg-surface-section -skew-y-3 transform origin-top-left pointer-events-none" />
 
@@ -428,10 +432,10 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* --- NEW SECTION: Why This Matters --- */}
-      <section className="py-20 md:py-24 relative overflow-hidden">
+      < section className="py-20 md:py-24 relative overflow-hidden" >
 
         <BackgroundLayers variant="data" className="opacity-40" />
 
@@ -443,25 +447,25 @@ const App: React.FC = () => {
             </p>
           </GlassCard>
         </div>
-      </section>
+      </section >
 
       {/* --- NEW SECTION: FAQ --- */}
-      <section className="py-20 md:py-24 relative z-20 overflow-hidden">
+      < section className="py-20 md:py-24 relative z-20 overflow-hidden" >
 
         <FAQ />
-      </section>
+      </section >
 
       {/* --- Section 5: Offer (Risk Free) --- */}
-      <section id="offer-section" className="relative overflow-hidden bg-surface-page pb-20">
+      < section id="offer-section" className="relative overflow-hidden bg-surface-page pb-20" >
 
         {/* Subtle bottom glow instead of EKG */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-blue-500/5 blur-[80px] pointer-events-none" />
+        < div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-blue-500/5 blur-[80px] pointer-events-none" />
 
         <PricingOptions />
-      </section>
+      </section >
 
       {/* --- Footer --- */}
-      <footer className="py-12 border-t border-border-subtle bg-surface-section text-text-muted text-[10px] md:text-xs text-center px-4 relative">
+      < footer className="py-12 border-t border-border-subtle bg-surface-section text-text-muted text-[10px] md:text-xs text-center px-4 relative" >
 
         <div className="max-w-4xl mx-auto space-y-4 relative z-10">
           <p>
@@ -474,7 +478,7 @@ const App: React.FC = () => {
             Advanced Amino Formula - Restore Your Strength
           </p>
         </div>
-      </footer>
+      </footer >
 
       <Toast
         isVisible={showToast}
@@ -482,7 +486,7 @@ const App: React.FC = () => {
         subMessage={toastMessage.sub}
         onClose={() => setShowToast(false)}
       />
-    </div>
+    </div >
   );
 };
 
