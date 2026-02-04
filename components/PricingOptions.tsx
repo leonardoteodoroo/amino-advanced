@@ -38,13 +38,12 @@ const PricingCard: React.FC<PricingCardProps> = ({
             className={`relative h-full ${isPopular || isBestValue ? 'z-10' : 'z-0'}`}
         >
             {isBestValue && (
-                <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[95%] md:w-max min-w-[280px] bg-gradient-to-br from-red-600 via-red-700 to-orange-600 text-white shadow-2xl z-20 flex flex-col items-center justify-center p-2 md:px-6 md:py-2.5 rounded-2xl border-2 border-white/30 backdrop-blur-sm">
-                    <div className="flex items-center gap-2 mb-1 md:mb-0">
-                        <ShieldCheck size={16} className="text-white drop-shadow-sm" />
-                        <span className="text-[11px] md:text-xs font-black uppercase tracking-[0.1em]">Medical Recommendation</span>
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-[92%] md:w-[95%] bg-gradient-to-br from-red-600 via-red-700 to-orange-600 text-white shadow-2xl z-20 flex flex-col items-center justify-center py-2 px-1 rounded-xl border-2 border-white/30 backdrop-blur-sm">
+                    <div className="flex items-center gap-1.5 mb-1">
+                        <ShieldCheck size={14} className="text-white shrink-0" />
+                        <span className="text-[10px] md:text-[11px] font-black uppercase tracking-wider text-center">Medical Recommendation</span>
                     </div>
-                    <div className="w-full h-px bg-white/20 my-1 md:hidden" />
-                    <span className="text-[12px] md:text-sm font-bold bg-white/10 px-3 py-0.5 rounded-full border border-white/10">
+                    <span className="text-[11px] md:text-xs font-bold bg-white/20 px-3 py-0.5 rounded-full border border-white/10 whitespace-nowrap">
                         Save $40.20 + Free Shipping
                     </span>
                 </div>
@@ -151,7 +150,7 @@ export const PricingOptions: React.FC = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch pt-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-8 items-stretch pt-16">
                     {/* STARTER */}
                     <PricingCard
                         title="Starter Option"
