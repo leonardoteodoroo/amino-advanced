@@ -109,6 +109,8 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => {
                     <img
                         src={review.image}
                         alt={`Portrait of ${review.name} - ${review.quote}`}
+                        width="48"
+                        height="48"
                         className="w-12 h-12 rounded-full object-cover border border-purple-200 shadow-sm shrink-0 bg-gray-200"
                         loading="lazy"
                         decoding="async"
@@ -261,12 +263,14 @@ export const Carousel3D: React.FC = () => {
                     <div className="hidden md:flex gap-4 mt-8">
                         <button
                             onClick={prevSlide}
+                            aria-label="Previous testimonial"
                             className="w-12 h-12 rounded-full border border-border-subtle flex items-center justify-center bg-white hover:bg-blue-50 hover:border-blue-200 transition-all group shadow-sm"
                         >
                             <ChevronLeft className="text-text-secondary group-hover:text-brand-blue" size={24} />
                         </button>
                         <button
                             onClick={nextSlide}
+                            aria-label="Next testimonial"
                             className="w-12 h-12 rounded-full border border-border-subtle flex items-center justify-center bg-white hover:bg-blue-50 hover:border-blue-200 transition-all group shadow-sm"
                         >
                             <ChevronRight className="text-text-secondary group-hover:text-brand-blue" size={24} />
@@ -311,12 +315,14 @@ export const Carousel3D: React.FC = () => {
                         <div className="flex gap-8 pointer-events-auto">
                             <button
                                 onClick={prevSlide}
+                                aria-label="Previous testimonial"
                                 className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-md transition-all hover:bg-white shadow-md"
                             >
                                 <ChevronLeft className="text-brand-navy" size={20} />
                             </button>
                             <button
                                 onClick={nextSlide}
+                                aria-label="Next testimonial"
                                 className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-md transition-all hover:bg-white shadow-md"
                             >
                                 <ChevronRight className="text-brand-navy" size={20} />
