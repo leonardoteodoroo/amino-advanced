@@ -67,6 +67,11 @@ const App: React.FC = () => {
               <BackgroundLayers variant="molecular" />
             </div>
 
+            {/* --- Scarcity Banner --- */}
+            <div className="bg-gradient-to-r from-red-600 to-red-700 text-white text-xs font-bold py-2 px-4 text-center tracking-wide uppercase relative z-[60]">
+              ⚠️ High Demand: Low Stock Alert due to viral social media attention. Limit 6 bottles per household.
+            </div>
+
             {/* --- Navigation --- */}
             <nav className="fixed top-0 w-full z-50 border-b border-border-subtle bg-white/90 backdrop-blur-xl shadow-sm">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -264,6 +269,16 @@ const App: React.FC = () => {
               </div>
             </section>
 
+
+
+            {/* --- Section: Reviews (Carousel) - RESTORED --- */}
+            <section className="relative py-12 md:py-20 overflow-hidden">
+              <BackgroundHeading text="STORIES" className="opacity-[0.04]" />
+              <div className="relative z-10">
+                <Carousel3D />
+              </div>
+            </section>
+
             {/* --- Section: Timeline --- */}
             <ScienceTimeline />
 
@@ -388,7 +403,7 @@ const App: React.FC = () => {
           />
         )}
       </AnimatePresence>
-    </div>
+    </div >
   );
 };
 
