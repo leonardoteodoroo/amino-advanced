@@ -22,6 +22,7 @@ import { PricingOptions } from './components/PricingOptions';
 import { ReviewTicker } from './components/ReviewTicker';
 import { LegalPage } from './components/LegalPage';
 import ClinicalEvidence from './components/ClinicalEvidence';
+import { DoctorSection } from './components/DoctorSection';
 
 // --- Assets ---
 const HERO_BG = "https://images.unsplash.com/photo-1552674605-469523254d5d?q=80&w=2000&auto=format&fit=crop";
@@ -282,6 +283,9 @@ const App: React.FC = () => {
 
             {/* --- Section: Timeline --- */}
             <ScienceTimeline />
+
+            {/* --- Section: The Expert (Dr. Shallenberger) --- */}
+            <DoctorSection />
 
             {/* --- Section: Results --- */}
             <section className="py-20 md:py-32 max-w-7xl mx-auto px-4 relative overflow-hidden">

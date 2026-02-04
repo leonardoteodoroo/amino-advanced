@@ -38,8 +38,15 @@ const PricingCard: React.FC<PricingCardProps> = ({
             className={`relative h-full ${isPopular || isBestValue ? 'z-10' : 'z-0'}`}
         >
             {isBestValue && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-max max-w-[95vw] px-4 py-1.5 bg-gradient-to-r from-red-600 to-orange-600 rounded-full text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 flex items-center gap-2 whitespace-nowrap">
-                    <ShieldCheck size={14} className="shrink-0" /> Medical Recommendation - Save $40.20
+                <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[95%] md:w-max min-w-[280px] bg-gradient-to-br from-red-600 via-red-700 to-orange-600 text-white shadow-2xl z-20 flex flex-col items-center justify-center p-2 md:px-6 md:py-2.5 rounded-2xl border-2 border-white/30 backdrop-blur-sm">
+                    <div className="flex items-center gap-2 mb-1 md:mb-0">
+                        <ShieldCheck size={16} className="text-white drop-shadow-sm" />
+                        <span className="text-[11px] md:text-xs font-black uppercase tracking-[0.1em]">Medical Recommendation</span>
+                    </div>
+                    <div className="w-full h-px bg-white/20 my-1 md:hidden" />
+                    <span className="text-[12px] md:text-sm font-bold bg-white/10 px-3 py-0.5 rounded-full border border-white/10">
+                        Save $40.20 + Free Shipping
+                    </span>
                 </div>
             )}
             {isPopular && (
@@ -184,14 +191,13 @@ export const PricingOptions: React.FC = () => {
                         title="Greatest Savings"
                         perBottle="$33.25"
                         price="$199.50"
-                        savings="Save $40.20 + Free Shipping"
+                        savings="Save $40.20"
                         isBestValue
                         image="/images/product/6bottle.webp"
                         features={[
                             "6 Month Supply",
                             "Maximum Savings per Bottle",
-                            "Free Shipping",
-                            "Priority Handling",
+                            "VIP Priority Handling",
                             "Digital Quick-Start Guide",
                             "90-Day Money-Back Guarantee"
                         ]}
@@ -210,6 +216,11 @@ export const PricingOptions: React.FC = () => {
                             "If you don't feel a distinct difference in your energy and muscle firmness within 90 days, I don't want your money. Return the empty bottles for a full refund." — Dr. Frank Shallenberger
                         </p>
                     </div>
+                    <img
+                        src="/images/dr-shallenberger.webp"
+                        alt="Dr. Frank Shallenberger"
+                        className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-white shadow-md shrink-0 self-center md:self-start bg-slate-200"
+                    />
                 </div>
             </div>
         </section>

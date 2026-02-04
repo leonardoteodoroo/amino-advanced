@@ -69,8 +69,8 @@ export const ReviewTicker: React.FC = () => {
     // Motion value for the x position
     const x = useMotionValue(0);
 
-    // Speed of auto-scroll (pixels per frame)
-    const baseVelocity = -0.5;
+    // Speed of auto-scroll (pixels per frame) - Increased for better energy
+    const baseVelocity = -1.5;
 
     useEffect(() => {
         if (containerRef.current) {
@@ -179,6 +179,16 @@ export const ReviewTicker: React.FC = () => {
                         </div>
                     ))}
                 </motion.div>
+
+                {/* Drag Hint for Mobile */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 opacity-40 md:hidden pointer-events-none">
+                    <span className="text-[10px] uppercase tracking-tighter font-bold text-brand-navy">Swipe to browse</span>
+                    <div className="flex gap-1">
+                        <motion.div animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }} className="w-1 h-1 rounded-full bg-brand-navy" />
+                        <div className="w-1 h-1 rounded-full bg-brand-navy opacity-50" />
+                        <div className="w-1 h-1 rounded-full bg-brand-navy opacity-25" />
+                    </div>
+                </div>
 
                 {/* Fade Edges - Light Theme */}
                 <div className="absolute inset-y-0 left-0 w-8 md:w-32 bg-gradient-to-r from-surface-section to-transparent z-10 pointer-events-none" />
