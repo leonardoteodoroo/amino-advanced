@@ -16,7 +16,7 @@ export const ComparisonChart: React.FC = () => {
         <h4 className="text-sm md:text-base text-brand-navy font-bold uppercase tracking-wider">
           Protein Utilization Rates
         </h4>
-        <p className="text-xs text-text-secondary mt-1">How much your body actually uses</p>
+        <p className="text-xs text-text-secondary mt-1">Net Nitrogen Utilization (NNU)</p>
       </div>
 
       {/* Chart Container: Restored original height, kept safe padding-top */}
@@ -75,8 +75,8 @@ export const ComparisonChart: React.FC = () => {
 
       <div className="mt-2 md:mt-4 p-3 bg-blue-50/50 rounded-lg border border-blue-100 backdrop-blur-sm text-center mx-auto max-w-sm">
         <p className="text-[10px] md:text-xs text-text-secondary leading-relaxed">
-          <span className="text-orange-600 font-bold block mb-1">99% Utilization Advantage</span>
-          Virtually zero metabolic waste means no stress on kidneys.
+          <span className="text-orange-600 font-bold block mb-1">NNU: The Clinical Gold Standard</span>
+          Virtually zero metabolic waste (Ammonia) means zero stress on kidneys.
         </p>
       </div>
     </div>

@@ -103,10 +103,10 @@ const App: React.FC = () => {
                   </motion.div>
 
                   <LetterStagger
-                    text={`Maybe it's not "old age". Maybe your muscles are just starving.`}
+                    text={`Maybe it's not "Old Age". It's a biological lock called Anabolic Resistance.`}
                     className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.1] mb-6 text-brand-navy drop-shadow-sm"
                     delay={0.2}
-                    highlightWords={["starving."]}
+                    highlightWords={["Anabolic", "Resistance."]}
                   />
 
                   <div className="mb-8 border-l-4 border-brand-blue pl-4 bg-blue-50/50 p-4 rounded-r-lg">
@@ -231,18 +231,18 @@ const App: React.FC = () => {
                         </div>
                       </div>
                       <div>
-                        <h2 className="text-2xl md:text-4xl font-serif font-bold mb-4 text-brand-navy break-words">The "17% Trap"</h2>
+                        <h2 className="text-2xl md:text-4xl font-serif font-bold mb-4 text-brand-navy break-words">The "Anabolic Lock"</h2>
                         <p className="text-text-secondary text-base md:text-lg mb-4">
-                          The average person loses <strong className="text-text-primary">30% of their muscle mass</strong> by the time they’re 70. The reason isn't just age—it's traditional protein failure.
+                          Research shows that after age 50, muscles develop a condition called <strong className="text-text-primary">Anabolic Resistance</strong>. It’s a biological "lock" that prevents normal protein from triggering muscle repair.
                         </p>
                         <StaggerText
-                          text="When you drink Whey protein, it must be digested into aminos. After 50, this 'machinery' slows down, leaving 83% of the protein as metabolic waste."
+                          text="This is the '17% Trap': When you eat steak or drink whey, your aging body only utilizes a fraction, leaving 83% to become toxic metabolic waste."
                           className="text-lg md:text-xl text-brand-blue mb-6 font-medium leading-relaxed"
                         />
                         <div className="bg-surface-highlight border-l-4 border-brand-blue p-5 rounded-r-xl mb-6">
-                          <p className="text-brand-navy font-bold text-lg mb-2">The Biological Key: 41% Leucine</p>
+                          <p className="text-brand-navy font-bold text-lg mb-2">The Leucine Threshold Key</p>
                           <p className="text-text-secondary text-sm md:text-base leading-relaxed">
-                            Clinical studies show that for seniors, a specific concentration of <span className="font-bold text-brand-navy">41% Leucine</span> is required to trigger Muscle Protein Synthesis (MPS). Traditional protein only provides around 10-15%.
+                            To break Anabolic Resistance, your blood needs a surgical strike of <span className="font-bold text-brand-navy">3.0g of pure Leucine</span>. Traditional protein requires you to eat massive calories just to reach this threshold—but Advanced Amino provides it instantly.
                           </p>
                         </div>
                         <p className="text-text-secondary leading-relaxed text-base md:text-lg">
@@ -301,6 +301,22 @@ const App: React.FC = () => {
                     </GlassCard>
                   </motion.div>
                 </div>
+              </div>
+            </section>
+
+            {/* --- Section: Why This Matters --- */}
+            <section className="py-20 relative overflow-hidden bg-surface-section">
+              <div className="absolute inset-0 bg-blue-900/5 rotate-3 scale-110 pointer-events-none" />
+              <div className="max-w-4xl mx-auto px-4 relative z-10">
+                <GlassCard className="p-8 md:p-12 text-center bg-white border border-border-subtle shadow-lg" hoverEffect>
+                  <h3 className="text-2xl md:text-4xl font-serif font-bold text-brand-navy mb-6">Why This Matters</h3>
+                  <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6">
+                    Proper protein absorption isn't just about gym gains. It's the biological foundation for immune health, cognitive sharpness, and maintaining the metabolic engine that keeps you active.
+                  </p>
+                  <p className="text-brand-blue font-medium text-lg leading-relaxed">
+                    Without it, the body catabolizes its own tissue to survive—leading to the frailty we often mistake for inevitable aging.
+                  </p>
+                </GlassCard>
               </div>
             </section>
 

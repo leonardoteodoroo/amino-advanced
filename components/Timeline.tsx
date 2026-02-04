@@ -13,26 +13,26 @@ const VIEWPORT_CONFIG = {
 const timelineData: TimelineItem[] = [
   {
     id: 1,
-    title: "The Premise",
-    description: "If your body can't break down complex proteins from meat or milk, it discards them. It's pure math. To build muscle, your body needs 8 essential amino acids in perfect balance.",
+    title: "Break The Anabolic Lock",
+    description: "After 50, muscles develop 'Anabolic Resistance'—a biological lock that shuts out ordinary protein. Advanced Amino is the specific 'key' that forces the muscle to accept nutrition again.",
     icon: <Brain className="text-purple-400" size={24} />,
   },
   {
     id: 2,
-    title: "99% Utilization Rate",
-    description: "Practically everything you ingest goes straight to tissue repair. The Advanced Amino Formula is not a 'protein shake'. It is the barcode your muscles understand.",
+    title: "99% Master Utilization",
+    description: "While Whey protein leaves 83% metabolic waste, this precise ratio provides 99% Net Nitrogen Utilization (NNU). Practically every gram goes straight to tissue repair, not 'garbage'.",
     icon: <Barcode className="text-green-400" size={24} />,
   },
   {
     id: 3,
-    title: "Zero Waste",
-    description: "Unlike Whey, there is no conversion into unnecessary sugars or fats. The metabolic waste that stresses your kidneys is completely avoided.",
+    title: "Protect Your Kidneys",
+    description: "Unlike high-protein diets that stress your filtration system with ammonia waste, Advanced Amino creates almost zero metabolic byproduct. It's the safest way to rebuild for seniors.",
     icon: <Trash2 className="text-red-400" size={24} />,
   },
   {
     id: 4,
-    title: "Pre-Digested State",
-    description: "It skips the difficult digestive steps, reaching your bloodstream in minutes, not hours. It provides instant availability for starving muscles.",
+    title: "Bypass Digestion",
+    description: "Ordinary protein takes hours to break down. These amino acids reach your bloodstream in minutes, providing an immediate 'Anabolic Strike' to starving muscle fibers.",
     icon: <Zap className="text-yellow-400" size={24} />,
   }
 ];
