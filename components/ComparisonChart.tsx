@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 export const ComparisonChart: React.FC = () => {
   const data = [
-    { label: 'Whey/Soy', subLabel: '& Nuts', value: 17, color: 'bg-gray-300' },
-    { label: 'Meat/Fish', subLabel: '& Poultry', value: 32, color: 'bg-gray-400' },
-    { label: 'Whole Eggs', subLabel: '', value: 48, color: 'bg-gray-500' },
-    { label: 'Advanced Amino', subLabel: 'Formula', value: 99, color: 'bg-[#f97316]' }, // Orange
+    { label: 'Whey/Soy', subLabel: '& Nuts', value: 17, color: 'bg-slate-300', info: '83% Nitrogen Waste (Waste products like Ammonia strain the kidneys).' },
+    { label: 'Meat/Fish', subLabel: '& Poultry', value: 32, color: 'bg-slate-400', info: '68% Waste. Requires complex digestion before absorption.' },
+    { label: 'Whole Eggs', subLabel: '', value: 48, color: 'bg-slate-500', info: 'Best whole food source, but still releases 52% as waste.' },
+    { label: 'Advanced Amino', subLabel: 'Formula', value: 99, color: 'bg-[#f97316]', info: '99% Perfect Utilization. Virtually ZERO metabolic waste.' },
   ];
 
   return (
@@ -46,16 +46,33 @@ export const ComparisonChart: React.FC = () => {
               </motion.div>
             </div>
 
-            {/* Bar */}
+            {/* Bar with Tooltip */}
             <motion.div
               initial={{ height: "1%" }}
               whileInView={{ height: `${item.value}%` }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className={`w-full max-w-[40px] md:max-w-[60px] rounded-t-lg relative flex-shrink-0 origin-bottom overflow-visible ${index === 3 ? 'bg-gradient-to-t from-orange-600 to-orange-400 shadow-md shadow-orange-200' : 'bg-gradient-to-t from-slate-400 to-slate-300 opacity-80'}`}
+              className={`w-full max-w-[40px] md:max-w-[60px] rounded-t-lg relative flex-shrink-0 origin-bottom overflow-visible ${index === 3 ? 'bg-gradient-to-t from-orange-600 to-orange-400 shadow-xl shadow-orange-500/20' : 'bg-gradient-to-t from-slate-400 to-slate-300 opacity-60'}`}
             >
+              {/* Tooltip */}
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full mb-3 w-40 opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 pointer-events-none">
+                <div className="bg-brand-navy p-2 rounded-lg text-[10px] text-white leading-tight shadow-xl border border-white/10 text-center relative">
+                  {item.info}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-navy"></div>
+                </div>
+              </div>
+
               {/* Glossy Effect on Bar */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 opacity-50 rounded-t-lg overflow-hidden" />
+
+              {/* Pulse effect for 99% bar */}
+              {index === 3 && (
+                <motion.div
+                  animate={{ opacity: [0.2, 0.5, 0.2] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="absolute inset-x-0 -top-1 h-3 bg-orange-400 blur-md rounded-full pointer-events-none"
+                />
+              )}
             </motion.div>
 
             {/* X-Axis Label */}

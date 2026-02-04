@@ -38,12 +38,12 @@ const PricingCard: React.FC<PricingCardProps> = ({
             className={`relative h-full ${isPopular || isBestValue ? 'z-10' : 'z-0'}`}
         >
             {isBestValue && (
-                <div className="absolute -top-4 left-0 right-0 mx-auto w-fit px-4 py-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-full text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20">
-                    Best Value - Save $40.20
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-max max-w-[95vw] px-4 py-1.5 bg-gradient-to-r from-red-600 to-orange-600 rounded-full text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 flex items-center gap-2 whitespace-nowrap">
+                    <ShieldCheck size={14} className="shrink-0" /> Medical Recommendation - Save $40.20
                 </div>
             )}
             {isPopular && (
-                <div className="absolute -top-4 left-0 right-0 mx-auto w-fit px-4 py-1 bg-brand-navy rounded-full text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-max max-w-[95vw] px-4 py-1 bg-brand-navy rounded-full text-white text-xs font-bold uppercase tracking-widest shadow-lg z-20 whitespace-nowrap">
                     Most Popular
                 </div>
             )}

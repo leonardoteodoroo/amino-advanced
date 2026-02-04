@@ -21,6 +21,7 @@ import { FAQ } from './components/FAQ';
 import { PricingOptions } from './components/PricingOptions';
 import { ReviewTicker } from './components/ReviewTicker';
 import { LegalPage } from './components/LegalPage';
+import ClinicalEvidence from './components/ClinicalEvidence';
 
 // --- Assets ---
 const HERO_BG = "https://images.unsplash.com/photo-1552674605-469523254d5d?q=80&w=2000&auto=format&fit=crop";
@@ -67,10 +68,7 @@ const App: React.FC = () => {
               <BackgroundLayers variant="molecular" />
             </div>
 
-            {/* --- Scarcity Banner --- */}
-            <div className="bg-gradient-to-r from-red-600 to-red-700 text-white text-xs font-bold py-2 px-4 text-center tracking-wide uppercase relative z-[60]">
-              ⚠️ High Demand: Low Stock Alert due to viral social media attention. Limit 6 bottles per household.
-            </div>
+
 
             {/* --- Navigation --- */}
             <nav className="fixed top-0 w-full z-50 border-b border-border-subtle bg-white/90 backdrop-blur-xl shadow-sm">
@@ -278,6 +276,9 @@ const App: React.FC = () => {
                 <Carousel3D />
               </div>
             </section>
+
+            {/* --- Section: Clinical Evidence --- */}
+            <ClinicalEvidence />
 
             {/* --- Section: Timeline --- */}
             <ScienceTimeline />
