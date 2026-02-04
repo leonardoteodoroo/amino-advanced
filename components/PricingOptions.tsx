@@ -103,6 +103,16 @@ const PricingCard: React.FC<PricingCardProps> = ({
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                        // Global DataLayer Push for GTM tracking
+                        (window as any).dataLayer = (window as any).dataLayer || [];
+                        (window as any).dataLayer.push({
+                            event: 'add_to_cart',
+                            product_name: title,
+                            price: price,
+                            currency: 'USD'
+                        });
+                    }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`w-full py-4 rounded-xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg ${isBestValue
@@ -115,7 +125,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
                     Add To Cart <ArrowRight size={16} />
                 </motion.a>
 
-                <div className="mt-4 flex items-center justify-center gap-2 text-[10px] text-text-muted">
+                <div className="mt-4 flex items-center justify-center gap-2 text-xs text-text-muted">
                     <ShieldCheck size={12} /> 90-Day Money-Back Guarantee
                 </div>
             </GlassCard>
