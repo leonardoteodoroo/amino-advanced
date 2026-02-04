@@ -44,11 +44,11 @@ export const FAQ: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4">
-      <div className="text-center mb-12">
-        <span className="text-brand-blue font-semibold tracking-wider text-sm uppercase mb-2 block">Common Questions</span>
-        <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6">
-          Stop Guessing. <br /> Start Absorbing.
+    <div className="max-w-4xl mx-auto px-6 py-12 md:py-20 text-left">
+      <div className="mb-16 relative z-30">
+        <span className="text-brand-blue font-bold tracking-widest text-xs uppercase mb-3 block pl-1">Common Questions</span>
+        <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6 leading-tight">
+          Stop Guessing. Start Absorbing.
         </h2>
       </div>
 
@@ -94,7 +94,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
         >
           <div className="p-6 md:p-8 flex items-start justify-between gap-6">
             <div className="flex-1">
-              <h3 className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? 'text-brand-navy' : 'text-text-primary group-hover:text-brand-navy'}`}>
+              <h3 className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? 'text-slate-900' : 'text-slate-700 group-hover:text-blue-900'}`}>
                 {item.question}
               </h3>
 
@@ -107,7 +107,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="mt-4 text-text-secondary text-base md:text-lg leading-relaxed font-light border-t border-border-subtle pt-4">
+                    <p className="mt-4 text-slate-600 text-base md:text-lg leading-relaxed font-normal border-t border-slate-200 pt-4">
                       {item.answer}
                     </p>
                   </motion.div>

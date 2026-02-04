@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useTransform, PanInfo, animate, MotionValue } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Star, CheckCircle2, Quote, MoveRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, CheckCircle2, Quote, MoveRight, MapPin } from 'lucide-react';
 import { Review } from '../types';
 
 const reviews: Review[] = [
@@ -151,15 +151,9 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => {
 
             {/* Footer */}
             <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center relative z-10">
-                <div className="flex items-center gap-2 opacity-70">
-                    <img
-                        src="https://flagcdn.com/w20/us.png"
-                        alt="USA"
-                        className="w-4 rounded-[2px]"
-                        loading="lazy"
-                        decoding="async"
-                    />
-                    <span className="text-[10px] font-semibold text-gray-400">USA MADE</span>
+                <div className="flex items-center gap-1.5 opacity-70">
+                    <MapPin size={12} className="text-gray-400" />
+                    <span className="text-[10px] font-semibold text-gray-400">United States</span>
                 </div>
                 <span className="text-[10px] text-gray-400 font-medium">Recently posted</span>
             </div>
@@ -311,12 +305,12 @@ export const Carousel3D: React.FC = () => {
                     </div>
 
                     {/* Mobile Controls & Hint */}
-                    <div className="flex md:hidden flex-col items-center mt-2 gap-4 relative z-30 pointer-events-none">
+                    <div className="flex md:hidden flex-col items-center mt-6 gap-4 relative z-50 pointer-events-none">
                         <div className="flex gap-8 pointer-events-auto">
                             <button
                                 onClick={prevSlide}
                                 aria-label="Previous testimonial"
-                                className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-md transition-all hover:bg-white shadow-md"
+                                className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-md transition-all hover:bg-white shadow-md active:scale-95"
                             >
                                 <ChevronLeft className="text-brand-navy" size={20} />
                             </button>

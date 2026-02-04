@@ -55,10 +55,18 @@ export const ComparisonChart: React.FC = () => {
               className={`w-full max-w-[40px] md:max-w-[60px] rounded-t-lg relative flex-shrink-0 origin-bottom overflow-visible ${index === 3 ? 'bg-gradient-to-t from-orange-600 to-orange-400 shadow-xl shadow-orange-500/20' : 'bg-gradient-to-t from-slate-400 to-slate-300 opacity-60'}`}
             >
               {/* Tooltip */}
-              <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full mb-3 w-40 opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 pointer-events-none">
+              {/* Dynamic Tooltip Alignment */}
+              <div className={`absolute -top-2 mb-3 w-40 opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100] pointer-events-none 
+                    ${index === 0 ? 'left-0 translate-x-0 origin-bottom-left' :
+                  index === 3 ? 'right-0 translate-x-0 origin-bottom-right' :
+                    'left-1/2 -translate-x-1/2'}`}>
                 <div className="bg-brand-navy p-2 rounded-lg text-[10px] text-white leading-tight shadow-xl border border-white/10 text-center relative">
                   {item.info}
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-navy"></div>
+                  {/* Arrow adjustment based on position */}
+                  <div className={`absolute bottom-0 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-navy
+                        ${index === 0 ? 'left-4' :
+                      index === 3 ? 'right-4' :
+                        'left-1/2 -translate-x-1/2 translate-y-full'}`}></div>
                 </div>
               </div>
 

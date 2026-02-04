@@ -119,8 +119,6 @@ export const ReviewTicker: React.FC = () => {
                                 key={i}
                                 src={r.image}
                                 alt="User"
-                                width="32"
-                                height="32"
                                 className="w-8 h-8 rounded-full border-2 border-surface-card object-cover bg-surface-section"
                             />
                         ))}
@@ -170,8 +168,6 @@ export const ReviewTicker: React.FC = () => {
                                 <img
                                     src={review.image}
                                     alt={review.name}
-                                    width="40"
-                                    height="40"
                                     className="w-10 h-10 rounded-full object-cover border border-border-subtle bg-surface-section"
                                     loading="lazy"
                                 />
