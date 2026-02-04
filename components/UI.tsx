@@ -78,7 +78,7 @@ export const HeroToastCard: React.FC<HeroToastCardProps> = ({
         </div>
         <div>
           <h4 className="text-brand-navy font-bold text-xs md:text-sm leading-none mb-1">{title}</h4>
-          <p className="text-text-secondary text-[10px] md:text-xs font-medium opacity-90 leading-tight">{subtitle}</p>
+          <p className="text-text-secondary text-xs font-medium opacity-90 leading-tight">{subtitle}</p>
         </div>
       </div>
     </motion.div>

@@ -109,7 +109,7 @@ export const ReviewTicker: React.FC = () => {
     });
 
     return (
-        <div className="w-full py-10 overflow-hidden bg-surface-section border-y border-brand-blue/5 relative z-20">
+        <div className="w-full py-10 overflow-hidden bg-surface-section border-y border-border-subtle relative z-20">
             {/* Section Header */}
             <div className="max-w-7xl mx-auto px-4 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
@@ -119,7 +119,7 @@ export const ReviewTicker: React.FC = () => {
                                 key={i}
                                 src={r.image}
                                 alt="User"
-                                className="w-8 h-8 rounded-full border-2 border-white object-cover bg-gray-200"
+                                className="w-8 h-8 rounded-full border-2 border-surface-card object-cover bg-surface-section"
                             />
                         ))}
                     </div>
@@ -157,23 +157,23 @@ export const ReviewTicker: React.FC = () => {
                                 <div className="flex text-yellow-400 gap-0.5">
                                     {[1, 2, 3, 4, 5].map(s => <Star key={s} size={12} fill="currentColor" strokeWidth={0} />)}
                                 </div>
-                                <span className="text-[10px] text-brand-blue font-medium px-2 py-0.5 bg-blue-50 rounded border border-blue-100">
+                                <span className="text-xs text-brand-blue font-medium px-2 py-0.5 bg-blue-50 rounded border border-blue-100">
                                     {review.highlight}
                                 </span>
                             </div>
 
                             <p className="text-text-secondary text-sm leading-relaxed mb-4 min-h-[60px] pointer-events-none">"{review.text}"</p>
 
-                            <div className="flex items-center gap-3 pt-3 border-t border-gray-100 pointer-events-none">
+                            <div className="flex items-center gap-3 pt-3 border-t border-border-subtle pointer-events-none">
                                 <img
                                     src={review.image}
                                     alt={review.name}
-                                    className="w-10 h-10 rounded-full object-cover border border-gray-100 bg-gray-200"
+                                    className="w-10 h-10 rounded-full object-cover border border-border-subtle bg-surface-section"
                                     loading="lazy"
                                 />
                                 <div>
                                     <p className="text-brand-navy font-bold text-xs">{review.name}</p>
-                                    <p className="text-[10px] text-text-muted">{review.age} years old • Verified Buyer</p>
+                                    <p className="text-xs text-text-muted">{review.age} years old • Verified Buyer</p>
                                 </div>
                             </div>
                         </div>

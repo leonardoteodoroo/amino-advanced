@@ -53,7 +53,7 @@ const App: React.FC = () => {
               ADVANCED<span className="text-brand-blue">BIO</span>
             </div>
             <div className="hidden md:block">
-              <button onClick={scrollToOffer} className="px-6 py-2 rounded-full bg-brand-navy hover:bg-blue-800 text-white transition-all text-xs font-semibold uppercase tracking-widest shadow-md hover:shadow-lg">
+              <button onClick={scrollToOffer} className="px-6 py-2 rounded-full bg-brand-navy hover:bg-blue-800 text-white transition-all text-xs font-bold uppercase tracking-widest shadow-md hover:shadow-lg">
                 Check Availability
               </button>
             </div>
@@ -74,7 +74,7 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={VIEWPORT_CONFIG}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center self-start px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-600 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-6"
+              className="inline-flex items-center self-start px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-600 text-xs font-bold uppercase tracking-wider mb-6"
             >
               <AlertTriangle size={14} className="mr-2 text-red-600" />
               Muscle Health Alert
@@ -150,7 +150,7 @@ const App: React.FC = () => {
                       <Zap className="text-red-600" size={18} />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[10px] md:text-xs text-red-600 font-bold uppercase tracking-widest mb-1">The Hidden Problem</p>
+                      <p className="text-xs text-red-600 font-bold uppercase tracking-widest mb-1">The Hidden Problem</p>
                       <p className="font-bold text-sm md:text-lg text-brand-navy leading-tight break-words">After 50, your body treats most protein like garbage.</p>
                     </div>
                   </div>
@@ -223,15 +223,24 @@ const App: React.FC = () => {
                 <div>
                   <h2 className="text-2xl md:text-4xl font-serif font-bold mb-4 text-brand-navy break-words">The "17% Trap"</h2>
                   <p className="text-text-secondary text-base md:text-lg mb-4">
-                    The average person loses <strong className="text-text-primary">30% of their muscle mass</strong> by the time they’re 70. The reason isn't just age—it's absorption.
+                    The average person loses <strong className="text-text-primary">30% of their muscle mass</strong> by the time they’re 70. The reason isn't just age—it's traditional protein failure.
                   </p>
                   <StaggerText
-                    text="When you drink Whey or Soy protein, your body only uses about 17% to actually build muscle."
+                    text="When you drink Whey protein, it must be digested into aminos. After 50, this 'machinery' slows down, leaving 83% of the protein as metabolic waste."
                     className="text-lg md:text-xl text-brand-blue mb-6 font-medium leading-relaxed"
                   />
+                  <div className="bg-surface-highlight border-l-4 border-brand-blue p-5 rounded-r-xl mb-6">
+                    <p className="text-brand-navy font-bold text-lg mb-2">The Biological Key: 41% Leucine</p>
+                    <p className="text-text-secondary text-sm md:text-base leading-relaxed">
+                      Clinical studies show that for seniors, a specific concentration of <span className="font-bold text-brand-navy">41% Leucine</span> is required to trigger Muscle Protein Synthesis (MPS). Traditional protein only provides around 10-15%.
+                    </p>
+                  </div>
                   <p className="text-text-secondary leading-relaxed text-base md:text-lg">
-                    The other 83%? It’s converted into sugar or metabolic waste that stresses your kidneys. You aren't lacking protein. <span className="text-brand-navy font-bold border-b-2 border-red-500">You are lacking absorption.</span>
+                    Advanced Amino skip the digestion 'bottleneck' entirely. While Whey leaves a massive surplus of metabolic waste (ammonia), this formula provides <span className="text-brand-navy font-bold">99% Net Nitrogen Utilization (NNU)</span>.
                   </p>
+                  <div className="mt-4 flex items-center gap-2 text-green-700 font-bold text-sm bg-green-50 p-3 rounded-lg border border-green-100">
+                    <CheckCircle2 size={18} /> Nearly zero metabolic waste or calories.
+                  </div>
                 </div>
 
               </div>
@@ -428,7 +437,7 @@ const App: React.FC = () => {
       </section >
 
       {/* --- Footer --- */}
-      < footer className="py-12 border-t border-border-subtle bg-surface-section text-text-muted text-[10px] md:text-xs text-center px-4 relative" >
+      < footer className="py-12 border-t border-border-subtle bg-surface-section text-text-muted text-xs text-center px-4 relative" >
 
         <div className="max-w-4xl mx-auto space-y-4 relative z-10">
           <p>
