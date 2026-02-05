@@ -22,6 +22,9 @@ export const DoctorSection: React.FC = () => {
                                 src="/images/dr-shallenberger.webp"
                                 alt="Dr. Frank Shallenberger"
                                 className="w-full h-auto object-cover aspect-[4/5] opacity-95 grayscale-[20%]"
+                                width="400"
+                                height="500"
+                                loading="lazy"
                             />
                             {/* Simple text overlay to add authority without heavy shadow */}
                             <div className="absolute top-4 left-4">

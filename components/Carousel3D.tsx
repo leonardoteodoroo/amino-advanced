@@ -245,7 +245,7 @@ export const Carousel3D: React.FC = () => {
                     <div className="flex items-center gap-4 pt-4">
                         <div className="flex -space-x-3">
                             {["/images/reviews/jacqui.webp", "/images/reviews/carolyn.webp", "/images/reviews/dr-simmons.webp"].map((src, i) => (
-                                <img key={i} src={src} className="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" alt="Verified User" />
+                                <img key={i} src={src} className="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" alt="Verified User" width="40" height="40" loading="lazy" />
                             ))}
                         </div>
                         <div className="text-sm text-text-muted">

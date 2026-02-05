@@ -52,9 +52,9 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={VIEWPORT_CONFIG}
                             transition={{ duration: 0.6 }}
-                            className="inline-flex items-center self-start px-4 py-1.5 rounded-full bg-red-50 border border-red-200 text-action-strong text-xs font-bold uppercase tracking-wider mb-6"
+                            className="inline-flex items-center self-start px-4 py-1.5 rounded-full bg-red-800 text-white text-xs font-bold uppercase tracking-wider mb-6"
                         >
-                            <AlertTriangle size={14} className="mr-2 text-action-strong" />
+                            <AlertTriangle size={14} className="mr-2 text-white" />
                             Muscle Health Alert
                         </motion.div>
 
@@ -103,11 +103,16 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                         <div className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full border border-brand-blue/10 animate-[spin_60s_linear_infinite]" />
                         <div className="absolute w-48 h-48 md:w-72 md:h-72 rounded-full border border-brand-navy/10 animate-[spin_40s_linear_infinite_reverse]" />
 
-                        {/* Central Image (Bottle) */}
+                        {/* Central Image (Bottle) - LCP Element */}
                         <img
                             src="/images/product/1bottle.webp"
                             alt="Advanced Amino Formula Bottle"
                             className="relative z-20 w-48 md:w-64 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                            width="256"
+                            height="384"
+                            // @ts-ignore - React 19 support
+                            fetchPriority="high"
+                            loading="eager"
                         />
 
                         {/* Floating Cards */}

@@ -38,7 +38,7 @@ export default {
                 'text-brand': '#1e3a8a', // Blue 900
 
                 'action-primary': '#1e3a8a', // Blue 900
-                'action-strong': '#dc2626', // Red 600
+                'action-strong': '#b91c1c', // Red 700 (was #dc2626 Red 600) - Better contrast for WCAG AA
                 'action-hover': '#1e40af', // Blue 800
 
                 'border-subtle': '#e2e8f0', // Slate 200

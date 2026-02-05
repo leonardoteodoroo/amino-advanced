@@ -120,6 +120,9 @@ export const ReviewTicker: React.FC = () => {
                                 src={r.image}
                                 alt="User"
                                 className="w-8 h-8 rounded-full border-2 border-surface-card object-cover bg-surface-section"
+                                width="32"
+                                height="32"
+                                loading="lazy"
                             />
                         ))}
                     </div>
@@ -169,6 +172,8 @@ export const ReviewTicker: React.FC = () => {
                                     src={review.image}
                                     alt={review.name}
                                     className="w-10 h-10 rounded-full object-cover border border-border-subtle bg-surface-section"
+                                    width="40"
+                                    height="40"
                                     loading="lazy"
                                 />
                                 <div>
@@ -182,7 +187,7 @@ export const ReviewTicker: React.FC = () => {
 
                 {/* Drag Hint for Mobile */}
                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 opacity-40 md:hidden pointer-events-none">
-                    <span className="text-[10px] uppercase tracking-tighter font-bold text-brand-navy">Swipe to browse</span>
+                    <span className="text-[10px] uppercase tracking-tighter font-bold text-text-primary">Swipe to browse</span>
                     <div className="flex gap-1">
                         <motion.div animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }} className="w-1 h-1 rounded-full bg-brand-navy" />
                         <div className="w-1 h-1 rounded-full bg-brand-navy opacity-50" />

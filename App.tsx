@@ -54,10 +54,28 @@ const App: React.FC = () => {
   useEffect(() => {
     if (activeLegalPage) {
       document.body.style.overflow = 'hidden';
+
+      // Push state to intercept back button
+      window.history.pushState({ modal: 'open' }, '');
+
+      const handleBack = () => {
+        setActiveLegalPage(null);
+        document.body.style.overflow = 'unset';
+      };
+
+      window.addEventListener('popstate', handleBack);
+      return () => window.removeEventListener('popstate', handleBack);
     } else {
       document.body.style.overflow = 'unset';
     }
   }, [activeLegalPage]);
+
+  const closeModal = () => {
+    if (window.history.state?.modal === 'open') {
+      window.history.back();
+    }
+    setActiveLegalPage(null);
+  };
 
   return (
     <div className="min-h-screen font-sans selection:bg-blue-200 selection:text-blue-900 bg-surface-page text-text-primary overflow-x-hidden relative w-full">
@@ -73,18 +91,12 @@ const App: React.FC = () => {
           >
             <div
               className="absolute inset-0"
-              onClick={() => {
-                setActiveLegalPage(null);
-                document.body.style.overflow = 'auto';
-              }}
+              onClick={closeModal}
             />
             <div className="relative w-[calc(100%-1rem)] sm:w-full max-w-3xl h-auto max-h-[85vh] sm:max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl z-10 custom-scrollbar border border-slate-200">
               {/* Close Button X */}
               <button
-                onClick={() => {
-                  setActiveLegalPage(null);
-                  document.body.style.overflow = 'auto';
-                }}
+                onClick={closeModal}
                 className="absolute top-4 right-4 p-2 bg-slate-100 rounded-full text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors z-50"
               >
                 <X size={24} />
@@ -111,7 +123,7 @@ const App: React.FC = () => {
                     <p>If you wish to purchase any product or service made available through the Service, you may be asked to supply certain information relevant to your Purchase.</p>
                   </>
                 )}
-                onBack={() => setActiveLegalPage(null)}
+                onBack={closeModal}
               />
             </div>
           </motion.div>
