@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, ShieldCheck, ArrowRight, Star } from 'lucide-react';
+import { Check, ShieldCheck, ArrowRight, Star, Leaf, Award, Factory } from 'lucide-react';
 import { GlassCard } from './UI';
 
 interface PricingCardProps {
@@ -205,7 +205,7 @@ export const PricingOptions: React.FC = () => {
                     />
                 </div>
 
-                <div className="mt-12 max-w-2xl mx-auto bg-blue-50 border border-blue-100 rounded-2xl p-4 flex items-start gap-4">
+                <div className="mt-12 max-w-2xl mx-auto bg-blue-50 border border-blue-100 rounded-2xl p-4 flex items-start gap-4 mb-12">
                     <div className="bg-blue-100 p-2 rounded-full shrink-0 text-brand-blue">
                         <ShieldCheck size={24} />
                     </div>
@@ -221,6 +221,27 @@ export const PricingOptions: React.FC = () => {
                         className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-white shadow-md shrink-0 self-center md:self-start bg-slate-200"
                     />
                 </div>
+
+                {/* Trust Badges */}
+                <div className="flex flex-wrap justify-center gap-6 md:gap-12 opacity-80 border-t border-border-subtle pt-8">
+                    <div className="flex items-center gap-2 text-text-secondary text-xs md:text-sm font-medium">
+                        <ShieldCheck size={18} className="text-brand-navy" />
+                        <span>GMP Certified</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-text-secondary text-xs md:text-sm font-medium">
+                        <Award size={18} className="text-brand-navy" />
+                        <span>Doctor Formulated</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-text-secondary text-xs md:text-sm font-medium">
+                        <Leaf size={18} className="text-brand-navy" />
+                        <span>Non-GMO Ingredients</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-text-secondary text-xs md:text-sm font-medium">
+                        <Factory size={18} className="text-brand-navy" />
+                        <span>FDA Registered Facility</span>
+                    </div>
+                </div>
+
             </div>
         </section>
     );

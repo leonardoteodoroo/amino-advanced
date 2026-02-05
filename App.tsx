@@ -156,7 +156,7 @@ const App: React.FC = () => {
                 className="text-text-secondary font-serif text-lg md:text-2xl leading-relaxed font-light px-2"
               >
                 <span className="text-text-brand text-3xl mr-2">"</span>
-                Before we dive into the clinical science, witness what happens when the body finally gets the fuel it's been starving for.
+                At 60, your body stops absorbing protein like it used to. Before we dive into the science, witness how to 'unlock' your strength and reclaim the energy you thought was gone forever.
                 <span className="text-text-brand text-3xl ml-2">"</span>
               </motion.div>
             </div>
@@ -200,6 +200,7 @@ const App: React.FC = () => {
               <div className="text-center mb-16 relative z-10">
                 <BlurText text="Life After 50 Transformation" className="text-3xl md:text-5xl font-serif font-bold text-text-brand mt-2 mb-4" />
                 <p className="text-text-secondary max-w-2xl mx-auto text-sm md:text-base px-4">Not just about biceps. It's about independence.</p>
+                <p className="text-text-muted text-xs mt-2 italic">*Results may vary from person to person.</p>
               </div>
               <div className="grid md:grid-cols-2 gap-6 relative z-10 auto-rows-fr">
                 {/* Result Cards using ClinicalCard now */}
@@ -240,9 +241,13 @@ const App: React.FC = () => {
                 <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6">
                   Proper protein absorption isn't just about gym gains. It's the biological foundation for immune health, cognitive sharpness, and maintaining the metabolic engine that keeps you active.
                 </p>
-                <p className="text-action-primary font-medium text-lg leading-relaxed">
-                  Without it, the body catabolizes its own tissue to survive—leading to the frailty we often mistake for inevitable aging.
+                <p className="text-action-primary font-medium text-lg leading-relaxed mb-4">
+                  Without it, the body starts to 'cannibalize' its own muscle tissue to survive—leading to the frailty we often mistake for inevitable aging.
                 </p>
+                <div className="text-base text-text-secondary bg-surface-page/50 p-4 rounded-lg inline-block text-left">
+                  <strong className="text-brand-navy block mb-2 text-center">The Hidden Barrier: Anabolic Resistance</strong>
+                  Your body has likely developed a "resistance" to ordinary protein. It's like a locked door that typical whey protein can't open. This formula is designed to be the "master key" that unlocks absorption again.
+                </div>
               </ClinicalCard>
             </div>
           </section>
@@ -264,7 +269,7 @@ const App: React.FC = () => {
         <footer className="py-12 border-t border-border-subtle bg-surface-page text-text-secondary text-xs text-center px-4 relative">
           <div className="max-w-4xl mx-auto space-y-4 relative z-10">
             <p className="text-text-muted">
-              FDA Disclaimer: These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+              FDA Disclaimer: These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Manufactured in an FDA-Registered Facility & GMP Certified. Results may vary.
             </p>
             <div className="flex justify-center gap-6 text-action-primary font-medium">
               <button onClick={() => setActiveLegalPage('privacy')} className="hover:underline hover:text-brand-navy transition-colors">Privacy Policy</button>
