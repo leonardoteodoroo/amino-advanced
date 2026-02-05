@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { AlertTriangle, ArrowRight, ShieldCheck, Activity, TrendingUp, Battery } from 'lucide-react';
 import { LetterStagger, HeroToastCard } from '../UI';
 import { BackgroundLayers } from '../BackgroundLayers';
@@ -47,16 +46,11 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
 
                 <div className="grid md:grid-cols-2 gap-10 lg:gap-20 items-center relative z-10">
                     <div className="order-2 md:order-1 flex flex-col justify-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={VIEWPORT_CONFIG}
-                            transition={{ duration: 0.6 }}
-                            className="inline-flex items-center self-start px-4 py-1.5 rounded-full bg-red-800 text-white text-xs font-bold uppercase tracking-wider mb-6"
-                        >
+                        {/* CSS-animated badge for reduced main thread work */}
+                        <div className="inline-flex items-center self-start px-4 py-1.5 rounded-full bg-red-800 text-white text-xs font-bold uppercase tracking-wider mb-6 css-fade-left">
                             <AlertTriangle size={14} className="mr-2 text-white" />
                             Muscle Health Alert
-                        </motion.div>
+                        </div>
 
                         <LetterStagger
                             text={`Maybe it's not "Old Age". It's a biological lock called Anabolic Resistance.`}
@@ -64,23 +58,13 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                             highlightWords={["Anabolic", "Resistance."]}
                         />
 
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={VIEWPORT_CONFIG}
-                            transition={{ delay: 1.5, duration: 0.8 }}
-                            className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8 max-w-xl font-medium"
-                        >
+                        {/* CSS-animated paragraph for reduced main thread work */}
+                        <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8 max-w-xl font-medium css-fade-up css-delay-300">
                             New research reveals why traditional protein fails seniors—and the exact amino ratio clinical studies show can <span className="font-bold text-text-brand">restore muscle growth potential by 300%.</span>
-                        </motion.p>
+                        </p>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={VIEWPORT_CONFIG}
-                            transition={{ delay: 1.8, duration: 0.5 }}
-                            className="flex flex-col sm:flex-row gap-4"
-                        >
+                        {/* CSS-animated CTA for reduced main thread work */}
+                        <div className="flex flex-col sm:flex-row gap-4 css-fade-up css-delay-500">
                             <button
                                 onClick={onScrollToOffer}
                                 className="group relative px-8 py-4 bg-action-strong hover:bg-red-700 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-red-500/30 transition-all overflow-hidden"
@@ -93,7 +77,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                             <div className="flex items-center gap-2 text-sm text-text-secondary font-medium justify-center sm:justify-start">
                                 <ShieldCheck className="text-action-primary" /> 90-Day Guarantee
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* Hero Feature Component */}

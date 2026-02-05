@@ -43,3 +43,36 @@ body {
 .animate-marquee:focus {
   animation-play-state: paused;
 }
+
+/* CSS-only animations for above-the-fold (reduces JS main thread work) */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.css-fade-up { animation: fadeInUp 0.5s ease-out forwards; }
+.css-fade-left { animation: fadeInLeft 0.5s ease-out forwards; }
+.css-scale-in { animation: scaleIn 0.4s ease-out forwards; }
+.css-delay-100 { animation-delay: 0.1s; opacity: 0; }
+.css-delay-200 { animation-delay: 0.2s; opacity: 0; }
+.css-delay-300 { animation-delay: 0.3s; opacity: 0; }
+.css-delay-500 { animation-delay: 0.5s; opacity: 0; }
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .css-fade-up, .css-fade-left, .css-scale-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
