@@ -60,14 +60,14 @@ export const DoctorSection: React.FC = () => {
                             <div className="flex-1 flex gap-4 items-start p-4 bg-slate-50 border-l-4 border-brand-blue rounded-r-xl">
                                 <Award className="text-brand-blue shrink-0" size={24} />
                                 <div>
-                                    <h4 className="font-bold text-brand-navy text-sm uppercase tracking-wide">Board Certified</h4>
+                                    <h3 className="font-bold text-brand-navy text-sm uppercase tracking-wide">Board Certified</h3>
                                     <p className="text-sm text-text-secondary mt-1 leading-snug">Pioneer in orthomolecular medicine and oxidative therapies.</p>
                                 </div>
                             </div>
                             <div className="flex-1 flex gap-4 items-start p-4 bg-slate-50 border-l-4 border-brand-blue rounded-r-xl">
                                 <BookOpen className="text-brand-blue shrink-0" size={24} />
                                 <div>
-                                    <h4 className="font-bold text-brand-navy text-sm uppercase tracking-wide">Published Author</h4>
+                                    <h3 className="font-bold text-brand-navy text-sm uppercase tracking-wide">Published Author</h3>
                                     <p className="text-sm text-text-secondary mt-1 leading-snug">Multiple breakthroughs in skeletal muscle metabolism.</p>
                                 </div>
                             </div>

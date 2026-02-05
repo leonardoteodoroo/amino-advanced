@@ -205,25 +205,25 @@ const App: React.FC = () => {
                 {/* Result Cards using ClinicalCard now */}
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.1, duration: 0.5 }} className="h-full">
                   <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                    <h4 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Developing Muscle at 68</h4>
+                    <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Developing Muscle at 68</h3>
                     <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Edmund R. began developing biceps and forearms for the first time in his life after age 60."</p>
                   </ClinicalCard>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.2, duration: 0.5 }} className="h-full">
                   <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                    <h4 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Consistent Energy</h4>
+                    <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Consistent Energy</h3>
                     <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Brad A. (63) stopped feeling aches at night and regained the energy to train without feeling depleted the next day."</p>
                   </ClinicalCard>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.3, duration: 0.5 }} className="h-full">
                   <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                    <h4 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Stamina in My 70s</h4>
+                    <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Stamina in My 70s</h3>
                     <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Patrick V. (Mid 70s) takes five pills before the gym. He says his recuperation after heavy sets is unbelievably quick."</p>
                   </ClinicalCard>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.4, duration: 0.5 }} className="h-full">
                   <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                    <h4 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Long-Term Game Changer</h4>
+                    <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Long-Term Game Changer</h3>
                     <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Benny Z. has used the formula for years, claiming it keeps his strength and healing capacity far above average for his age."</p>
                   </ClinicalCard>
                 </motion.div>
