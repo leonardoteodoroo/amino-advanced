@@ -3,8 +3,8 @@ export default {
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
-        "./components/**/*.{js,ts,jsx,tsx}", // Added based on file structure (components at root)
-        "./*.{js,ts,jsx,tsx}", // For App.tsx at root
+        "./components/**/*.{js,ts,jsx,tsx}",
+        "./*.{js,ts,jsx,tsx}",
     ],
     theme: {
         extend: {
@@ -25,27 +25,31 @@ export default {
                 '6xl': '72px',
             },
             colors: {
+                // Semantic Tokens (Matches DESIGN_SYSTEM)
+                'surface-page': '#f8fafc', // Slate 50
+                'surface-card': '#ffffff', // White
+                'surface-highlight': '#eff6ff', // Blue 50
+                'surface-section': '#e2e8f0', // Slate 200
+
+                'text-primary': '#1e293b', // Slate 800
+                'text-secondary': '#475569', // Slate 600
+                'text-muted': '#94a3b8', // Slate 400
+                'text-inverted': '#ffffff', // White
+                'text-brand': '#1e3a8a', // Blue 900
+
+                'action-primary': '#1e3a8a', // Blue 900
+                'action-strong': '#dc2626', // Red 600
+                'action-hover': '#1e40af', // Blue 800
+
+                'border-subtle': '#e2e8f0', // Slate 200
+                'border-strong': '#cbd5e1', // Slate 300
+
+                // Legacy/Brand aliases for compatibility if needed, but prefer above
                 brand: {
-                    navy: '#1e3a8a', // Blue 900
-                    red: '#dc2626',  // Red 600
-                    blue: '#2563eb', // Blue 600
+                    navy: '#1e3a8a',
+                    red: '#dc2626',
+                    blue: '#2563eb',
                 },
-                surface: {
-                    page: '#f8fafc', // Slate 50
-                    card: '#ffffff', // White
-                    section: '#e2e8f0', // Slate 200 (Matches DESIGN_SYSTEM)
-                    highlight: '#eff6ff', // Blue 50
-                },
-                text: {
-                    primary: '#1e293b', // Slate 800 (Matches DESIGN_SYSTEM)
-                    secondary: '#475569', // Slate 600 (Matches DESIGN_SYSTEM)
-                    muted: '#94a3b8', // Slate 400
-                    inverted: '#ffffff',
-                },
-                border: {
-                    subtle: '#e2e8f0', // Slate 200
-                    strong: '#cbd5e1', // Slate 300
-                }
             }
         },
     },

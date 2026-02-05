@@ -14,7 +14,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, content, onBack }) 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="p-8 md:p-12"
+            className="p-6 md:p-12"
         >
             <button
                 onClick={onBack}
