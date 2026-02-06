@@ -94,7 +94,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
         >
           <div className="p-6 md:p-8 flex items-start justify-between gap-6">
             <div className="flex-1">
-              <h3 className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? 'text-slate-900' : 'text-slate-700 group-hover:text-blue-900'}`}>
+              <h3 className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? 'text-fg-primary' : 'text-fg-secondary group-hover:text-fg-brand'}`}>
                 {item.question}
               </h3>
 

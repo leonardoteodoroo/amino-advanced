@@ -9,7 +9,7 @@ export const TheProblem: React.FC = () => {
         <section className="py-20 md:py-24 relative z-10 overflow-hidden bg-surface-page">
             <BackgroundHeading text="ABSORPTION" className="top-1/3 opacity-[0.03]" />
             {/* Subtle background accent instead of heavy blur */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-red-50/50 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-warning-bg/50 pointer-events-none" />
 
             <div className="max-w-6xl mx-auto px-4 relative z-10">
                 <ClinicalCard className="p-6 md:p-12 relative overflow-hidden bg-white">
@@ -23,12 +23,12 @@ export const TheProblem: React.FC = () => {
                                     <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6 font-serif italic border-l-4 border-slate-200 pl-4 py-2 bg-slate-50 rounded-r-lg">
                                         "It’s a quiet frustration. You walk every morning, you try to eat right, but your legs feel a bit <span className="text-text-primary font-bold not-italic">"heavier"</span> each year."
                                     </p>
-                                    <div className="p-4 rounded-xl bg-red-50 border border-red-100 flex gap-4 items-start">
-                                        <div className="p-2 bg-white rounded-full shrink-0 border border-red-100 shadow-sm">
+                                    <div className="p-4 rounded-xl bg-warning-bg border border-feedback-warning/20 flex gap-4 items-start">
+                                        <div className="p-2 bg-white rounded-full shrink-0 border border-feedback-warning/20 shadow-sm">
                                             <AlertTriangle className="text-action-strong" size={20} />
                                         </div>
                                         <div>
-                                            <p className="text-red-700 text-xs font-bold uppercase tracking-widest mb-1">The Ugly Truth</p>
+                                            <p className="text-fg-brand text-xs font-bold uppercase tracking-widest mb-1">The Ugly Truth</p>
                                             <p className="text-text-primary font-medium text-base md:text-lg leading-snug">
                                                 Nobody in the supplement industry wants to admit this: <span className="font-bold text-action-strong">After 50, your body treats most protein like garbage.</span>
                                             </p>

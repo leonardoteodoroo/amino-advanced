@@ -186,6 +186,23 @@ const App: React.FC = () => {
                 </div>
               </ClinicalCard>
             </div>
+
+            {/* CTA: Post-Agitation (Educational → Decision Bridge) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT_CONFIG}
+              transition={{ delay: 0.2 }}
+              className="mt-10 text-center"
+            >
+              <button
+                onClick={scrollToOffer}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-card border-2 border-cta-primary text-fg-brand rounded-full font-semibold text-lg hover:bg-highlight hover:border-cta-accent transition-all shadow-md hover:shadow-lg focus:ring-4 focus:ring-focus-ring"
+              >
+                See Available Options →
+              </button>
+              <p className="text-fg-muted text-sm mt-3">No commitment • Full details</p>
+            </motion.div>
           </section>
 
           {/* --- Section: The Expert (Dr. Shallenberger) (Moved UP for Authority) --- */}
@@ -250,6 +267,25 @@ const App: React.FC = () => {
                 </motion.div>
               </div>
             </div>
+
+            {/* CTA: Post-Results (Social Proof → Conversion) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT_CONFIG}
+              transition={{ delay: 0.3 }}
+              className="mt-16 text-center relative z-20"
+            >
+              <button
+                onClick={scrollToOffer}
+                className="inline-flex items-center gap-3 px-12 py-5 bg-cta-accent hover:bg-cta-accent-hover text-white rounded-full font-bold text-xl shadow-2xl hover:shadow-orange-500/40 transition-all focus:ring-4 focus:ring-focus-ring transform hover:scale-105"
+              >
+                Check Price & Availability →
+              </button>
+              <p className="text-fg-muted text-sm mt-4 flex items-center justify-center gap-2">
+                <span className="text-feedback-success">✓</span> 90-Day Guarantee • Risk-free
+              </p>
+            </motion.div>
           </section>
 
           {/* --- Section: FAQ --- */}

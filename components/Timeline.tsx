@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { BlurText, GlassCard } from './UI';
-import { Brain, Zap, Trash2, CheckCircle2, Barcode } from 'lucide-react';
+import { Brain, Zap, Shield, CheckCircle2, Barcode, Activity, TrendingUp } from 'lucide-react';
 import { TimelineItem } from '../types';
 
 const VIEWPORT_CONFIG = {
@@ -15,25 +15,25 @@ const timelineData: TimelineItem[] = [
     id: 1,
     title: "Break The Anabolic Lock",
     description: "After 50, muscles develop 'Anabolic Resistance'—a biological lock that shuts out ordinary protein. Advanced Amino is the specific 'key' that forces the muscle to accept nutrition again.",
-    icon: <Brain className="text-purple-400" size={24} />,
+    icon: <Brain className="text-fg-brand opacity-90" size={24} />,
   },
   {
     id: 2,
     title: "99% Master Utilization",
     description: "While Whey protein leaves 83% metabolic waste, this precise ratio provides 99% Net Nitrogen Utilization (NNU). Practically every gram goes straight to tissue repair, not 'garbage'.",
-    icon: <Barcode className="text-green-400" size={24} />,
+    icon: <Barcode className="text-fg-brand opacity-80" size={24} />,
   },
   {
     id: 3,
     title: "Protect Your Kidneys",
     description: "Unlike high-protein diets that stress your filtration system with ammonia waste, Advanced Amino creates almost zero metabolic byproduct. It's the safest way to rebuild for seniors.",
-    icon: <Trash2 className="text-red-400" size={24} />,
+    icon: <Shield className="text-fg-brand opacity-70" size={24} />,
   },
   {
     id: 4,
     title: "Bypass Digestion",
     description: "Ordinary protein takes hours to break down. These amino acids reach your bloodstream in minutes, providing an immediate 'Anabolic Strike' to starving muscle fibers.",
-    icon: <Zap className="text-yellow-400" size={24} />,
+    icon: <Zap className="text-fg-brand opacity-90" size={24} />,
   }
 ];
 

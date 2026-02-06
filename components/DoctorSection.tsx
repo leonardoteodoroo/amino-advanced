@@ -89,6 +89,16 @@ export const DoctorSection: React.FC = () => {
                         </div>
                     </motion.div>
                 </div>
+
+                {/* Mid-Funnel CTA */}
+                <div className="mt-10 text-center">
+                    <button
+                        onClick={() => document.getElementById('offer-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-action-strong hover:bg-action-hover text-white rounded-full font-bold text-lg shadow-lg hover:shadow-orange-500/30 transition-all"
+                    >
+                        Check Availability <Award size={18} />
+                    </button>
+                </div>
             </div>
         </section>
     );

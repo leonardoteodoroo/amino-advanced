@@ -49,8 +49,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                 <div className="grid md:grid-cols-2 gap-10 lg:gap-20 items-center relative z-10">
                     <div className="order-2 md:order-1 flex flex-col justify-center">
                         {/* CSS-animated badge for reduced main thread work */}
-                        <div className="inline-flex items-center self-start px-4 py-1.5 rounded-full bg-red-800 text-white text-xs font-bold uppercase tracking-wider mb-6 css-fade-left">
-                            <AlertTriangle size={14} className="mr-2 text-white" />
+                        <div className="inline-flex items-center self-start px-4 py-1.5 rounded-full bg-warning-bg border border-feedback-warning/20 text-feedback-warning text-xs font-bold uppercase tracking-wider mb-6 css-fade-left">
+                            <AlertTriangle size={14} className="mr-2 text-feedback-warning" />
                             Muscle Health Alert
                         </div>
 
@@ -69,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                         <div className="flex flex-col sm:flex-row gap-4 css-fade-up css-delay-500">
                             <button
                                 onClick={onScrollToOffer}
-                                className="group relative px-8 py-4 bg-action-strong hover:bg-red-700 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-red-500/30 transition-all overflow-hidden"
+                                className="group relative px-8 py-4 bg-cta-accent hover:bg-cta-accent-hover text-white rounded-full font-bold text-lg shadow-lg hover:shadow-orange-500/30 transition-all overflow-hidden"
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2">
                                     Get The Formula <ArrowRight className="group-hover:translate-x-1 transition-transform" />

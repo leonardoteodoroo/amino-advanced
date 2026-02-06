@@ -122,7 +122,7 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => {
                 )}
                 <div>
                     <div className="flex items-baseline gap-2">
-                        <h4 className="font-bold text-gray-900 leading-none text-base truncate max-w-[120px]">{review.name}</h4>
+                        <h4 className="font-bold text-fg-primary leading-none text-base truncate max-w-[120px]">{review.name}</h4>
                         <span className="text-gray-400 text-sm font-medium whitespace-nowrap">{review.age}y</span>
                     </div>
                     <div className="flex items-center gap-1 mt-0.5">
@@ -141,7 +141,7 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => {
 
             {/* Content */}
             <div className="relative z-10 flex-1">
-                <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight tracking-tight line-clamp-2">
+                <h3 className="text-lg font-bold text-fg-primary mb-2 leading-tight tracking-tight line-clamp-2">
                     "{review.quote}"
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed font-medium line-clamp-4">
