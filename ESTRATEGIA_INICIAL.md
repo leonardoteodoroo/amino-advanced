@@ -1,40 +1,52 @@
-# ESTRATEGIA_INICIAL.md: Resgate & Polimento do "Advanced Bio"
 
-## 1. Diagnóstico Clínico
-O paciente (`projetoantigo`) apresenta um quadro clássico de "Desalinhamento de Identidade" e "Obstrução Estrutural".
+# Estratégia Inicial: Auditoria & Mapeamento de Estrutura do Site
 
-*   **Sintomas Visuais:** O design atual usa "Glassmorphism" (efeito de vidro/blur), fontes genéricas e gradientes modernos. Isso gera baixa legibilidade e desconfiança no público 60+ (idosos), que precisa de contraste alto, solidez e clareza "jornalística/médica".
-*   **Patologia Estrutural:** O arquivo `App.tsx` é um monólito de 460+ linhas (Spaghetti Code).
-*   **Comprometimento de Performance:** CLS (Layout Shift) visível e vestígios de código não utilizado.
+## 1. Diagnóstico
+O objetivo é auditar e mapear a estrutura atual da Landing Page (App.tsx e componentes) para entender o fluxo de persuasão e a hierarquia de conteúdo. O usuário solicitou um output específico em formato de tabela Markdown, detalhando "Etapa/Bloco", "Descrição", e "Função".
 
-## 2. Squad de Agentes (Skills Selecionadas)
+**Análise Preliminar (baseada no App.tsx):**
+A estrutura atual parece seguir um fluxo clássico de VSL/Sales Page:
+1.  **Header**: Navegação/Logo.
+2.  **Hero**: Apresentação principal, headline, imagem do produto ("Gigante" e rotacionada), CTA.
+3.  **Intro Text**: "Bridge" textual focada no problema ("Old Age" vs "Anabolic Resistance").
+4.  **ReviewTicker**: Prova social imediata.
+5.  **TheProblem**: Aprofundamento na dor (Anabolic Resistance).
+6.  **Stories (Carousel3D)**: Prova social mais visual/profunda.
+7.  **ClinicalEvidence**: Dados científicos e respaldo.
+8.  **ScienceTimeline**: Explicação do mecanismo de ação/tempo.
+9.  **The Expert (DoctorSection)**: Autoridade (Dr. Shallenberger).
+10. **Results**: Casos de sucesso/Depoimentos em cards.
+11. **Why This Matters**: Reforço da importância (Consequências da inação).
+12. **FAQ**: Quebra de objeções.
+13. **Offer Section (PricingOptions)**: O fechamento/venda.
+14. **Footer**: Legal e Copyright.
 
-| Skill | Função Prática | Justificativa |
+## 2. Squad de Agentes (Sugestão de Skills)
+
+Abaixo, defino as skills ("Superpoderes") ideais para conduzir esta auditoria e as etapas futuras de otimização, conforme solicitado pelo "Protocolo Maestro".
+
+| Skill / Agente | Função Prática | Justificativa |
 | :--- | :--- | :--- |
-| **`accessibility-compliance`** | **Auditor Sênior** | O avatar (60+) exige contraste AAA e fontes grandes. |
-| **`visual-design-foundations`** | **Designer Chefe** | Implementar o "Clinical Light Theme" (Slate/Blue, Papel Sólido/Trust). |
-| **`react-modernization`** | **Arquiteto de Software** | Desmembrar o `App.tsx` em componentes atômicos. |
-| **`verification-before-completion`** | **Corregedor Implacável** | Garante que NENHUMA tarefa seja dada como "pronta" sem prova (Iron Law). |
+| **`visual-design-foundations`** | **Auditor de UI/UX** | Essencial para avaliar se a hierarquia visual (Hero, Typography, Spacing) está suportando a persuasão. Usa princípios de design para sugerir melhorias estéticas. |
+| **`interaction-design`** | **Especialista em Engajamento** | Para analisar as micro-interações (como o "Floating" do Hero, o Carousel3D) e garantir que não distraiam, mas convertam. |
+| **`responsive-design`** | **Auditor Mobile** | Crucial, pois vimos problemas recentes com o tamanho da imagem no mobile. Garante que a auditoria contemple a experiência em telas pequenas. |
+| **`react-modernization`** | **Arquiteto de Código** | Para mapear a estrutura técnica (App.tsx, Lazy Loading, Componentização) e sugerir refatorações se os blocos estiverem muito acoplados. |
+| **`writing-clearly-and-concisely`** | **Auditor de Copy** | Para avaliar se os textos (Headlines, CTAs) estão claros e persuasivos. |
 
-## 3. Plano de Ação Cirúrgico usando `writing-plans` e `subagent-driven-development`
+**Agente Principal para esta tarefa (Auditoria):** Eu atuarei como o **Orquestrador**, utilizando os princípios de `visual-design-foundations` e `react-modernization` para gerar o mapa.
 
+## 3. Plano de Ação
 
-### Fase 1: Saneamento & Fundação (Limpeza)
-1.  **Expurgo:** Eliminar código morto e arquivos temporários.
-2.  **Configuração do Design System:** Atualizar `tailwind.config.js` com a paleta "Clinical" (Slate 800/600, Blue 900) e tipografia (Playfair/Inter) sólida.
-3.  **Auditoria Inicial:** Rodar script de verificação de acessibilidade.
-
-### Fase 2: Reconstrução Estrutural (Refactor)
-4.  **Desmontagem do Monólito:** Extrair seções do `App.tsx` para componentes organizados.
-
-### Fase 3: Polimento Visual (Harmonia)
-5.  **Aplicação do Tema:** Implementar o design validado (Cards sólidos, tipografia legível).
-6.  **Ajuste Fino Mobile:** Foco total na experiência em telas pequenas (tráfego pago mobile).
-
-### Fase 4: Auditoria Final (The Iron Law)
-7.  **Protocolo de Verificação:** Build limpo, Lighthouse >90 (Mobile), Acessibilidade aprovada.
+1.  **Mapeamento Detalhado**:
+    *   Analisar `App.tsx` linha a linha (já realizado na fase de inteligência).
+    *   Extrair cada seção, identificar seu componente correspondente e seu propósito.
+2.  **Estruturação da Tabela**:
+    *   Criar a tabela Markdown com as colunas: "Bloco/Seção", "Componente Técnico", "Descrição/Conteúdo", "Objetivo Persuasivo".
+3.  **Entrega**:
+    *   Apresentar a tabela ao usuário.
+    *   Sugestão de próximos passos baseados na auditoria (ex: onde melhorar a copy, onde ajustar o design).
 
 ## 4. Critérios de Sucesso
-*   **Embasamento:** Escolhas visuais baseadas em contraste AAA e diretrizes de usabilidade sênior.
-*   **Identidade:** "Authority Site" (confiável, legível, científico).
-*   **Performance:** Zero Layout Shift, carregamento instantâneo.
+*   Tabela Markdown entregue.
+*   Todas as seções do `App.tsx` listadas na ordem correta.
+*   Descrição clara do propósito de cada bloco.

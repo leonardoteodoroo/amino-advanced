@@ -13,6 +13,8 @@ const VIEWPORT_CONFIG = {
     margin: "0px 0px -15% 0px"
 };
 
+import { motion } from 'framer-motion';
+
 interface HeroProps {
     onScrollToOffer: () => void;
 }
@@ -88,16 +90,34 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                         <div className="absolute w-48 h-48 md:w-72 md:h-72 rounded-full border border-brand-navy/10 animate-[spin_40s_linear_infinite_reverse]" />
 
                         {/* Central Image (Bottle) - LCP Element */}
-                        <img
-                            src="/images/product/1bottle.webp"
-                            alt="Advanced Amino Formula Bottle"
-                            className="relative z-20 w-48 md:w-64 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
-                            width="256"
-                            height="384"
-                            // @ts-ignore - React 19 support
-                            fetchPriority="high"
-                            loading="eager"
-                        />
+                        <div className="relative z-20 w-full md:w-[800px] h-[500px] md:h-[800px] flex items-center justify-center">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9, y: 10, rotate: 6 }}
+                                animate={{
+                                    opacity: 1,
+                                    scale: 1.8,
+                                    y: 0,
+                                    rotate: 6,
+                                    transition: { duration: 0.5 }
+                                }}
+                                className="absolute inset-0 w-full h-full flex items-center justify-center"
+                            >
+                                {/* Inner Floating Animation Wrapper */}
+                                <motion.img
+                                    src="/test_images/advanced_amino_formula_hero_10-advanced_amino_formula-871.webp"
+                                    alt="Advanced Amino Formula"
+                                    animate={{ y: [-15, 15, -15] }}
+                                    transition={{
+                                        repeat: Infinity,
+                                        duration: 5,
+                                        ease: "easeInOut"
+                                    }}
+                                    className="w-full h-full object-contain drop-shadow-2xl"
+                                    // Optimize for transparency rendering
+                                    style={{ filter: "drop-shadow(0 25px 50px rgba(0,0,0,0.25))" }}
+                                />
+                            </motion.div>
+                        </div>
 
                         {/* Floating Cards */}
                         <HeroToastCard

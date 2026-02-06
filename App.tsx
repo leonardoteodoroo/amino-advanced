@@ -146,7 +146,7 @@ const App: React.FC = () => {
 
           <Hero onScrollToOffer={scrollToOffer} />
 
-          {/* --- Intro Text Restored --- */}
+          {/* --- Intro Text --- */}
           <section className="relative z-20 bg-surface-page pt-8 pb-4">
             <div className="max-w-4xl mx-auto px-4 text-center">
               <motion.div
@@ -168,14 +168,29 @@ const App: React.FC = () => {
             <TheProblem />
           </Suspense>
 
-          {/* --- Section: Reviews (Carousel) --- */}
+          {/* --- Section: Why This Matters (Moved UP for Agitation) --- */}
+          <section className="py-20 relative overflow-hidden bg-surface-section">
+            <div className="absolute inset-0 bg-blue-900/5 rotate-3 scale-110 pointer-events-none" />
+            <div className="max-w-4xl mx-auto px-4 relative z-10">
+              <ClinicalCard className="p-8 md:p-12 text-center" hoverEffect>
+                <h2 className="text-2xl md:text-4xl font-serif font-bold text-text-brand mb-6">Why This Matters</h2>
+                <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6">
+                  Proper protein absorption isn't just about gym gains. It's the biological foundation for immune health, cognitive sharpness, and maintaining the metabolic engine that keeps you active.
+                </p>
+                <p className="text-action-primary font-medium text-lg leading-relaxed mb-4">
+                  Without it, the body starts to 'cannibalize' its own muscle tissue to survive—leading to the frailty we often mistake for inevitable aging.
+                </p>
+                <div className="text-base text-text-secondary bg-surface-page/50 p-4 rounded-lg inline-block text-left">
+                  <strong className="text-brand-navy block mb-2 text-center">The Hidden Barrier: Anabolic Resistance</strong>
+                  Your body has likely developed a "resistance" to ordinary protein. It's like a locked door that typical whey protein can't open. This formula is designed to be the "master key" that unlocks absorption again.
+                </div>
+              </ClinicalCard>
+            </div>
+          </section>
+
+          {/* --- Section: The Expert (Dr. Shallenberger) (Moved UP for Authority) --- */}
           <Suspense fallback={<SectionLoader />}>
-            <section className="relative py-12 md:py-20 overflow-hidden">
-              <BackgroundHeading text="STORIES" className="opacity-[0.04]" />
-              <div className="relative z-10">
-                <Carousel3D />
-              </div>
-            </section>
+            <DoctorSection />
           </Suspense>
 
           {/* --- Section: Clinical Evidence --- */}
@@ -188,9 +203,14 @@ const App: React.FC = () => {
             <ScienceTimeline />
           </Suspense>
 
-          {/* --- Section: The Expert (Dr. Shallenberger) --- */}
+          {/* --- Section: Reviews (Carousel) (Moved DOWN to group with Results) --- */}
           <Suspense fallback={<SectionLoader />}>
-            <DoctorSection />
+            <section className="relative py-12 md:py-20 overflow-hidden">
+              <BackgroundHeading text="STORIES" className="opacity-[0.04]" />
+              <div className="relative z-10">
+                <Carousel3D />
+              </div>
+            </section>
           </Suspense>
 
           {/* --- Section: Results --- */}
@@ -229,26 +249,6 @@ const App: React.FC = () => {
                   </ClinicalCard>
                 </motion.div>
               </div>
-            </div>
-          </section>
-
-          {/* --- Section: Why This Matters --- */}
-          <section className="py-20 relative overflow-hidden bg-surface-section">
-            <div className="absolute inset-0 bg-blue-900/5 rotate-3 scale-110 pointer-events-none" />
-            <div className="max-w-4xl mx-auto px-4 relative z-10">
-              <ClinicalCard className="p-8 md:p-12 text-center" hoverEffect>
-                <h2 className="text-2xl md:text-4xl font-serif font-bold text-text-brand mb-6">Why This Matters</h2>
-                <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6">
-                  Proper protein absorption isn't just about gym gains. It's the biological foundation for immune health, cognitive sharpness, and maintaining the metabolic engine that keeps you active.
-                </p>
-                <p className="text-action-primary font-medium text-lg leading-relaxed mb-4">
-                  Without it, the body starts to 'cannibalize' its own muscle tissue to survive—leading to the frailty we often mistake for inevitable aging.
-                </p>
-                <div className="text-base text-text-secondary bg-surface-page/50 p-4 rounded-lg inline-block text-left">
-                  <strong className="text-brand-navy block mb-2 text-center">The Hidden Barrier: Anabolic Resistance</strong>
-                  Your body has likely developed a "resistance" to ordinary protein. It's like a locked door that typical whey protein can't open. This formula is designed to be the "master key" that unlocks absorption again.
-                </div>
-              </ClinicalCard>
             </div>
           </section>
 

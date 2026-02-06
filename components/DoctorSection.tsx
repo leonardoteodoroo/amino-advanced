@@ -4,6 +4,8 @@ import { ShieldCheck, Award, BookOpen, Star, Quote } from 'lucide-react';
 import { GlassCard } from './UI';
 
 export const DoctorSection: React.FC = () => {
+
+
     return (
         <section className="py-20 md:py-32 bg-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -17,17 +19,19 @@ export const DoctorSection: React.FC = () => {
                         transition={{ duration: 0.6 }}
                         className="lg:col-span-5 relative flex justify-center"
                     >
-                        <div className="relative w-full max-w-sm rounded-[2rem] overflow-hidden border border-slate-100 bg-slate-50">
-                            <img
-                                src="/images/dr-shallenberger.webp"
+                        <div className="relative w-full max-w-sm rounded-[2rem] overflow-hidden border border-slate-100 bg-slate-50 aspect-[3/4]">
+                            <motion.img
+                                src="/test_images/dr_frank_shallenberger_2-advanced_amino_formula-048.webp"
                                 alt="Dr. Frank Shallenberger"
-                                className="w-full h-auto object-cover aspect-[4/5] opacity-95 grayscale-[20%]"
-                                width="400"
-                                height="500"
-                                loading="lazy"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5 }}
+                                className="absolute inset-0 w-full h-full object-cover object-top opacity-95 grayscale-[20%]"
                             />
+
                             {/* Simple text overlay to add authority without heavy shadow */}
-                            <div className="absolute top-4 left-4">
+                            <div className="absolute top-4 left-4 z-10">
                                 <span className="bg-brand-navy/90 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-sm">
                                     Clinical Pioneer
                                 </span>
