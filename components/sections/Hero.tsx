@@ -24,11 +24,6 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
 
     return (
         <div className="relative">
-            {/* Background Layers - Keeping 'molecular' variant but ensuring it fits Clinical theme */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                <BackgroundLayers variant="molecular" />
-            </div>
-
             <section className="relative pt-28 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 flex flex-col justify-center overflow-hidden">
 
                 {/* Background Image (LCP Candidate) */}
