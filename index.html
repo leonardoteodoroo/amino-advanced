@@ -2,7 +2,6 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-  <!-- GTM Consent Defaults -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -37,9 +36,7 @@
         "@type": "AggregateRating",
         "ratingValue": "4.8",
         "reviewCount": "1250"
-      }
-    }
-  </script>
+@@ -43,29 +42,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
@@ -47,23 +44,16 @@
   <title>Advanced Amino Formula - Restore Your Strength</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preload" href="/images/product/1bottle.webp" as="image" fetchpriority="high">
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
     rel="stylesheet">
   <meta name="theme-color" content="#1e3a8a">
   <meta http-equiv="Content-Security-Policy"
     content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://www.googletagmanager.com;">
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "framer-motion": "https://esm.sh/framer-motion@^12.29.2",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
-  }
-}
-</script>
+
 </head>
 
 <body>
@@ -92,7 +82,7 @@
       if ('requestIdleCallback' in window) {
         window.requestIdleCallback(loadGtm);
       } else {
-        window.setTimeout(loadGtm, 1000);
+        window.setTimeout(loadGtm, 0);
       }
     });
   </script>

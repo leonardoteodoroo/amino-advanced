@@ -76,10 +76,10 @@ export const ComparisonChart: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 opacity-50 rounded-t-lg overflow-hidden" />
 
               {/* Pulse effect for 99% bar */}
-              {index === 3 && !shouldReduceMotion && (
+              {index === 3 && (
                 <motion.div
-                  animate={{ opacity: [0.2, 0.5, 0.2] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  animate={shouldReduceMotion ? { opacity: 0.35 } : { opacity: [0.2, 0.5, 0.2] }}
+                  transition={{ duration: shouldReduceMotion ? 0 : 2, repeat: shouldReduceMotion ? 0 : Infinity }}
                   className="absolute inset-x-0 -top-1 h-3 bg-orange-400 blur-md rounded-full pointer-events-none"
                 />
               )}
