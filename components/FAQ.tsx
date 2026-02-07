@@ -94,7 +94,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
         >
           <div className="p-6 md:p-8 flex items-start justify-between gap-6">
             <div className="flex-1">
-              <h3 className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? 'text-fg-primary' : 'text-fg-secondary group-hover:text-fg-brand'}`}>
+              <h3 className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? 'text-fg-brand' : 'text-fg-brand group-hover:text-fg-brand'}`}>
                 {item.question}
               </h3>
 
@@ -107,7 +107,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="mt-4 text-slate-600 text-base md:text-lg leading-relaxed font-normal border-t border-slate-200 pt-4">
+                    <p className="mt-4 text-fg-primary text-base md:text-lg leading-relaxed font-normal border-t border-border-subtle pt-4">
                       {item.answer}
                     </p>
                   </motion.div>

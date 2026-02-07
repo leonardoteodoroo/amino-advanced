@@ -20,8 +20,8 @@ export const TheProblem: React.FC = () => {
                             <div className="relative">
                                 <div className="absolute left-0 top-2 bottom-2 w-1 bg-border-subtle rounded-full" />
                                 <div className="pl-6">
-                                    <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6 font-serif italic border-l-4 border-slate-200 pl-4 py-2 bg-slate-50 rounded-r-lg">
-                                        "It’s a quiet frustration. You walk every morning, you try to eat right, but your legs feel a bit <span className="text-text-primary font-bold not-italic">"heavier"</span> each year."
+                                    <p className="text-fg-brand text-base md:text-lg leading-relaxed mb-6 font-serif italic border-l-4 border-border-subtle pl-4 py-2 bg-surface-page rounded-r-lg">
+                                        "It’s a quiet frustration. You walk every morning, you try to eat right, but your legs feel a bit <span className="text-fg-primary font-bold not-italic">"heavier"</span> each year."
                                     </p>
                                     <div className="p-4 rounded-xl bg-warning-bg border border-feedback-warning/20 flex gap-4 items-start">
                                         <div className="p-2 bg-white rounded-full shrink-0 border border-feedback-warning/20 shadow-sm">

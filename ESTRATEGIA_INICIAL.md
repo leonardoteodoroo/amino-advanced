@@ -1,52 +1,46 @@
+# ESTRATEGIA_INICIAL.md
 
-# Estratégia Inicial: Auditoria & Mapeamento de Estrutura do Site
+## 1. Diagnóstico 🕵️‍♂️
+**O Problema**: A performance do site está degradada, bloqueando a thread principal por **2.8s** (TBT excessivo) e apresentando instabilidade visual (CLS) devido a imagens sem dimensões definidas.
 
-## 1. Diagnóstico
-O objetivo é auditar e mapear a estrutura atual da Landing Page (App.tsx e componentes) para entender o fluxo de persuasão e a hierarquia de conteúdo. O usuário solicitou um output específico em formato de tabela Markdown, detalhando "Etapa/Bloco", "Descrição", e "Função".
+**Métricas Críticas**:
+*   **TBT (Total Blocking Time)**: 2.8s (Meta: <200ms).
+    *   *Culpados*: Script Evaluation (813ms) e Style & Layout (439ms). Indício de hidratação pesada ou animações síncronas no carregamento.
+*   **CLS (Cumulative Layout Shift)**: Elementos de imagem sem `width`/`height`.
 
-**Análise Preliminar (baseada no App.tsx):**
-A estrutura atual parece seguir um fluxo clássico de VSL/Sales Page:
-1.  **Header**: Navegação/Logo.
-2.  **Hero**: Apresentação principal, headline, imagem do produto ("Gigante" e rotacionada), CTA.
-3.  **Intro Text**: "Bridge" textual focada no problema ("Old Age" vs "Anabolic Resistance").
-4.  **ReviewTicker**: Prova social imediata.
-5.  **TheProblem**: Aprofundamento na dor (Anabolic Resistance).
-6.  **Stories (Carousel3D)**: Prova social mais visual/profunda.
-7.  **ClinicalEvidence**: Dados científicos e respaldo.
-8.  **ScienceTimeline**: Explicação do mecanismo de ação/tempo.
-9.  **The Expert (DoctorSection)**: Autoridade (Dr. Shallenberger).
-10. **Results**: Casos de sucesso/Depoimentos em cards.
-11. **Why This Matters**: Reforço da importância (Consequências da inação).
-12. **FAQ**: Quebra de objeções.
-13. **Offer Section (PricingOptions)**: O fechamento/venda.
-14. **Footer**: Legal e Copyright.
+**Contexto Técnico**:
+*   Stack: React + Vite + Tailwind + Framer Motion.
+*   A biblioteca de animação (Framer Motion) é uma suspeita comum para TBT alto se não otimizada (ex: animações de layout pesadas no mount).
 
-## 2. Squad de Agentes (Sugestão de Skills)
+---
 
-Abaixo, defino as skills ("Superpoderes") ideais para conduzir esta auditoria e as etapas futuras de otimização, conforme solicitado pelo "Protocolo Maestro".
+## 2. Squad de Agentes 🤖
 
 | Skill / Agente | Função Prática | Justificativa |
 | :--- | :--- | :--- |
-| **`visual-design-foundations`** | **Auditor de UI/UX** | Essencial para avaliar se a hierarquia visual (Hero, Typography, Spacing) está suportando a persuasão. Usa princípios de design para sugerir melhorias estéticas. |
-| **`interaction-design`** | **Especialista em Engajamento** | Para analisar as micro-interações (como o "Floating" do Hero, o Carousel3D) e garantir que não distraiam, mas convertam. |
-| **`responsive-design`** | **Auditor Mobile** | Crucial, pois vimos problemas recentes com o tamanho da imagem no mobile. Garante que a auditoria contemple a experiência em telas pequenas. |
-| **`react-modernization`** | **Arquiteto de Código** | Para mapear a estrutura técnica (App.tsx, Lazy Loading, Componentização) e sugerir refatorações se os blocos estiverem muito acoplados. |
-| **`writing-clearly-and-concisely`** | **Auditor de Copy** | Para avaliar se os textos (Headlines, CTAs) estão claros e persuasivos. |
+| `debugging-strategies` | **Líder de Análise** | Necessário para usar ferramentas de profiling e identificar *quais* componentes exatos estão travando a thread. |
+| `modern-javascript-patterns` | **Engenheiro de Performance** | Aplicar *Code Splitting*, *Lazy Loading* (`React.lazy`) e *Tree Shaking* para reduzir o payload inicial de JS. |
+| `visual-design-foundations` | **Especialista de UI** | Corrigir o CLS definindo dimensões explícitas e aspect-ratios nas imagens, garantindo que o layout não "pule". |
 
-**Agente Principal para esta tarefa (Auditoria):** Eu atuarei como o **Orquestrador**, utilizando os princípios de `visual-design-foundations` e `react-modernization` para gerar o mapa.
+---
 
-## 3. Plano de Ação
+## 3. Plano de Ação 🗺️
 
-1.  **Mapeamento Detalhado**:
-    *   Analisar `App.tsx` linha a linha (já realizado na fase de inteligência).
-    *   Extrair cada seção, identificar seu componente correspondente e seu propósito.
-2.  **Estruturação da Tabela**:
-    *   Criar a tabela Markdown com as colunas: "Bloco/Seção", "Componente Técnico", "Descrição/Conteúdo", "Objetivo Persuasivo".
-3.  **Entrega**:
-    *   Apresentar a tabela ao usuário.
-    *   Sugestão de próximos passos baseados na auditoria (ex: onde melhorar a copy, onde ajustar o design).
+### Fase 1: Estancamento de Sangria (CLS) 🩸
+*   **Ação**: Adicionar atributos `width` e `height` (ou classes de aspect-ratio) em todas as imagens citadas no relatório (Garrafas, Hero Images).
+*   **Impacto**: Zerar o CLS causado por imagens e melhorar a percepção de estabilidade.
 
-## 4. Critérios de Sucesso
-*   Tabela Markdown entregue.
-*   Todas as seções do `App.tsx` listadas na ordem correta.
-*   Descrição clara do propósito de cada bloco.
+### Fase 2: Redução de Carga Inicial (TBT - JS) 📉
+*   **Ação**: Implementar `React.lazy` e `Suspense` para seções que não estão na primeira dobra (ex: `Carousel3D`, `FAQ`, `ClinicalEvidence`).
+*   **Ação**: Verificar importações de bibliotecas pesadas (ex: Lucide Icons importados inteiros vs tree-shaken).
+
+### Fase 3: Otimização de Renderização (TBT - Style/Layout) 🎨
+*   **Ação**: Auditar animações do `Framer Motion` na seção Hero. Substituir animações de layout pesadas (`layoutId`) por transformações simples (`opacity`, `translate`) onde possível.
+*   **Ação**: Garantir `will-change` em elementos animados complexos.
+
+---
+
+## 4. Critérios de Sucesso 🏆
+1.  **TBT**: Redução para **< 500ms** (Idealmente < 200ms).
+2.  **CLS**: Score **0** para os elementos de imagem listados.
+3.  **Lighthouse**: Score de Performance **> 95** (Mobile/Desktop).

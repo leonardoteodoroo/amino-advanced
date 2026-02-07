@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                         />
 
                         {/* CSS-animated paragraph for reduced main thread work */}
-                        <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8 max-w-xl font-medium css-fade-up css-delay-300">
+                        <p className="text-lg md:text-xl text-fg-primary leading-relaxed mb-8 max-w-xl font-medium css-fade-up css-delay-300">
                             New research reveals why traditional protein fails seniors—and the exact amino ratio clinical studies show can <span className="font-bold text-text-brand">restore muscle growth potential by 300%.</span>
                         </p>
 
@@ -100,7 +100,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                                     rotate: 6,
                                     transition: { duration: 0.5 }
                                 }}
-                                className="absolute inset-0 w-full h-full flex items-center justify-center"
+                                className="absolute inset-0 w-full h-full flex items-center justify-center will-change-transform"
                             >
                                 {/* Inner Floating Animation Wrapper */}
                                 <motion.img
@@ -112,7 +112,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                                         duration: 5,
                                         ease: "easeInOut"
                                     }}
-                                    className="w-full h-full object-contain drop-shadow-2xl"
+                                    className="w-full h-full object-contain drop-shadow-2xl will-change-transform"
                                     // Optimize for transparency rendering
                                     style={{ filter: "drop-shadow(0 25px 50px rgba(0,0,0,0.25))" }}
                                 />

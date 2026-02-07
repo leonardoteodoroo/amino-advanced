@@ -111,7 +111,7 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => {
                         alt={`Portrait of ${review.name} - ${review.quote}`}
                         width="48"
                         height="48"
-                        className="w-12 h-12 rounded-full object-cover border border-purple-200 shadow-sm shrink-0 bg-gray-200"
+                        className="w-12 h-12 rounded-full object-cover border border-purple-200 shadow-sm shrink-0 bg-surface-section"
                         loading="lazy"
                         decoding="async"
                     />
@@ -122,12 +122,12 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => {
                 )}
                 <div>
                     <div className="flex items-baseline gap-2">
-                        <h4 className="font-bold text-fg-primary leading-none text-base truncate max-w-[120px]">{review.name}</h4>
-                        <span className="text-gray-400 text-sm font-medium whitespace-nowrap">{review.age}y</span>
+                        <h4 className="font-bold text-fg-brand leading-none text-base truncate max-w-[120px]">{review.name}</h4>
+                        <span className="text-fg-muted text-sm font-medium whitespace-nowrap">{review.age}y</span>
                     </div>
                     <div className="flex items-center gap-1 mt-0.5">
                         <CheckCircle2 size={12} className="text-green-500 fill-white" />
-                        <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wide">Verified Buyer</span>
+                        <span className="text-[10px] text-fg-muted font-bold uppercase tracking-wide">Verified Buyer</span>
                     </div>
                 </div>
             </div>
@@ -141,21 +141,21 @@ const TestimonialCard: React.FC<{ review: Review }> = ({ review }) => {
 
             {/* Content */}
             <div className="relative z-10 flex-1">
-                <h3 className="text-lg font-bold text-fg-primary mb-2 leading-tight tracking-tight line-clamp-2">
+                <h3 className="text-lg font-bold text-fg-brand mb-2 leading-tight tracking-tight line-clamp-2">
                     "{review.quote}"
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed font-medium line-clamp-4">
+                <p className="text-fg-primary text-sm leading-relaxed font-medium line-clamp-4">
                     {review.detail}
                 </p>
             </div>
 
             {/* Footer */}
-            <div className="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center relative z-10">
+            <div className="mt-auto pt-4 border-t border-border-subtle flex justify-between items-center relative z-10">
                 <div className="flex items-center gap-1.5 opacity-70">
-                    <MapPin size={12} className="text-gray-400" />
-                    <span className="text-[10px] font-semibold text-gray-400">United States</span>
+                    <MapPin size={12} className="text-fg-muted" />
+                    <span className="text-[10px] font-semibold text-fg-muted">United States</span>
                 </div>
-                <span className="text-[10px] text-gray-400 font-medium">Recently posted</span>
+                <span className="text-[10px] text-fg-muted font-medium">Recently posted</span>
             </div>
         </div>
     );
@@ -245,7 +245,7 @@ export const Carousel3D: React.FC = () => {
                     <div className="flex items-center gap-4 pt-4">
                         <div className="flex -space-x-3">
                             {["/images/reviews/jacqui.webp", "/images/reviews/carolyn.webp", "/images/reviews/dr-simmons.webp"].map((src, i) => (
-                                <img key={i} src={src} className="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" alt="Verified User" width="40" height="40" loading="lazy" />
+                                <img key={i} src={src} className="w-10 h-10 rounded-full border-2 border-white object-cover bg-surface-section" alt="Verified User" width="40" height="40" loading="lazy" />
                             ))}
                         </div>
                         <div className="text-sm text-text-muted">
@@ -372,7 +372,7 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ index, review, x, gap }) =>
             }}
         >
             {/* Inner Card Wrapper */}
-            <div className="w-full h-full rounded-[24px] overflow-hidden shadow-2xl bg-white border border-gray-200 relative transform-gpu">
+            <div className="w-full h-full rounded-[24px] overflow-hidden shadow-2xl bg-white border border-border-subtle relative transform-gpu">
                 {/* Subtle Gloss */}
                 <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-white/40 via-transparent to-black/5 pointer-events-none z-50 rounded-[24px]" />
                 <TestimonialCard review={review} />

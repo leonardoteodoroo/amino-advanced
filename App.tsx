@@ -5,9 +5,7 @@ import { X } from "lucide-react";
 // Components (Structure & Sections)
 import { Header } from './components/structure/Header';
 import { Hero } from './components/sections/Hero';
-import { TheProblem } from './components/sections/TheProblem';
 import { BackgroundLayers } from './components/BackgroundLayers';
-import { ReviewTicker } from './components/ReviewTicker';
 import { LegalPage } from './components/LegalPage';
 
 // UI Components
@@ -25,6 +23,8 @@ const DoctorSection = React.lazy(() => import('./components/DoctorSection').then
 const ScienceTimeline = React.lazy(() => import('./components/Timeline').then(module => ({ default: module.ScienceTimeline })));
 const FAQ = React.lazy(() => import('./components/FAQ').then(module => ({ default: module.FAQ })));
 const PricingOptions = React.lazy(() => import('./components/PricingOptions').then(module => ({ default: module.PricingOptions })));
+const TheProblem = React.lazy(() => import('./components/sections/TheProblem').then(module => ({ default: module.TheProblem })));
+const ReviewTicker = React.lazy(() => import('./components/ReviewTicker').then(module => ({ default: module.ReviewTicker })));
 
 // Loading Fallback (Clinical Theme)
 const SectionLoader = () => (
@@ -153,16 +153,18 @@ const App: React.FC = () => {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={VIEWPORT_CONFIG}
-                className="text-text-secondary font-serif text-lg md:text-2xl leading-relaxed font-light px-2"
+                className="text-fg-brand font-serif text-lg md:text-2xl leading-relaxed font-light px-2"
               >
-                <span className="text-text-brand text-3xl mr-2">"</span>
+                <span className="text-fg-brand text-3xl mr-2">"</span>
                 At 60, your body stops absorbing protein like it used to. Before we dive into the science, witness how to 'unlock' your strength and reclaim the energy you thought was gone forever.
-                <span className="text-text-brand text-3xl ml-2">"</span>
+                <span className="text-fg-brand text-3xl ml-2">"</span>
               </motion.div>
             </div>
           </section>
 
-          <ReviewTicker />
+          <Suspense fallback={<div className="h-16" />}>
+            <ReviewTicker />
+          </Suspense>
 
           <Suspense fallback={<SectionLoader />}>
             <TheProblem />

@@ -63,7 +63,7 @@ const ClinicalEvidence: React.FC = () => {
                                 </div>
                                 <h3 className="text-xs font-bold text-brand-blue uppercase tracking-wider mb-2">{study.topic}</h3>
                                 <h4 className="font-bold text-brand-navy text-base mb-3 leading-snug">{study.title}</h4>
-                                <p className="text-text-secondary text-sm leading-relaxed mb-6 flex-grow">
+                                <p className="text-fg-primary text-sm leading-relaxed mb-6 flex-grow">
                                     "{study.result}"
                                 </p>
                                 <div className="pt-4 border-t border-slate-100">

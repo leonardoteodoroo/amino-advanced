@@ -14,6 +14,8 @@ interface PricingCardProps {
     isPopular?: boolean;
     isBestValue?: boolean;
     delay?: number;
+    imgWidth?: number;
+    imgHeight?: number;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
@@ -26,7 +28,9 @@ const PricingCard: React.FC<PricingCardProps> = ({
     image,
     isPopular,
     isBestValue,
-    delay = 0
+    delay = 0,
+    imgWidth,
+    imgHeight
 }) => {
     return (
         <motion.div
@@ -74,6 +78,8 @@ const PricingCard: React.FC<PricingCardProps> = ({
                             alt={`${title} Bottles`}
                             className="h-full object-contain filter drop-shadow-xl hover:scale-105 transition-transform duration-500"
                             loading="lazy"
+                            width={imgWidth}
+                            height={imgHeight}
                         />
                     </div>
 
@@ -164,6 +170,8 @@ export const PricingOptions: React.FC = () => {
                         ]}
                         link="https://www.digistore24.com/redir/472629/leonardoteodorol/"
                         delay={0.1}
+                        imgWidth={300}
+                        imgHeight={327}
                     />
 
                     {/* MOST POPULAR */}
@@ -183,6 +191,8 @@ export const PricingOptions: React.FC = () => {
                         ]}
                         link="https://www.digistore24.com/redir/472942/leonardoteodorol/"
                         delay={0.2}
+                        imgWidth={300}
+                        imgHeight={300}
                     />
 
                     {/* BEST VALUE */}
@@ -202,6 +212,8 @@ export const PricingOptions: React.FC = () => {
                         ]}
                         link="https://www.digistore24.com/redir/472943/leonardoteodorol/"
                         delay={0.3}
+                        imgWidth={300}
+                        imgHeight={300}
                     />
                 </div>
 
