@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
     motion,
     useMotionValue,
-    useAnimationFrame
+    useAnimationFrame,
+    useReducedMotion
 } from 'framer-motion';
 import { Star, ShieldCheck } from 'lucide-react';
 
@@ -62,6 +63,7 @@ const reviews = [
 const tickerReviews = [...reviews, ...reviews, ...reviews];
 
 export const ReviewTicker: React.FC = () => {
+    const shouldReduceMotion = useReducedMotion();
     const containerRef = useRef<HTMLDivElement>(null);
     const [contentWidth, setContentWidth] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
@@ -70,7 +72,7 @@ export const ReviewTicker: React.FC = () => {
     const x = useMotionValue(0);
 
     // Speed of auto-scroll (pixels per frame) - Increased for better energy
-    const baseVelocity = -1.5;
+    const baseVelocity = shouldReduceMotion ? 0 : -1.5;
 
     useEffect(() => {
         if (containerRef.current) {
@@ -85,6 +87,7 @@ export const ReviewTicker: React.FC = () => {
 
     // The animation loop
     useAnimationFrame((t, delta) => {
+        if (shouldReduceMotion) return;
         if (!contentWidth) return;
 
         let moveBy = baseVelocity * (delta / 16); // Normalize based on frame rate
@@ -189,7 +192,11 @@ export const ReviewTicker: React.FC = () => {
                 <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 opacity-40 md:hidden pointer-events-none">
                     <span className="text-[10px] uppercase tracking-tighter font-bold text-text-primary">Swipe to browse</span>
                     <div className="flex gap-1">
-                        <motion.div animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }} className="w-1 h-1 rounded-full bg-brand-navy" />
+                        <motion.div
+                            animate={shouldReduceMotion ? { x: 0 } : { x: [0, 5, 0] }}
+                            transition={{ repeat: shouldReduceMotion ? 0 : Infinity, duration: shouldReduceMotion ? 0 : 1.5 }}
+                            className="w-1 h-1 rounded-full bg-brand-navy"
+                        />
                         <div className="w-1 h-1 rounded-full bg-brand-navy opacity-50" />
                         <div className="w-1 h-1 rounded-full bg-brand-navy opacity-25" />
                     </div>

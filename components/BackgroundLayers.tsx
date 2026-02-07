@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 type Variant = 'molecular' | 'dna' | 'data';
 
@@ -9,6 +9,7 @@ interface BackgroundLayersProps {
 }
 
 export const BackgroundLayers: React.FC<BackgroundLayersProps> = ({ variant = 'molecular', className = '' }) => {
+  const shouldReduceMotion = useReducedMotion();
   // SVG Data URIs for distinct scientific patterns
 
   // A: Molecular - Hexagon network (Amino Acids structure)
@@ -46,10 +47,10 @@ export const BackgroundLayers: React.FC<BackgroundLayersProps> = ({ variant = 'm
       {/* Layer 3: Scientific Pattern (SVG Data URI) - Darker Stroke for Visibility */}
       <motion.div
         className="absolute inset-0 opacity-100"
-        initial={{ opacity: 0 }}
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.5 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 1.5 }}
         style={{
           backgroundImage: patterns[variant].replace(/stroke='rgba\(148, 163, 184, 0.0[0-9]\)'/g, "stroke='rgba(30, 58, 138, 0.05)'"), // Darker stroke injection
           backgroundSize: variant === 'molecular' ? '60px 60px' : variant === 'dna' ? '100px 60px' : '40px 40px',

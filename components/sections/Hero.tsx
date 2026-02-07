@@ -13,13 +13,15 @@ const VIEWPORT_CONFIG = {
     margin: "0px 0px -15% 0px"
 };
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface HeroProps {
     onScrollToOffer: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
+    const shouldReduceMotion = useReducedMotion();
+
     return (
         <div className="relative">
             {/* Background Layers - Keeping 'molecular' variant but ensuring it fits Clinical theme */}
@@ -85,9 +87,9 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                     {/* Hero Feature Component */}
                     <div className="order-1 md:order-2 relative h-[400px] md:h-[600px] w-full flex items-center justify-center">
                         {/* Simplified Background for Clinical Theme - Removed excessive blur/pulse if needed, but keeping primarily for visual interest */}
-                        <div className="absolute inset-0 bg-blue-100/30 blur-3xl rounded-full scale-75" />
-                        <div className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full border border-brand-blue/10 animate-[spin_60s_linear_infinite]" />
-                        <div className="absolute w-48 h-48 md:w-72 md:h-72 rounded-full border border-brand-navy/10 animate-[spin_40s_linear_infinite_reverse]" />
+                        <div className="absolute inset-0 bg-blue-100/30 blur-2xl sm:blur-3xl rounded-full scale-75" />
+                        <div className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full border border-brand-blue/10 animate-[spin_60s_linear_infinite] motion-reduce:animate-none" />
+                        <div className="absolute w-48 h-48 md:w-72 md:h-72 rounded-full border border-brand-navy/10 animate-[spin_40s_linear_infinite_reverse] motion-reduce:animate-none" />
 
                         {/* Central Image (Bottle) - LCP Element */}
                         <div className="relative z-20 w-full md:w-[800px] h-[500px] md:h-[800px] flex items-center justify-center">
@@ -106,15 +108,13 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                                 <motion.img
                                     src="/test_images/advanced_amino_formula_hero_10-advanced_amino_formula-871.webp"
                                     alt="Advanced Amino Formula"
-                                    animate={{ y: [-15, 15, -15] }}
+                                    animate={shouldReduceMotion ? { y: 0 } : { y: [-15, 15, -15] }}
                                     transition={{
-                                        repeat: Infinity,
-                                        duration: 5,
+                                        repeat: shouldReduceMotion ? 0 : Infinity,
+                                        duration: shouldReduceMotion ? 0 : 5,
                                         ease: "easeInOut"
                                     }}
-                                    className="w-full h-full object-contain drop-shadow-2xl will-change-transform"
-                                    // Optimize for transparency rendering
-                                    style={{ filter: "drop-shadow(0 25px 50px rgba(0,0,0,0.25))" }}
+                                    className="w-full h-full object-contain drop-shadow-lg sm:drop-shadow-2xl will-change-transform"
                                 />
                             </motion.div>
                         </div>

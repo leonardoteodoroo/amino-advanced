@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useTransform, PanInfo, animate, MotionValue } from 'framer-motion';
+import { motion, useMotionValue, useTransform, PanInfo, animate, MotionValue, useReducedMotion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, CheckCircle2, Quote, MoveRight, MapPin } from 'lucide-react';
 import { Review } from '../types';
 
@@ -166,6 +166,7 @@ const DRAG_BUFFER = 10;
 const VELOCITY_THRESHOLD = 50;
 
 export const Carousel3D: React.FC = () => {
+    const shouldReduceMotion = useReducedMotion();
     // Responsive Gap Calculation
     const [gap, setGap] = useState(290);
 
@@ -310,14 +311,14 @@ export const Carousel3D: React.FC = () => {
                             <button
                                 onClick={prevSlide}
                                 aria-label="Previous testimonial"
-                                className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-md transition-all hover:bg-white shadow-md active:scale-95"
+                                className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-sm sm:backdrop-blur-md transition-all hover:bg-white shadow-sm sm:shadow-md active:scale-95"
                             >
                                 <ChevronLeft className="text-brand-navy" size={20} />
                             </button>
                             <button
                                 onClick={nextSlide}
                                 aria-label="Next testimonial"
-                                className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-md transition-all hover:bg-white shadow-md"
+                                className="w-10 h-10 rounded-full border border-border-subtle flex items-center justify-center bg-white/90 backdrop-blur-sm sm:backdrop-blur-md transition-all hover:bg-white shadow-sm sm:shadow-md"
                             >
                                 <ChevronRight className="text-brand-navy" size={20} />
                             </button>
@@ -325,7 +326,7 @@ export const Carousel3D: React.FC = () => {
 
                         <div className="flex items-center gap-2 opacity-80">
                             <span className="text-brand-blue font-serif italic text-xs tracking-wide">Swipe to read</span>
-                            <MoveRight className="text-brand-blue animate-pulse" size={20} />
+                            <MoveRight className="text-brand-blue animate-pulse motion-reduce:animate-none" size={20} />
                         </div>
                     </div>
                 </div>
@@ -342,15 +343,21 @@ interface CarouselCardProps {
 }
 
 const CarouselCard: React.FC<CarouselCardProps> = ({ index, review, x, gap }) => {
+    const shouldReduceMotion = useReducedMotion();
+    const isCompact = gap < 290;
     // Explicit typing for the transform callback to avoid TS errors
     const position = useTransform(x, (currentX: number) => currentX + index * gap);
 
     // Optimized rotation and scale
-    const rotateY = useTransform(position, [-gap, 0, gap], [25, 0, -25]);
+    const rotateY = useTransform(position, [-gap, 0, gap], shouldReduceMotion ? [0, 0, 0] : [25, 0, -25]);
     // More aggressive scaling on mobile to ensure neighbor cards are visible but non-intrusive
-    const scale = useTransform(position, [-gap, 0, gap], [0.85, 1, 0.85]);
+    const scale = useTransform(position, [-gap, 0, gap], shouldReduceMotion ? [0.95, 1, 0.95] : [0.85, 1, 0.85]);
     const opacity = useTransform(position, [-gap * 1.5, 0, gap * 1.5], [0.4, 1, 0.4]);
-    const blur = useTransform(position, [-gap, 0, gap], [2, 0, 2]);
+    const blur = useTransform(
+        position,
+        [-gap, 0, gap],
+        shouldReduceMotion ? [0, 0, 0] : isCompact ? [0.5, 0, 0.5] : [2, 0, 2]
+    );
     const z = useTransform(position, (pos) => -Math.abs(pos) * 1.2);
     const translateX = useTransform(position, (pos) => pos * 0.6);
 
@@ -372,7 +379,7 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ index, review, x, gap }) =>
             }}
         >
             {/* Inner Card Wrapper */}
-            <div className="w-full h-full rounded-[24px] overflow-hidden shadow-2xl bg-white border border-border-subtle relative transform-gpu">
+            <div className="w-full h-full rounded-[24px] overflow-hidden shadow-xl sm:shadow-2xl bg-white border border-border-subtle relative transform-gpu">
                 {/* Subtle Gloss */}
                 <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-white/40 via-transparent to-black/5 pointer-events-none z-50 rounded-[24px]" />
                 <TestimonialCard review={review} />

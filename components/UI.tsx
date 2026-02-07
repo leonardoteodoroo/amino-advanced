@@ -72,7 +72,7 @@ export const HeroToastCard: React.FC<HeroToastCardProps> = ({
       className={`absolute z-30 ${className}`}
     >
       {/* Clinical Toast Style */}
-      <div className="flex items-center gap-3 p-3 pr-5 rounded-2xl bg-white/90 backdrop-blur-md border border-brand-blue/10 shadow-[0_8px_32px_0_rgba(30,58,138,0.1)] w-max max-w-[85vw] sm:max-w-xs transition-all hover:bg-white">
+      <div className="flex items-center gap-3 p-3 pr-5 rounded-2xl bg-white/90 backdrop-blur-sm sm:backdrop-blur-md border border-brand-blue/10 shadow-[0_4px_16px_0_rgba(30,58,138,0.08)] sm:shadow-[0_8px_32px_0_rgba(30,58,138,0.1)] w-max max-w-[85vw] sm:max-w-xs transition-all hover:bg-white">
         <div className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-xl bg-blue-50 text-brand-blue shrink-0 backdrop-blur-sm border border-blue-100">
           {icon}
         </div>
