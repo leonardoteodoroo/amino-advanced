@@ -125,9 +125,19 @@ interface LetterStaggerProps {
   className?: string;
   delay?: number;
   highlightWords?: string[]; // Words to apply the jump effect to
+  viewport?: { once?: boolean; amount?: number | "all" | "some"; margin?: string };
+  trigger?: "whileInView" | "animate";
 }
 
-export const LetterStagger: React.FC<LetterStaggerProps> = ({ text, className = '', delay = 0, highlightWords = [] }) => {
+export const LetterStagger: React.FC<LetterStaggerProps> = ({
+  text,
+  className = '',
+  delay = 0,
+  highlightWords = [],
+  viewport = { once: true, amount: 0.5 },
+  trigger = "whileInView"
+}) => {
+  const shouldReduceMotion = useReducedMotion();
   const words = text.split(" ");
 
   // Estimate time for text to finish (words * letters approx * stagger)
@@ -146,7 +156,7 @@ export const LetterStagger: React.FC<LetterStaggerProps> = ({ text, className = 
   };
 
   const letterAnim = {
-    hidden: { opacity: 0, y: 20, scale: 0.5 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20, scale: shouldReduceMotion ? 1 : 0.5 },
     visible: {
       opacity: 1,
       y: 0,
@@ -164,8 +174,7 @@ export const LetterStagger: React.FC<LetterStaggerProps> = ({ text, className = 
       className={`flex flex-wrap ${className}`}
       variants={container}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      {... (trigger === "whileInView" ? { whileInView: "visible", viewport } : { animate: "visible" })}
     >
       {words.map((word, i) => {
         // Remove punctuation for matching logic but keep it for display
@@ -173,7 +182,7 @@ export const LetterStagger: React.FC<LetterStaggerProps> = ({ text, className = 
         const isHighlight = highlightWords.some(hw => hw.includes(cleanWord));
 
         // Variant for the word wrapper to handle the "Pop" effect
-        const wrapperVariant = isHighlight ? {
+        const wrapperVariant = isHighlight && !shouldReduceMotion ? {
           visible: {
             y: [0, -15, 0],
             scale: [1, 1.15, 1],
@@ -214,12 +223,13 @@ interface BlurTextProps {
 }
 
 export const BlurText: React.FC<BlurTextProps> = ({ text, className = '', delay = 0 }) => {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <motion.h2
-      initial={{ filter: 'blur(10px)', opacity: 0 }}
+      initial={{ filter: shouldReduceMotion ? 'blur(0px)' : 'blur(10px)', opacity: 0 }}
       whileInView={{ filter: 'blur(0px)', opacity: 1 }}
       viewport={VIEWPORT_CONFIG}
-      transition={{ duration: 0.8, delay }}
+      transition={{ duration: shouldReduceMotion ? 0.3 : 0.8, delay }}
       className={className}
     >
       {text}

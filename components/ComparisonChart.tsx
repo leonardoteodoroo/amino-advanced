@@ -1,7 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 export const ComparisonChart: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const data = [
     { label: 'Whey/Soy', subLabel: '& Nuts', value: 17, color: 'bg-slate-300', info: '83% Nitrogen Waste (Waste products like Ammonia strain the kidneys).' },
     { label: 'Meat/Fish', subLabel: '& Poultry', value: 32, color: 'bg-slate-400', info: '68% Waste. Requires complex digestion before absorption.' },
@@ -51,7 +53,7 @@ export const ComparisonChart: React.FC = () => {
               initial={{ height: "1%" }}
               whileInView={{ height: `${item.value}%` }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: shouldReduceMotion ? 0.1 : 1.2, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
               className={`w-full max-w-[40px] md:max-w-[60px] rounded-t-lg relative flex-shrink-0 origin-bottom overflow-visible ${index === 3 ? 'bg-gradient-to-t from-orange-600 to-orange-400 shadow-xl shadow-orange-500/20' : 'bg-gradient-to-t from-slate-400 to-slate-300 opacity-60'}`}
             >
               {/* Tooltip */}
@@ -74,7 +76,7 @@ export const ComparisonChart: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 opacity-50 rounded-t-lg overflow-hidden" />
 
               {/* Pulse effect for 99% bar */}
-              {index === 3 && (
+              {index === 3 && !shouldReduceMotion && (
                 <motion.div
                   animate={{ opacity: [0.2, 0.5, 0.2] }}
                   transition={{ duration: 2, repeat: Infinity }}

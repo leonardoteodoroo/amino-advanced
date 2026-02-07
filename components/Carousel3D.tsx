@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useTransform, PanInfo, animate, MotionValue } from 'framer-motion';
+import { motion, useMotionValue, useTransform, PanInfo, animate, MotionValue, useReducedMotion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, CheckCircle2, Quote, MoveRight, MapPin } from 'lucide-react';
 import { Review } from '../types';
 
@@ -180,6 +180,7 @@ export const Carousel3D: React.FC = () => {
     }, []);
 
     const [activeIndex, setActiveIndex] = useState(1);
+    const shouldReduceMotion = useReducedMotion();
     const x = useMotionValue(-gap); // Start at index 1
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -300,6 +301,7 @@ export const Carousel3D: React.FC = () => {
                                 review={review}
                                 x={x}
                                 gap={gap}
+                                shouldReduceMotion={shouldReduceMotion}
                             />
                         ))}
                     </div>
@@ -339,19 +341,20 @@ interface CarouselCardProps {
     review: Review;
     x: MotionValue<number>;
     gap: number;
+    shouldReduceMotion: boolean | null;
 }
 
-const CarouselCard: React.FC<CarouselCardProps> = ({ index, review, x, gap }) => {
+const CarouselCard: React.FC<CarouselCardProps> = ({ index, review, x, gap, shouldReduceMotion }) => {
     // Explicit typing for the transform callback to avoid TS errors
     const position = useTransform(x, (currentX: number) => currentX + index * gap);
 
     // Optimized rotation and scale
-    const rotateY = useTransform(position, [-gap, 0, gap], [25, 0, -25]);
+    const rotateY = useTransform(position, [-gap, 0, gap], shouldReduceMotion ? [0, 0, 0] : [25, 0, -25]);
     // More aggressive scaling on mobile to ensure neighbor cards are visible but non-intrusive
     const scale = useTransform(position, [-gap, 0, gap], [0.85, 1, 0.85]);
     const opacity = useTransform(position, [-gap * 1.5, 0, gap * 1.5], [0.4, 1, 0.4]);
-    const blur = useTransform(position, [-gap, 0, gap], [2, 0, 2]);
-    const z = useTransform(position, (pos) => -Math.abs(pos) * 1.2);
+    const blur = useTransform(position, [-gap, 0, gap], shouldReduceMotion ? [0, 0, 0] : [2, 0, 2]);
+    const z = useTransform(position, (pos) => shouldReduceMotion ? 0 : -Math.abs(pos) * 1.2);
     const translateX = useTransform(position, (pos) => pos * 0.6);
 
     // Performance Optimization: Hide cards that are far off-screen
@@ -367,7 +370,7 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ index, review, x, gap }) =>
                 opacity,
                 z,
                 display,
-                filter: `blur(${blur})`,
+                filter: shouldReduceMotion ? "none" : `blur(${blur}px)`,
                 zIndex: useTransform(position, (pos) => 100 - Math.round(Math.abs(pos))),
             }}
         >

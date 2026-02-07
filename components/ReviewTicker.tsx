@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
     motion,
     useMotionValue,
-    useAnimationFrame
+    useAnimationFrame,
+    useReducedMotion
 } from 'framer-motion';
 import { Star, ShieldCheck } from 'lucide-react';
 
@@ -65,6 +66,7 @@ export const ReviewTicker: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [contentWidth, setContentWidth] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
+    const shouldReduceMotion = useReducedMotion();
 
     // Motion value for the x position
     const x = useMotionValue(0);
@@ -89,8 +91,8 @@ export const ReviewTicker: React.FC = () => {
 
         let moveBy = baseVelocity * (delta / 16); // Normalize based on frame rate
 
-        // If user is interacting, stop auto-movement
-        if (isHovered) {
+        // If user is interacting or prefers reduced motion, stop auto-movement
+        if (isHovered || shouldReduceMotion) {
             moveBy = 0;
         }
 
