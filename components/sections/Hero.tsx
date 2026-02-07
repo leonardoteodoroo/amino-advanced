@@ -1,7 +1,6 @@
 import React from 'react';
 import { AlertTriangle, ArrowRight, ShieldCheck, Activity, TrendingUp, Battery } from 'lucide-react';
 import { LetterStagger, HeroToastCard } from '../UI';
-import { BackgroundLayers } from '../BackgroundLayers';
 
 const HERO_BG = "https://images.unsplash.com/photo-1552674605-469523254d5d?q=80&w=2000&auto=format&fit=crop";
 const HERO_BG_MOBILE = "https://images.unsplash.com/photo-1552674605-469523254d5d?q=80&w=800&auto=format&fit=crop";
@@ -13,20 +12,16 @@ const VIEWPORT_CONFIG = {
     margin: "0px 0px -15% 0px"
 };
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface HeroProps {
     onScrollToOffer: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
+    const shouldReduceMotion = useReducedMotion();
     return (
         <div className="relative">
-            {/* Background Layers - Keeping 'molecular' variant but ensuring it fits Clinical theme */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                <BackgroundLayers variant="molecular" />
-            </div>
-
             <section className="relative pt-28 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 flex flex-col justify-center overflow-hidden">
 
                 {/* Background Image (LCP Candidate) */}
@@ -34,7 +29,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                     <img
                         src={HERO_BG}
                         srcSet={`${HERO_BG_MOBILE} 800w, ${HERO_BG_TABLET} 1200w, ${HERO_BG} 2000w`}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                         alt="Senior Fitness Model running outdoors"
                         className="w-full h-full object-cover opacity-20 md:opacity-30 mix-blend-multiply" // Adjusted opacity/blend for Clinical Theme
                         width="2000"
@@ -42,6 +37,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                         // @ts-ignore - React 19 support
                         fetchPriority="high"
                         loading="eager"
+                        decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-surface-page via-surface-page/90 to-surface-page/40" />
                 </div>
@@ -86,8 +82,12 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                     <div className="order-1 md:order-2 relative h-[400px] md:h-[600px] w-full flex items-center justify-center">
                         {/* Simplified Background for Clinical Theme - Removed excessive blur/pulse if needed, but keeping primarily for visual interest */}
                         <div className="absolute inset-0 bg-blue-100/30 blur-3xl rounded-full scale-75" />
-                        <div className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full border border-brand-blue/10 animate-[spin_60s_linear_infinite]" />
-                        <div className="absolute w-48 h-48 md:w-72 md:h-72 rounded-full border border-brand-navy/10 animate-[spin_40s_linear_infinite_reverse]" />
+                        <div
+                            className={`absolute w-64 h-64 md:w-96 md:h-96 rounded-full border border-brand-blue/10 ${shouldReduceMotion ? '' : 'animate-[spin_60s_linear_infinite]'}`}
+                        />
+                        <div
+                            className={`absolute w-48 h-48 md:w-72 md:h-72 rounded-full border border-brand-navy/10 ${shouldReduceMotion ? '' : 'animate-[spin_40s_linear_infinite_reverse]'}`}
+                        />
 
                         {/* Central Image (Bottle) - LCP Element */}
                         <div className="relative z-20 w-full md:w-[800px] h-[500px] md:h-[800px] flex items-center justify-center">
@@ -106,8 +106,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                                 <motion.img
                                     src="/test_images/advanced_amino_formula_hero_10-advanced_amino_formula-871.webp"
                                     alt="Advanced Amino Formula"
-                                    animate={{ y: [-15, 15, -15] }}
-                                    transition={{
+                                    animate={shouldReduceMotion ? { y: 0 } : { y: [-15, 15, -15] }}
+                                    transition={shouldReduceMotion ? undefined : {
                                         repeat: Infinity,
                                         duration: 5,
                                         ease: "easeInOut"
