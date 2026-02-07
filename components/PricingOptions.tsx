@@ -115,8 +115,18 @@ const PricingCard: React.FC<PricingCardProps> = ({
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => {
-                        // Global DataLayer Push for GTM tracking
+                    onClick={(e) => {
+                        // 1. Google Ads Conversion (Disparo Direto)
+                        if (typeof window.gtag === 'function') {
+                            window.gtag('event', 'conversion', {
+                                'send_to': 'AW-16929546328/GbDSCKvnxfQbENjA0Yg_',
+                                'value': 1.0,
+                                'currency': 'USD',
+                                'transaction_id': ''
+                            });
+                        }
+
+                        // 2. Global DataLayer Push (Backup para GTM)
                         (window as any).dataLayer = (window as any).dataLayer || [];
                         (window as any).dataLayer.push({
                             event: 'add_to_cart',
@@ -145,6 +155,13 @@ const PricingCard: React.FC<PricingCardProps> = ({
     );
 }
 
+// Add typing for gtag to avoid TS errors
+declare global {
+    interface Window {
+        gtag: (command: string, action: string, params?: any) => void;
+    }
+}
+
 export const PricingOptions: React.FC = () => {
     return (
         <section className="py-20 relative z-20">
@@ -168,7 +185,7 @@ export const PricingOptions: React.FC = () => {
                             "Digital Quick-Start Guide",
                             "90-Day Money-Back Guarantee"
                         ]}
-                        link="https://www.digistore24.com/redir/472629/leonardoteodorol/"
+                        link="https://www.advancedbionutritionals.com/DS24/Advanced-Amino/Muscle-Mass-Loss/HD.htm#aff=leonardoteodorol"
                         delay={0.1}
                         imgWidth={300}
                         imgHeight={327}
@@ -189,7 +206,7 @@ export const PricingOptions: React.FC = () => {
                             "Digital Quick-Start Guide",
                             "90-Day Money-Back Guarantee"
                         ]}
-                        link="https://www.digistore24.com/redir/472942/leonardoteodorol/"
+                        link="https://www.advancedbionutritionals.com/DS24/Advanced-Amino/Muscle-Mass-Loss/HD.htm#aff=leonardoteodorol"
                         delay={0.2}
                         imgWidth={300}
                         imgHeight={300}
@@ -210,7 +227,7 @@ export const PricingOptions: React.FC = () => {
                             "Digital Quick-Start Guide",
                             "90-Day Money-Back Guarantee"
                         ]}
-                        link="https://www.digistore24.com/redir/472943/leonardoteodorol/"
+                        link="https://www.advancedbionutritionals.com/DS24/Advanced-Amino/Muscle-Mass-Loss/HD.htm#aff=leonardoteodorol"
                         delay={0.3}
                         imgWidth={300}
                         imgHeight={300}
