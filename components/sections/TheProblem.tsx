@@ -47,7 +47,7 @@ export const TheProblem: React.FC = () => {
                                     className="text-lg md:text-xl text-action-primary mb-6 font-medium leading-relaxed"
                                 />
                                 <div className="bg-surface-highlight border-l-4 border-action-primary p-5 rounded-r-xl mb-6 shadow-sm">
-                                    <p className="text-text-brand font-bold text-lg mb-2">The Leucine Threshold Key</p>
+                                    <h3 className="text-text-brand font-bold text-lg mb-2">The Leucine Threshold Key</h3>
                                     <p className="text-text-secondary text-sm md:text-base leading-relaxed">
                                         To break Anabolic Resistance, your blood needs a surgical strike of <span className="font-bold text-text-brand">3.0g of pure Leucine</span>. Traditional protein requires you to eat massive calories just to reach this threshold—but Advanced Amino provides it instantly.
                                     </p>

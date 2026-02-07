@@ -334,9 +334,9 @@ export const BackgroundHeading: React.FC<{ text: string; className?: string }> =
          15vw = responsive scaling
          18rem = maximum size
       */}
-      <h1 className="text-[clamp(4rem,15vw,18rem)] font-black text-transparent bg-clip-text bg-gradient-to-b from-brand-navy/[0.04] to-transparent leading-none tracking-tighter uppercase font-sans whitespace-nowrap">
+      <div aria-hidden="true" className="text-[clamp(4rem,15vw,18rem)] font-black text-transparent bg-clip-text bg-gradient-to-b from-brand-navy/[0.04] to-transparent leading-none tracking-tighter uppercase font-sans whitespace-nowrap">
         {text}
-      </h1>
+      </div>
     </div>
   );
 };

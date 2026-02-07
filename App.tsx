@@ -183,7 +183,7 @@ const App: React.FC = () => {
                   Without it, the body starts to 'cannibalize' its own muscle tissue to survive—leading to the frailty we often mistake for inevitable aging.
                 </p>
                 <div className="text-base text-text-secondary bg-surface-page/50 p-4 rounded-lg inline-block text-left">
-                  <strong className="text-brand-navy block mb-2 text-center">The Hidden Barrier: Anabolic Resistance</strong>
+                  <h3 className="text-brand-navy block mb-2 text-center font-bold text-base">The Hidden Barrier: Anabolic Resistance</h3>
                   Your body has likely developed a "resistance" to ordinary protein. It's like a locked door that typical whey protein can't open. This formula is designed to be the "master key" that unlocks absorption again.
                 </div>
               </ClinicalCard>
