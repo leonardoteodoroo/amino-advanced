@@ -147,7 +147,16 @@ const PricingCard: React.FC<PricingCardProps> = ({
                     Add To Cart <ArrowRight size={16} />
                 </motion.a>
 
-                <div className="mt-4 flex items-center justify-center gap-2 text-xs text-text-muted">
+                {/* Disclaimer para suavizar a transição para o site "feio" do produtor */}
+                <div className="mt-3 text-[10px] text-center text-text-muted leading-tight px-2">
+                    <span className="flex items-center justify-center gap-1 mb-1">
+                        <Lock size={10} className="text-green-600" />
+                        <span className="font-semibold text-text-secondary">Official Lab Checkout</span>
+                    </span>
+                    You will be redirected to Advanced Bionutritionals® secured page.
+                </div>
+
+                <div className="mt-4 flex items-center justify-center gap-2 text-xs text-text-muted border-t border-border-subtle pt-3 w-full">
                     <ShieldCheck size={12} /> 90-Day Money-Back Guarantee
                 </div>
             </GlassCard>
