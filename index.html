@@ -16,6 +16,20 @@
       wait_for_update: 500
     });
   </script>
+
+  <!-- Captura GCLID/gbraid/wbraid do Google Ads e salva em cookie -->
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var ids = ['gclid', 'gbraid', 'wbraid'];
+      for (var i = 0; i < ids.length; i++) {
+        var val = params.get(ids[i]);
+        if (val) {
+          document.cookie = ids[i] + '=' + encodeURIComponent(val) + '; max-age=' + (90 * 24 * 60 * 60) + '; path=/; SameSite=Lax';
+        }
+      }
+    })();
+  </script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org/",
@@ -59,9 +73,9 @@
     rel="stylesheet">
   <meta name="theme-color" content="#1e3a8a">
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googleadservices.com https://*.google.com.br; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googleadservices.com https://*.google.com.br https://images.unsplash.com; connect-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googleadservices.com https://*.google.com.br; frame-src https://*.googletagmanager.com https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googleadservices.com https://*.google.com.br;">
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googleadservices.com https://*.google.com.br; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googleadservices.com https://*.google.com.br https://images.unsplash.com; connect-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googleadservices.com https://*.google.com.br https://script.google.com https://script.googleusercontent.com; frame-src https://*.googletagmanager.com https://*.google.com https://*.doubleclick.net https://*.googlesyndication.com https://*.googleadservices.com https://*.google.com.br;">
 
-  <script type="module" crossorigin src="/assets/index-B9Ef4aRN.js"></script>
+  <script type="module" crossorigin src="/assets/index-oSgYNs-o.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/vendor-framer-Df6E5229.js">
   <link rel="modulepreload" crossorigin href="/assets/vendor-react-r57bcxCc.js">
   <link rel="stylesheet" crossorigin href="/assets/index-DXAo_kkm.css">
