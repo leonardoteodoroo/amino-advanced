@@ -130,194 +130,185 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        {/* --- Global Background (Scientific/Clinical) --- */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <BackgroundLayers variant="molecular" />
-        </div>
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <BackgroundLayers variant="molecular" />
+      </div>
+      <Header onScrollToOffer={scrollToOffer} />
 
-        <Header onScrollToOffer={scrollToOffer} />
+      <main>
+        <Hero onScrollToOffer={scrollToOffer} />
 
-        <main>
+        {/* --- Intro Text --- */}
+        <section className="relative z-20 bg-surface-page pt-8 pb-4">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT_CONFIG}
+              className="text-fg-brand font-serif text-lg md:text-2xl leading-relaxed font-light px-2"
+            >
+              <span className="text-fg-brand text-3xl mr-2">"</span>
+              At 60, your body stops absorbing protein like it used to. Before we dive into the science, witness how to 'unlock' your strength and reclaim the energy you thought was gone forever.
+              <span className="text-fg-brand text-3xl ml-2">"</span>
+            </motion.div>
+          </div>
+        </section>
 
-          <Hero onScrollToOffer={scrollToOffer} />
+        <Suspense fallback={<div className="h-16" />}>
+          <ReviewTicker />
+        </Suspense>
 
-          {/* --- Intro Text --- */}
-          <section className="relative z-20 bg-surface-page pt-8 pb-4">
-            <div className="max-w-4xl mx-auto px-4 text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={VIEWPORT_CONFIG}
-                className="text-fg-brand font-serif text-lg md:text-2xl leading-relaxed font-light px-2"
-              >
-                <span className="text-fg-brand text-3xl mr-2">"</span>
-                At 60, your body stops absorbing protein like it used to. Before we dive into the science, witness how to 'unlock' your strength and reclaim the energy you thought was gone forever.
-                <span className="text-fg-brand text-3xl ml-2">"</span>
+        <Suspense fallback={<SectionLoader />}>
+          <TheProblem />
+        </Suspense>
+
+        {/* --- Section: Why This Matters (Moved UP for Agitation) --- */}
+        <section className="py-20 relative overflow-hidden bg-surface-section">
+          <div className="absolute inset-0 bg-blue-900/5 rotate-3 scale-110 pointer-events-none" />
+          <div className="max-w-4xl mx-auto px-4 relative z-10">
+            <ClinicalCard className="p-8 md:p-12 text-center" hoverEffect>
+              <h2 className="text-2xl md:text-4xl font-serif font-bold text-text-brand mb-6">Why This Matters</h2>
+              <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6">
+                Proper protein absorption isn't just about gym gains. It's the biological foundation for immune health, cognitive sharpness, and maintaining the metabolic engine that keeps you active.
+              </p>
+              <p className="text-action-primary font-medium text-lg leading-relaxed mb-4">
+                Without it, the body starts to 'cannibalize' its own muscle tissue to survive—leading to the frailty we often mistake for inevitable aging.
+              </p>
+              <div className="text-base text-text-secondary bg-surface-page/50 p-4 rounded-lg inline-block text-left">
+                <h3 className="text-brand-navy block mb-2 text-center font-bold text-base">The Hidden Barrier: Anabolic Resistance</h3>
+                Your body has likely developed a "resistance" to ordinary protein. It's like a locked door that typical whey protein can't open. This formula is designed to be the "master key" that unlocks absorption again.
+              </div>
+            </ClinicalCard>
+          </div>
+
+          {/* CTA: Post-Agitation (Educational → Decision Bridge) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT_CONFIG}
+            transition={{ delay: 0.2 }}
+            className="mt-10 text-center"
+          >
+            <button
+              onClick={scrollToOffer}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-card border-2 border-cta-primary text-fg-brand rounded-full font-semibold text-lg hover:bg-highlight hover:border-cta-accent transition-all shadow-md hover:shadow-lg focus:ring-4 focus:ring-focus-ring"
+            >
+              See Available Options →
+            </button>
+            <p className="text-fg-muted text-sm mt-3">No commitment • Full details</p>
+          </motion.div>
+        </section>
+
+        {/* --- Section: The Expert (Dr. Shallenberger) (Moved UP for Authority) --- */}
+        <Suspense fallback={<SectionLoader />}>
+          <DoctorSection />
+        </Suspense>
+
+        {/* --- Section: Clinical Evidence --- */}
+        <Suspense fallback={<SectionLoader />}>
+          <ClinicalEvidence />
+        </Suspense>
+
+        {/* --- Section: Timeline --- */}
+        <Suspense fallback={<SectionLoader />}>
+          <ScienceTimeline />
+        </Suspense>
+
+        {/* --- Section: Reviews (Carousel) (Moved DOWN to group with Results) --- */}
+        <Suspense fallback={<SectionLoader />}>
+          <section className="relative py-12 md:py-20 overflow-hidden">
+            <BackgroundHeading text="STORIES" className="opacity-[0.04]" />
+            <div className="relative z-10">
+              <Carousel3D />
+            </div>
+          </section>
+        </Suspense>
+
+        {/* --- Section: Results --- */}
+        <section className="py-20 md:py-32 max-w-7xl mx-auto px-4 relative overflow-hidden">
+          <BackgroundHeading text="RESULTS" className="opacity-[0.03] top-1/2" />
+          <div className="relative z-20">
+            <div className="text-center mb-16 relative z-10">
+              <BlurText text="Life After 50 Transformation" className="text-3xl md:text-5xl font-serif font-bold text-text-brand mt-2 mb-4" />
+              <p className="text-text-secondary max-w-2xl mx-auto text-sm md:text-base px-4">Not just about biceps. It's about independence.</p>
+              <p className="text-text-muted text-xs mt-2 italic">*Results may vary from person to person.</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 relative z-10 auto-rows-fr">
+              {/* Result Cards using ClinicalCard now */}
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.1, duration: 0.5 }} className="h-full">
+                <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
+                  <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Developing Muscle at 68</h3>
+                  <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Edmund R. began developing biceps and forearms for the first time in his life after age 60."</p>
+                </ClinicalCard>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.2, duration: 0.5 }} className="h-full">
+                <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
+                  <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Consistent Energy</h3>
+                  <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Brad A. (63) stopped feeling aches at night and regained the energy to train without feeling depleted the next day."</p>
+                </ClinicalCard>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.3, duration: 0.5 }} className="h-full">
+                <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
+                  <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Stamina in My 70s</h3>
+                  <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Patrick V. (Mid 70s) takes five pills before the gym. He says his recuperation after heavy sets is unbelievably quick."</p>
+                </ClinicalCard>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.4, duration: 0.5 }} className="h-full">
+                <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
+                  <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Long-Term Game Changer</h3>
+                  <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Benny Z. has used the formula for years, claiming it keeps his strength and healing capacity far above average for his age."</p>
+                </ClinicalCard>
               </motion.div>
             </div>
-          </section>
-
-          <Suspense fallback={<div className="h-16" />}>
-            <ReviewTicker />
-          </Suspense>
-
-          <Suspense fallback={<SectionLoader />}>
-            <TheProblem />
-          </Suspense>
-
-          {/* --- Section: Why This Matters (Moved UP for Agitation) --- */}
-          <section className="py-20 relative overflow-hidden bg-surface-section">
-            <div className="absolute inset-0 bg-blue-900/5 rotate-3 scale-110 pointer-events-none" />
-            <div className="max-w-4xl mx-auto px-4 relative z-10">
-              <ClinicalCard className="p-8 md:p-12 text-center" hoverEffect>
-                <h2 className="text-2xl md:text-4xl font-serif font-bold text-text-brand mb-6">Why This Matters</h2>
-                <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6">
-                  Proper protein absorption isn't just about gym gains. It's the biological foundation for immune health, cognitive sharpness, and maintaining the metabolic engine that keeps you active.
-                </p>
-                <p className="text-action-primary font-medium text-lg leading-relaxed mb-4">
-                  Without it, the body starts to 'cannibalize' its own muscle tissue to survive—leading to the frailty we often mistake for inevitable aging.
-                </p>
-                <div className="text-base text-text-secondary bg-surface-page/50 p-4 rounded-lg inline-block text-left">
-                  <h3 className="text-brand-navy block mb-2 text-center font-bold text-base">The Hidden Barrier: Anabolic Resistance</h3>
-                  Your body has likely developed a "resistance" to ordinary protein. It's like a locked door that typical whey protein can't open. This formula is designed to be the "master key" that unlocks absorption again.
-                </div>
-              </ClinicalCard>
-            </div>
-
-            {/* CTA: Post-Agitation (Educational → Decision Bridge) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEWPORT_CONFIG}
-              transition={{ delay: 0.2 }}
-              className="mt-10 text-center"
-            >
-              <button
-                onClick={scrollToOffer}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-card border-2 border-cta-primary text-fg-brand rounded-full font-semibold text-lg hover:bg-highlight hover:border-cta-accent transition-all shadow-md hover:shadow-lg focus:ring-4 focus:ring-focus-ring"
-              >
-                See Available Options →
-              </button>
-              <p className="text-fg-muted text-sm mt-3">No commitment • Full details</p>
-            </motion.div>
-          </section>
-
-          {/* --- Section: The Expert (Dr. Shallenberger) (Moved UP for Authority) --- */}
-          <Suspense fallback={<SectionLoader />}>
-            <DoctorSection />
-          </Suspense>
-
-          {/* --- Section: Clinical Evidence --- */}
-          <Suspense fallback={<SectionLoader />}>
-            <ClinicalEvidence />
-          </Suspense>
-
-          {/* --- Section: Timeline --- */}
-          <Suspense fallback={<SectionLoader />}>
-            <ScienceTimeline />
-          </Suspense>
-
-          {/* --- Section: Reviews (Carousel) (Moved DOWN to group with Results) --- */}
-          <Suspense fallback={<SectionLoader />}>
-            <section className="relative py-12 md:py-20 overflow-hidden">
-              <BackgroundHeading text="STORIES" className="opacity-[0.04]" />
-              <div className="relative z-10">
-                <Carousel3D />
-              </div>
-            </section>
-          </Suspense>
-
-          {/* --- Section: Results --- */}
-          <section className="py-20 md:py-32 max-w-7xl mx-auto px-4 relative overflow-hidden">
-            <BackgroundHeading text="RESULTS" className="opacity-[0.03] top-1/2" />
-            <div className="relative z-20">
-              <div className="text-center mb-16 relative z-10">
-                <BlurText text="Life After 50 Transformation" className="text-3xl md:text-5xl font-serif font-bold text-text-brand mt-2 mb-4" />
-                <p className="text-text-secondary max-w-2xl mx-auto text-sm md:text-base px-4">Not just about biceps. It's about independence.</p>
-                <p className="text-text-muted text-xs mt-2 italic">*Results may vary from person to person.</p>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6 relative z-10 auto-rows-fr">
-                {/* Result Cards using ClinicalCard now */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.1, duration: 0.5 }} className="h-full">
-                  <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                    <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Developing Muscle at 68</h3>
-                    <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Edmund R. began developing biceps and forearms for the first time in his life after age 60."</p>
-                  </ClinicalCard>
-                </motion.div>
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.2, duration: 0.5 }} className="h-full">
-                  <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                    <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Consistent Energy</h3>
-                    <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Brad A. (63) stopped feeling aches at night and regained the energy to train without feeling depleted the next day."</p>
-                  </ClinicalCard>
-                </motion.div>
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.3, duration: 0.5 }} className="h-full">
-                  <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                    <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Stamina in My 70s</h3>
-                    <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Patrick V. (Mid 70s) takes five pills before the gym. He says his recuperation after heavy sets is unbelievably quick."</p>
-                  </ClinicalCard>
-                </motion.div>
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_CONFIG} transition={{ delay: 0.4, duration: 0.5 }} className="h-full">
-                  <ClinicalCard className="p-6 md:p-8 h-full flex flex-col justify-center" hoverEffect>
-                    <h3 className="text-xl md:text-2xl font-bold text-text-brand mb-3">Long-Term Game Changer</h3>
-                    <p className="text-text-secondary italic leading-relaxed text-sm md:text-base">"Benny Z. has used the formula for years, claiming it keeps his strength and healing capacity far above average for his age."</p>
-                  </ClinicalCard>
-                </motion.div>
-              </div>
-            </div>
-
-            {/* CTA: Post-Results (Social Proof → Conversion) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={VIEWPORT_CONFIG}
-              transition={{ delay: 0.3 }}
-              className="mt-16 text-center relative z-20"
-            >
-              <button
-                onClick={scrollToOffer}
-                className="inline-flex items-center gap-3 px-12 py-5 bg-cta-accent hover:bg-cta-accent-hover text-white rounded-full font-bold text-xl shadow-2xl hover:shadow-orange-500/40 transition-all focus:ring-4 focus:ring-focus-ring transform hover:scale-105"
-              >
-                Check Price & Availability →
-              </button>
-              <p className="text-fg-muted text-sm mt-4 flex items-center justify-center gap-2">
-                <span className="text-feedback-success">✓</span> 90-Day Guarantee • Risk-free
-              </p>
-            </motion.div>
-          </section>
-
-          {/* --- Section: FAQ --- */}
-          <Suspense fallback={<SectionLoader />}>
-            <FAQ />
-          </Suspense>
-
-          {/* --- Offer Section --- */}
-          <Suspense fallback={<SectionLoader />}>
-            <section id="offer-section" className="relative overflow-hidden bg-surface-page pb-20">
-              <PricingOptions />
-            </section>
-          </Suspense>
-        </main>
-
-        {/* --- Footer --- */}
-        <footer className="py-12 border-t border-border-subtle bg-surface-page text-text-secondary text-xs text-center px-4 relative">
-          <div className="max-w-4xl mx-auto space-y-4 relative z-10">
-            <p className="text-text-muted">
-              FDA Disclaimer: These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Manufactured in an FDA-Registered Facility & GMP Certified. Results may vary.
-            </p>
-            <div className="flex justify-center gap-6 text-action-primary font-medium">
-              <button onClick={() => setActiveLegalPage('privacy')} className="hover:underline hover:text-brand-navy transition-colors">Privacy Policy</button>
-              <span>|</span>
-              <button onClick={() => setActiveLegalPage('terms')} className="hover:underline hover:text-brand-navy transition-colors">Terms of Service</button>
-            </div>
-            <p>&copy; {new Date().getFullYear()} Advanced Bionutritionals. All Rights Reserved.</p>
           </div>
-        </footer>
-      </motion.div>
+
+          {/* CTA: Post-Results (Social Proof → Conversion) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT_CONFIG}
+            transition={{ delay: 0.3 }}
+            className="mt-16 text-center relative z-20"
+          >
+            <button
+              onClick={scrollToOffer}
+              className="inline-flex items-center gap-3 px-12 py-5 bg-cta-accent hover:bg-cta-accent-hover text-white rounded-full font-bold text-xl shadow-2xl hover:shadow-orange-500/40 transition-all focus:ring-4 focus:ring-focus-ring transform hover:scale-105"
+            >
+              Check Price & Availability →
+            </button>
+            <p className="text-fg-muted text-sm mt-4 flex items-center justify-center gap-2">
+              <span className="text-feedback-success">✓</span> 90-Day Guarantee • Risk-free
+            </p>
+          </motion.div>
+        </section>
+
+        {/* --- Section: FAQ --- */}
+        <Suspense fallback={<SectionLoader />}>
+          <FAQ />
+        </Suspense>
+
+        {/* --- Offer Section --- */}
+        <Suspense fallback={<SectionLoader />}>
+          <section id="offer-section" className="relative overflow-hidden bg-surface-page pb-20">
+            <PricingOptions />
+          </section>
+        </Suspense>
+      </main>
+
+      {/* --- Footer --- */}
+      <footer className="py-12 border-t border-border-subtle bg-surface-page text-text-secondary text-xs text-center px-4 relative">
+        <div className="max-w-4xl mx-auto space-y-4 relative z-10">
+          <p className="text-text-muted">
+            FDA Disclaimer: These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Manufactured in an FDA-Registered Facility & GMP Certified. Results may vary.
+          </p>
+          <div className="flex justify-center gap-6 text-action-primary font-medium">
+            <button onClick={() => setActiveLegalPage('privacy')} className="hover:underline hover:text-brand-navy transition-colors">Privacy Policy</button>
+            <span>|</span>
+            <button onClick={() => setActiveLegalPage('terms')} className="hover:underline hover:text-brand-navy transition-colors">Terms of Service</button>
+          </div>
+          <p>&copy; {new Date().getFullYear()} Advanced Bionutritionals. All Rights Reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };
