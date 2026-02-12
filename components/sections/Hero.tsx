@@ -6,8 +6,8 @@ import { BackgroundLayers } from '../BackgroundLayers';
 
 const VIEWPORT_CONFIG = {
     once: true,
-    amount: 0.1,
-    margin: "0px 0px -15% 0px"
+    amount: 0,
+    margin: "0px"
 };
 
 import { motion, useReducedMotion } from 'framer-motion';

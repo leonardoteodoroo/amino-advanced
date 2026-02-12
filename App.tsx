@@ -38,8 +38,8 @@ const SectionLoader = () => (
 
 const VIEWPORT_CONFIG = {
   once: true,
-  amount: 0.3,
-  margin: "0px 0px -15% 0px"
+  amount: 0, // Trigger as soon as ANY pixel is visible
+  margin: "0px" // No negative margin requiring deep scroll
 };
 
 const App: React.FC = () => {
@@ -296,7 +296,7 @@ const App: React.FC = () => {
       </main>
 
       {/* --- Footer --- */}
-      <footer className="py-12 border-t border-border-subtle bg-surface-page text-text-secondary text-xs text-center px-4 relative">
+      <footer className="py-12 border-t border-border-subtle bg-surface-page text-text-secondary text-xs text-center px-4 relative min-h-[200px]">
         <div className="max-w-4xl mx-auto space-y-4 relative z-10">
           <p className="text-text-muted">
             FDA Disclaimer: These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Manufactured in an FDA-Registered Facility & GMP Certified. Results may vary.
