@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, ShieldCheck, ArrowRight, Star, Leaf, Award, Factory } from 'lucide-react';
+import { Check, ShieldCheck, ArrowRight, Star, Leaf, Award, Factory, Lock } from 'lucide-react';
 import { GlassCard } from './UI';
 
 interface PricingCardProps {
