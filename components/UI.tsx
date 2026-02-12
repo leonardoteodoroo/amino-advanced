@@ -5,7 +5,7 @@ import { X, CheckCircle, ShoppingBag, Code2 } from 'lucide-react';
 // --- Shared Viewport Config ---
 const VIEWPORT_CONFIG = {
   once: true,
-  amount: 0.3,
+  amount: 0.1,
   margin: "0px 0px -15% 0px" // Triggers when element is well inside the viewport
 };
 
@@ -63,7 +63,7 @@ export const HeroToastCard: React.FC<HeroToastCardProps> = ({
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.3, margin: "0px 0px -10% 0px" }}
+      viewport={{ once: true, amount: 0.1, margin: "0px 0px -10% 0px" }}
       transition={{
         duration: 0.4,
         delay: shouldReduceMotion ? 0 : delay,
@@ -134,7 +134,7 @@ export const LetterStagger: React.FC<LetterStaggerProps> = ({
   className = '',
   delay = 0,
   highlightWords = [],
-  viewport = { once: true, amount: 0.5 },
+  viewport = { once: true, amount: 0.1 },
   trigger = "whileInView"
 }) => {
   const shouldReduceMotion = useReducedMotion();

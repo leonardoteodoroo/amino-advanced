@@ -6,7 +6,7 @@ import { BackgroundLayers } from '../BackgroundLayers';
 
 const VIEWPORT_CONFIG = {
     once: true,
-    amount: 0.3,
+    amount: 0.1,
     margin: "0px 0px -15% 0px"
 };
 
@@ -37,6 +37,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
                             text={`Maybe it's not "Old Age". It's a biological lock called Anabolic Resistance.`}
                             className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-text-brand mb-6 leading-[1.1]"
                             highlightWords={["Anabolic", "Resistance."]}
+                            trigger="animate"
                         />
 
                         {/* CSS-animated paragraph for reduced main thread work */}
