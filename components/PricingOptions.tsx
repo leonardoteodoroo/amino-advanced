@@ -1,7 +1,101 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Check, ShieldCheck, ArrowRight, Star, Leaf, Award, Factory, Lock } from 'lucide-react';
 import { GlassCard } from './UI';
+
+// ============================================================
+// CONFIGURAÇÃO: Cole aqui a URL do seu Google Apps Script
+// Planilha → Extensões → Apps Script → Implantar → App da Web
+// ============================================================
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbznu2LV6-yVuU0URp-BrRhp5lNMrCrSak0bBuD6nUP0uIxe1DU5UjfiRBTHJAYICXd2/exec';
+
+// Helper: lê cookie por nome
+function getCookie(name: string): string {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? decodeURIComponent(match[2]) : '';
+}
+
+// Salva cookie com 90 dias de validade
+function setCookie(name: string, value: string) {
+    document.cookie = `${name}=${encodeURIComponent(value)}; max-age=${90 * 24 * 60 * 60}; path=/; SameSite=Lax`;
+}
+
+// ============================================================
+// CAPTURA GCLID / GBRAID / WBRAID
+// Fontes: 1) URL query string  2) Cookies do gtag (_gcl_aw)
+// Roda no primeiro acesso e salva em cookie próprio por 90 dias
+// ============================================================
+function captureClickIds() {
+    const params = new URLSearchParams(window.location.search);
+
+    // 1. Captura da URL (mais confiável)
+    const gclidUrl = params.get('gclid');
+    const gbraidUrl = params.get('gbraid');
+    const wbraidUrl = params.get('wbraid');
+
+    if (gclidUrl) setCookie('gclid', gclidUrl);
+    if (gbraidUrl) setCookie('gbraid', gbraidUrl);
+    if (wbraidUrl) setCookie('wbraid', wbraidUrl);
+
+    // 2. Fallback: lê do cookie _gcl_aw do gtag (formato: GCL.timestamp.gclid)
+    if (!gclidUrl && !getCookie('gclid')) {
+        const gclAw = getCookie('_gcl_aw');
+        if (gclAw) {
+            const parts = gclAw.split('.');
+            if (parts.length >= 3) {
+                setCookie('gclid', parts.slice(2).join('.'));
+            }
+        }
+    }
+}
+
+// Gera ou recupera um ID único do visitante (persiste por 90 dias)
+function getVisitorId(): string {
+    let vid = getCookie('_vid');
+    if (!vid) {
+        vid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+            const r = (Math.random() * 16) | 0;
+            const v = c === 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
+        setCookie('_vid', vid);
+    }
+    return vid;
+}
+
+// Extrai valor numérico do preço ("$107.85" → "107.85")
+function extractPrice(price: string): string {
+    return price.replace(/[^0-9.]/g, '');
+}
+
+// Envia dados do clique para o Google Sheets (fire-and-forget)
+function sendClickToSheets(productTitle: string, price: string, link: string) {
+    if (!WEBHOOK_URL) return;
+
+    const payload = {
+        gclid: getCookie('gclid') || '',
+        gbraid: getCookie('gbraid') || '',
+        wbraid: getCookie('wbraid') || '',
+        visitor_id: getVisitorId(),
+        product: productTitle,
+        price: price,
+        currency: 'USD',
+        timestamp: new Date().toISOString(),
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        language: navigator.language,
+        screen: `${screen.width}x${screen.height}`,
+        user_agent: navigator.userAgent,
+    };
+
+    fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload),
+        keepalive: true,
+    }).catch(() => { });
+}
+
 
 interface PricingCardProps {
     title: string;
@@ -116,24 +210,37 @@ const PricingCard: React.FC<PricingCardProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => {
-                        // 1. Google Ads Conversion (Disparo Direto)
+                        // Proteção contra duplo clique
+                        const btn = e.currentTarget as HTMLElement;
+                        if (btn.dataset.clicked === 'true') return;
+                        btn.dataset.clicked = 'true';
+                        setTimeout(() => { btn.dataset.clicked = ''; }, 3000);
+
+                        const numericPrice = extractPrice(price);
+                        const eventId = `${getVisitorId()}_${Date.now()}`;
+
+                        // 1. Google Ads Conversion (valor real do produto)
                         if (typeof window.gtag === 'function') {
                             window.gtag('event', 'conversion', {
                                 'send_to': 'AW-16929546328/GbDSCKvnxfQbENjA0Yg_',
-                                'value': 1.0,
+                                'value': parseFloat(numericPrice) || 1.0,
                                 'currency': 'USD',
-                                'transaction_id': ''
+                                'transaction_id': eventId
                             });
                         }
 
-                        // 2. Global DataLayer Push (Backup para GTM)
+                        // 2. DataLayer Push (Backup para GTM)
                         (window as any).dataLayer = (window as any).dataLayer || [];
                         (window as any).dataLayer.push({
                             event: 'add_to_cart',
                             product_name: title,
-                            price: price,
-                            currency: 'USD'
+                            price: numericPrice,
+                            currency: 'USD',
+                            event_id: eventId
                         });
+
+                        // 3. Envia dados + GCLID para o Google Sheets
+                        sendClickToSheets(title, price, link);
                     }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -172,6 +279,11 @@ declare global {
 }
 
 export const PricingOptions: React.FC = () => {
+    // Captura GCLID/GBRAID/WBRAID da URL no primeiro acesso
+    useEffect(() => {
+        captureClickIds();
+    }, []);
+
     return (
         <section className="py-20 relative z-20">
             <div className="max-w-6xl mx-auto px-4">
