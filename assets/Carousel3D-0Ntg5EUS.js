@@ -1,4 +1,4 @@
-import{a as m,u as q,b as C,j as e,m as I,c as r,d as M}from"./vendor-framer-Df6E5229.js";import{c as h}from"./index-Dbf5f_ex.js";import{Q as S}from"./quote-DDJNRluF.js";import{S as _}from"./star-C-spmuCz.js";import"./vendor-react-r57bcxCc.js";/**
+import{a as m,u as q,b as C,j as e,m as I,c as r,d as M}from"./vendor-framer-Df6E5229.js";import{c as h}from"./index-DMqYfvuH.js";import{Q as S}from"./quote-Vv4LpltG.js";import{S as _}from"./star-A1zJ87tW.js";import"./vendor-react-r57bcxCc.js";/**
  * @license lucide-react v0.563.0 - ISC
  *
  * This source code is licensed under the ISC license.
