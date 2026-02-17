@@ -304,7 +304,7 @@ export const PricingOptions: React.FC = () => {
                         title="Starter Option"
                         perBottle="$39.95"
                         price="$39.95"
-                        commissionValue={12.00} // $15 base * 80% chance
+                        commissionValue={4.00} // Ultra-Conservador: ~1/3 do valor esperado ($12 -> $4)
                         image="/images/product/1bottle.webp"
                         features={[
                             "1 Month Supply",
@@ -323,7 +323,7 @@ export const PricingOptions: React.FC = () => {
                         perBottle="$35.95"
                         price="$107.85"
                         savings="Save $12.00"
-                        commissionValue={36.00} // $45 base * 80% chance
+                        commissionValue={12.00} // Ultra-Conservador: ~1/3 do valor esperado ($36 -> $12)
                         isPopular
                         image="/images/product/3bottle.webp"
                         features={[
@@ -345,7 +345,7 @@ export const PricingOptions: React.FC = () => {
                         perBottle="$33.25"
                         price="$199.50"
                         savings="Save $40.20"
-                        commissionValue={65.00} // ~$85 base * 80% chance
+                        commissionValue={20.00} // Ultra-Conservador: ~1/3 do valor esperado ($65 -> $20)
                         isBestValue
                         image="/images/product/6bottle.webp"
                         features={[
