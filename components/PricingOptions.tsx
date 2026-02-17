@@ -110,6 +110,7 @@ interface PricingCardProps {
     delay?: number;
     imgWidth?: number;
     imgHeight?: number;
+    commissionValue: number; // Valor da comissão estimada para o Google Ads
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
@@ -124,7 +125,8 @@ const PricingCard: React.FC<PricingCardProps> = ({
     isBestValue,
     delay = 0,
     imgWidth,
-    imgHeight
+    imgHeight,
+    commissionValue
 }) => {
     return (
         <motion.div
@@ -216,14 +218,14 @@ const PricingCard: React.FC<PricingCardProps> = ({
                         btn.dataset.clicked = 'true';
                         setTimeout(() => { btn.dataset.clicked = ''; }, 3000);
 
-                        const numericPrice = extractPrice(price);
+                        // Usa o valor da COMISSÃO (Estimada) em vez do preço do produto
                         const eventId = `${getVisitorId()}_${Date.now()}`;
 
-                        // 1. Google Ads Conversion (valor real do produto)
+                        // 1. Google Ads Conversion (Envia o valor da comissão esperada)
                         if (typeof window.gtag === 'function') {
                             window.gtag('event', 'conversion', {
                                 'send_to': 'AW-16929546328/GbDSCKvnxfQbENjA0Yg_',
-                                'value': parseFloat(numericPrice) || 1.0,
+                                'value': commissionValue, // Valor estratégico (Comissão * Probabilidade)
                                 'currency': 'USD',
                                 'transaction_id': eventId
                             });
@@ -234,12 +236,14 @@ const PricingCard: React.FC<PricingCardProps> = ({
                         (window as any).dataLayer.push({
                             event: 'add_to_cart',
                             product_name: title,
-                            price: numericPrice,
+                            value: commissionValue, // Envia o valor estratégico também
                             currency: 'USD',
+                            price_full: extractPrice(price), // Mantém o preço cheio apenas para registro, se necessário
                             event_id: eventId
                         });
 
                         // 3. Envia dados + GCLID para o Google Sheets
+                        // Para o Sheets mandamos o preço original para saber qual pacote foi
                         sendClickToSheets(title, price, link);
                     }}
                     whileHover={{ scale: 1.02 }}
@@ -300,6 +304,7 @@ export const PricingOptions: React.FC = () => {
                         title="Starter Option"
                         perBottle="$39.95"
                         price="$39.95"
+                        commissionValue={12.00} // $15 base * 80% chance
                         image="/images/product/1bottle.webp"
                         features={[
                             "1 Month Supply",
@@ -318,6 +323,7 @@ export const PricingOptions: React.FC = () => {
                         perBottle="$35.95"
                         price="$107.85"
                         savings="Save $12.00"
+                        commissionValue={36.00} // $45 base * 80% chance
                         isPopular
                         image="/images/product/3bottle.webp"
                         features={[
@@ -339,6 +345,7 @@ export const PricingOptions: React.FC = () => {
                         perBottle="$33.25"
                         price="$199.50"
                         savings="Save $40.20"
+                        commissionValue={65.00} // ~$85 base * 80% chance
                         isBestValue
                         image="/images/product/6bottle.webp"
                         features={[
