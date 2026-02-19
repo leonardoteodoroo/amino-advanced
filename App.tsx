@@ -43,7 +43,7 @@ const VIEWPORT_CONFIG = {
 };
 
 const App: React.FC = () => {
-  const [activeLegalPage, setActiveLegalPage] = useState<'privacy' | 'terms' | null>(null);
+  const [activeLegalPage, setActiveLegalPage] = useState<'privacy' | 'terms' | 'references' | null>(null);
 
   const scrollToOffer = () => {
     const el = document.getElementById('offer-section');
@@ -77,6 +77,76 @@ const App: React.FC = () => {
     setActiveLegalPage(null);
   };
 
+  const renderLegalContent = () => {
+    switch (activeLegalPage) {
+      case 'privacy':
+        return (
+          <>
+            <p><strong>Last Updated: January 2025</strong></p>
+            <p>Your privacy is critically important to us. Included below are our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
+            <h3>1. Information Collection</h3>
+            <p>We collect several different types of information for various purposes to provide and improve our Service to you, including Usage Data and Cookies.</p>
+            <h3>2. Use of Data</h3>
+            <p>We use the collected data for various purposes: to provide customer care, to detect, prevent and address technical issues, and to monitor the usage of the Service.</p>
+          </>
+        );
+      case 'terms':
+        return (
+          <>
+            <p><strong>Last Updated: January 2025</strong></p>
+            <p>Please read these Terms of Use carefully before using our website.</p>
+            <h3>1. Acceptance of Terms</h3>
+            <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
+            <h3>2. Purchases</h3>
+            <p>If you wish to purchase any product or service made available through the Service, you may be asked to supply certain information relevant to your Purchase.</p>
+          </>
+        );
+      case 'references':
+        return (
+          <>
+            <p><strong>Scientific References</strong></p>
+            <ol className="list-decimal pl-5 space-y-4">
+              <li>
+                <p><strong>Critical variables regulating age-related anabolic responses to protein nutrition in skeletal muscle</strong> (Deane et al., 2024) – PMC<br />
+                  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11333332/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">https://pmc.ncbi.nlm.nih.gov/articles/PMC11333332/</a></p>
+              </li>
+              <li>
+                <p><strong>Practical applications of whey protein in supporting skeletal muscle maintenance, recovery, and reconditioning</strong> (Arentson-Lantz et al., 2021) – PMC<br />
+                  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8075117/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">https://pmc.ncbi.nlm.nih.gov/articles/PMC8075117/</a></p>
+              </li>
+              <li>
+                <p><strong>Evidence-based Recommendations for Optimal Dietary Protein Intake in Older People: A Position Paper From the PROT-AGE Study Group</strong> (Bauer et al., 2013) – JAMDA (full text)<br />
+                  <a href="https://www.jamda.com/article/S1525-8610(13)00326-5/fulltext" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">https://www.jamda.com/article/S1525-8610(13)00326-5/fulltext</a></p>
+              </li>
+              <li>
+                <p><strong>Evidence-based Recommendations for Optimal Dietary Protein Intake in Older People: A Position Paper From the PROT-AGE Study Group</strong> (Bauer et al., 2013) – PubMed (abstract)<br />
+                  <a href="https://pubmed.ncbi.nlm.nih.gov/23867520/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/23867520/</a></p>
+              </li>
+              <li>
+                <p><strong>Protein Requirements and Recommendations for Older People: A Review</strong> (Nowson & O’Connell, 2015) – PMC<br />
+                  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4555150/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">https://pmc.ncbi.nlm.nih.gov/articles/PMC4555150/</a></p>
+              </li>
+              <li>
+                <p><strong>Muscle Protein Anabolic Resistance to Essential Amino Acids in Healthy Older Adults</strong> (Moro et al., 2018) – PMC<br />
+                  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6251608/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">https://pmc.ncbi.nlm.nih.gov/articles/PMC6251608/</a></p>
+              </li>
+            </ol>
+          </>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const getModalTitle = () => {
+    switch (activeLegalPage) {
+      case 'privacy': return "Privacy Policy";
+      case 'terms': return "Terms of Use";
+      case 'references': return "References";
+      default: return "";
+    }
+  };
+
   return (
     <div className="min-h-screen font-sans selection:bg-blue-200 selection:text-blue-900 bg-surface-page text-text-primary overflow-x-hidden relative w-full">
 
@@ -103,26 +173,8 @@ const App: React.FC = () => {
               </button>
 
               <LegalPage
-                title={activeLegalPage === 'privacy' ? "Privacy Policy" : "Terms of Use"}
-                content={activeLegalPage === 'privacy' ? (
-                  <>
-                    <p><strong>Last Updated: January 2025</strong></p>
-                    <p>Your privacy is critically important to us. Included below are our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
-                    <h3>1. Information Collection</h3>
-                    <p>We collect several different types of information for various purposes to provide and improve our Service to you, including Usage Data and Cookies.</p>
-                    <h3>2. Use of Data</h3>
-                    <p>We use the collected data for various purposes: to provide customer care, to detect, prevent and address technical issues, and to monitor the usage of the Service.</p>
-                  </>
-                ) : (
-                  <>
-                    <p><strong>Last Updated: January 2025</strong></p>
-                    <p>Please read these Terms of Use carefully before using our website.</p>
-                    <h3>1. Acceptance of Terms</h3>
-                    <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
-                    <h3>2. Purchases</h3>
-                    <p>If you wish to purchase any product or service made available through the Service, you may be asked to supply certain information relevant to your Purchase.</p>
-                  </>
-                )}
+                title={getModalTitle()}
+                content={renderLegalContent()}
                 onBack={closeModal}
               />
             </div>
@@ -139,7 +191,7 @@ const App: React.FC = () => {
         <Hero onScrollToOffer={scrollToOffer} />
 
         {/* --- Intro Text --- */}
-        <section className="relative z-20 bg-surface-page pt-8 pb-4">
+        <section className="relative z-20 bg-surface-page py-8">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -298,13 +350,24 @@ const App: React.FC = () => {
       {/* --- Footer --- */}
       <footer className="py-12 border-t border-border-subtle bg-surface-page text-text-secondary text-xs text-center px-4 relative min-h-[200px]">
         <div className="max-w-4xl mx-auto space-y-4 relative z-10">
-          <p className="text-text-muted">
+          <div className="space-y-2 mb-6 max-w-2xl mx-auto">
+            <p className="text-text-muted italic text-[11px] leading-relaxed">
+              Independent affiliate of Advanced Bionutritionals. Content for educational purposes only. Results vary. Commissions earned on qualified purchases.
+            </p>
+            <p className="text-text-muted italic text-[11px] leading-relaxed">
+              * '300%' refers to transient increase in muscle protein synthesis after a protein-rich meal.
+            </p>
+          </div>
+
+          <p className="text-text-muted text-[11px] leading-relaxed max-w-3xl mx-auto">
             FDA Disclaimer: These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Manufactured in an FDA-Registered Facility & GMP Certified. Results may vary.
           </p>
-          <div className="flex justify-center gap-6 text-action-primary font-medium">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-action-primary font-medium">
             <button onClick={() => setActiveLegalPage('privacy')} className="hover:underline hover:text-brand-navy transition-colors">Privacy Policy</button>
-            <span>|</span>
+            <span className="hidden md:inline">|</span>
             <button onClick={() => setActiveLegalPage('terms')} className="hover:underline hover:text-brand-navy transition-colors">Terms of Service</button>
+            <span className="hidden md:inline">|</span>
+            <button onClick={() => setActiveLegalPage('references')} className="hover:underline hover:text-brand-navy transition-colors">References</button>
           </div>
           <p>&copy; {new Date().getFullYear()} Advanced Bionutritionals. All Rights Reserved.</p>
         </div>

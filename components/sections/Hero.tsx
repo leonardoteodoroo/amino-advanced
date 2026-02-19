@@ -42,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
 
                         {/* CSS-animated paragraph for reduced main thread work */}
                         <p className="text-lg md:text-xl text-fg-primary leading-relaxed mb-8 max-w-xl font-medium css-fade-up css-delay-300">
-                            New research reveals why traditional protein fails seniors—and the exact amino ratio clinical studies show can <span className="font-bold text-text-brand">restore muscle growth potential by 300%.</span>
+                            New research reveals why traditional protein fails seniors—and the exact amino ratio clinical studies show can <span className="font-bold text-text-brand">restore muscle growth potential by 300%*.</span>
                         </p>
 
                         {/* CSS-animated CTA for reduced main thread work */}

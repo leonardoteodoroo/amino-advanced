@@ -5,10 +5,13 @@ export const ComparisonChart: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
   const data = [
-    { label: 'Whey/Soy', subLabel: '& Nuts', value: 17, color: 'bg-slate-300', info: '83% Nitrogen Waste (Waste products like Ammonia strain the kidneys).' },
-    { label: 'Meat/Fish', subLabel: '& Poultry', value: 32, color: 'bg-slate-400', info: '68% Waste. Requires complex digestion before absorption.' },
-    { label: 'Whole Eggs', subLabel: '', value: 48, color: 'bg-slate-500', info: 'Best whole food source, but still releases 52% as waste.' },
-    { label: 'Advanced Amino', subLabel: 'Formula', value: 99, color: 'bg-[#f97316]', info: '99% Perfect Utilization. Virtually ZERO metabolic waste.' },
+    // User requested "fake volume" for BCAA to make it visible (1% is too small), 
+    // but clearly labeled as 1%.
+    { label: 'BCAAs', subLabel: '', value: 3, displayValue: '1', color: 'bg-red-300', info: 'BCAAs convert only 1% into actual protein — 99% is wasted.' },
+    { label: 'Whey/Soy', subLabel: '& Nuts', value: 17, displayValue: '17', color: 'bg-slate-300', info: '83% Nitrogen Waste (Waste products like Ammonia strain the kidneys).' },
+    { label: 'Meat/Fish', subLabel: '& Poultry', value: 32, displayValue: '32', color: 'bg-slate-400', info: '68% Waste. Requires complex digestion before absorption.' },
+    { label: 'Whole Eggs', subLabel: '', value: 48, displayValue: '48', color: 'bg-slate-500', info: 'Best whole food source, but still releases 52% as waste.' },
+    { label: 'Advanced Amino', subLabel: 'Formula', value: 99, displayValue: '99', color: 'bg-[#f97316]', info: '99% Perfect Utilization. Virtually ZERO metabolic waste.' },
   ];
 
   return (
@@ -42,32 +45,38 @@ export const ComparisonChart: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.5, y: 10 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.6 + (index * 0.1), type: "spring" }}
-                className={`text-sm md:text-xl font-black whitespace-nowrap ${index === 3 ? 'text-orange-600 scale-110 drop-shadow-sm' : 'text-text-muted'}`}
+                className={`text-sm md:text-xl font-black whitespace-nowrap ${index === 4 ? 'text-orange-600 scale-110 drop-shadow-sm' : index === 0 ? 'text-red-500' : 'text-text-muted'}`}
               >
-                {item.value}%
+                {item.displayValue}%
               </motion.div>
             </div>
 
+            {/* Bar with Tooltip */}
             {/* Bar with Tooltip */}
             <motion.div
               initial={{ height: "1%" }}
               whileInView={{ height: `${item.value}%` }}
               viewport={{ once: true }}
               transition={{ duration: shouldReduceMotion ? 0.1 : 1.2, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className={`w-full max-w-[40px] md:max-w-[60px] rounded-t-lg relative flex-shrink-0 origin-bottom overflow-visible ${index === 3 ? 'bg-gradient-to-t from-orange-600 to-orange-400 shadow-xl shadow-orange-500/20' : 'bg-gradient-to-t from-slate-400 to-slate-300 opacity-60'}`}
+              className={`w-full max-w-[40px] md:max-w-[60px] rounded-t-lg relative flex-shrink-0 origin-bottom overflow-visible 
+                ${index === 4
+                  ? 'bg-gradient-to-t from-orange-600 to-orange-400 shadow-xl shadow-orange-500/20'
+                  : index === 0
+                    ? 'bg-gradient-to-t from-red-400 to-red-300 opacity-90'
+                    : 'bg-gradient-to-t from-slate-400 to-slate-300 opacity-60'}`}
             >
               {/* Tooltip */}
               {/* Dynamic Tooltip Alignment */}
               <div className={`absolute -top-2 mb-3 w-40 opacity-0 group-hover:opacity-100 transition-all duration-300 z-[100] pointer-events-none 
                     ${index === 0 ? 'left-0 translate-x-0 origin-bottom-left' :
-                  index === 3 ? 'right-0 translate-x-0 origin-bottom-right' :
+                  index === 4 ? 'right-0 translate-x-0 origin-bottom-right' :
                     'left-1/2 -translate-x-1/2'}`}>
                 <div className="bg-brand-navy p-2 rounded-lg text-[10px] text-white leading-tight shadow-xl border border-white/10 text-center relative">
                   {item.info}
                   {/* Arrow adjustment based on position */}
                   <div className={`absolute bottom-0 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-brand-navy
                         ${index === 0 ? 'left-4' :
-                      index === 3 ? 'right-4' :
+                      index === 4 ? 'right-4' :
                         'left-1/2 -translate-x-1/2 translate-y-full'}`}></div>
                 </div>
               </div>
@@ -76,7 +85,7 @@ export const ComparisonChart: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 opacity-50 rounded-t-lg overflow-hidden" />
 
               {/* Pulse effect for 99% bar */}
-              {index === 3 && (
+              {index === 4 && (
                 <motion.div
                   animate={shouldReduceMotion ? { opacity: 0.35 } : { opacity: [0.2, 0.5, 0.2] }}
                   transition={{ duration: shouldReduceMotion ? 0 : 2, repeat: shouldReduceMotion ? 0 : Infinity }}
@@ -87,7 +96,7 @@ export const ComparisonChart: React.FC = () => {
 
             {/* X-Axis Label */}
             <div className="mt-3 min-h-[40px] flex flex-col items-center justify-start text-center">
-              <span className={`text-[10px] md:text-xs font-bold leading-tight block ${index === 3 ? 'text-brand-navy' : 'text-text-secondary'}`}>
+              <span className={`text-[10px] md:text-xs font-bold leading-tight block ${index === 4 ? 'text-brand-navy' : index === 0 ? 'text-red-500' : 'text-text-secondary'}`}>
                 {item.label}
               </span>
               {item.subLabel && (
