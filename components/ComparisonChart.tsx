@@ -84,12 +84,12 @@ export const ComparisonChart: React.FC = () => {
               {/* Glossy Effect on Bar */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 opacity-50 rounded-t-lg overflow-hidden" />
 
-              {/* Pulse effect for 99% bar */}
+              {/* Pulse effect for 99% bar - Optimized: Removed blur, simplified opacity transition */}
               {index === 4 && (
                 <motion.div
-                  animate={shouldReduceMotion ? { opacity: 0.35 } : { opacity: [0.2, 0.5, 0.2] }}
-                  transition={{ duration: shouldReduceMotion ? 0 : 2, repeat: shouldReduceMotion ? 0 : Infinity }}
-                  className="absolute inset-x-0 -top-1 h-3 bg-orange-400 blur-md rounded-full pointer-events-none"
+                  animate={shouldReduceMotion ? { opacity: 0.3 } : { opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: shouldReduceMotion ? 0 : 3, repeat: shouldReduceMotion ? 0 : Infinity, ease: "linear" }}
+                  className="absolute inset-x-0 -top-1 h-3 bg-orange-300/50 rounded-full pointer-events-none"
                 />
               )}
             </motion.div>
@@ -109,7 +109,7 @@ export const ComparisonChart: React.FC = () => {
         ))}
       </div>
 
-      <div className="mt-8 md:mt-12 p-3 bg-blue-50/50 rounded-lg border border-blue-100 backdrop-blur-sm text-center mx-auto max-w-sm">
+      <div className="mt-8 md:mt-12 p-3 bg-blue-50/90 rounded-lg border border-blue-100 text-center mx-auto max-w-sm shadow-sm">
         <p className="text-[10px] md:text-xs text-text-secondary leading-relaxed">
           <span className="text-orange-600 font-bold block mb-1">NNU: The Clinical Gold Standard</span>
           Virtually zero metabolic waste (Ammonia) means zero stress on kidneys.
