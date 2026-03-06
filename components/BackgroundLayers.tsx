@@ -1,15 +1,16 @@
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import React from "react";
 
-type Variant = 'molecular' | 'dna' | 'data';
+type Variant = "molecular" | "dna" | "data";
 
 interface BackgroundLayersProps {
   variant?: Variant;
   className?: string;
 }
 
-export const BackgroundLayers: React.FC<BackgroundLayersProps> = ({ variant = 'molecular', className = '' }) => {
-  const shouldReduceMotion = useReducedMotion();
+export const BackgroundLayers: React.FC<BackgroundLayersProps> = ({
+  variant = "molecular",
+  className = "",
+}) => {
   // SVG Data URIs for distinct scientific patterns
 
   // A: Molecular - Hexagon network (Amino Acids structure)
@@ -24,11 +25,13 @@ export const BackgroundLayers: React.FC<BackgroundLayersProps> = ({ variant = 'm
   const patterns = {
     molecular: molecularPattern,
     dna: dnaPattern,
-    data: dataPattern
+    data: dataPattern,
   };
 
   return (
-    <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}>
+    <div
+      className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
+    >
       {/* Layer 1: Gradient Base (Clinical White) */}
       <div className="absolute inset-0 bg-surface-page bg-[radial-gradient(ellipse_at_top,_rgba(239,246,255,0.8)_0%,_rgba(248,250,252,1)_70%)]" />
 
@@ -40,22 +43,28 @@ export const BackgroundLayers: React.FC<BackgroundLayersProps> = ({ variant = 'm
             linear-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(148, 163, 184, 0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '40px 40px'
+          backgroundSize: "40px 40px",
         }}
       />
 
       {/* Layer 3: Scientific Pattern (SVG Data URI) - Darker Stroke for Visibility */}
-      <motion.div
+      <div
         className="absolute inset-0 opacity-100"
-        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: shouldReduceMotion ? 0 : 1.5 }}
         style={{
-          backgroundImage: patterns[variant].replace(/stroke='rgba\(148, 163, 184, 0.0[0-9]\)'/g, "stroke='rgba(30, 58, 138, 0.05)'"), // Darker stroke injection
-          backgroundSize: variant === 'molecular' ? '60px 60px' : variant === 'dna' ? '100px 60px' : '40px 40px',
-          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%)'
+          backgroundImage: patterns[variant].replace(
+            /stroke='rgba\(148, 163, 184, 0.0[0-9]\)'/g,
+            "stroke='rgba(30, 58, 138, 0.05)'",
+          ),
+          backgroundSize:
+            variant === "molecular"
+              ? "60px 60px"
+              : variant === "dna"
+                ? "100px 60px"
+                : "40px 40px",
+          maskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%)",
         }}
       />
 

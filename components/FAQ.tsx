@@ -1,38 +1,45 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, HelpCircle, ChevronDown } from 'lucide-react';
-import { GlassCard, BlurText } from './UI';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, Minus, HelpCircle, ChevronDown } from "lucide-react";
+import { GlassCard, BlurText } from "./UI";
 
 const faqData = [
   {
     question: "I already take Whey Protein. Why switch to Advanced Amino?",
-    answer: "Standard Whey protein creates an \"83% Waste Trap\". Your body converts the majority of it into sugar or metabolic waste that stresses your kidneys. Advanced Amino offers 99% utilization, meaning virtually every gram goes directly to muscle repair without the bloating or waste.",
-    isOpenDefault: true
+    answer:
+      'Standard Whey protein creates an "83% Waste Trap". Your body converts the majority of it into sugar or metabolic waste that stresses your kidneys. Advanced Amino offers 99% utilization, meaning virtually every gram goes directly to muscle repair without the bloating or waste.',
+    isOpenDefault: true,
   },
   {
     question: "I'm over 70. Is it too late for this to work?",
-    answer: "Absolutely not. This formula was specifically engineered to reverse age-related muscle decline (sarcopenia). Users as old as 72 report feeling their muscles \"wake up\" and regain firmness within weeks. It's not about being an athlete; it's about reclaiming your independence.",
+    answer:
+      "Absolutely not. This formula was specifically engineered to reverse age-related muscle decline (sarcopenia). Users as old as 72 report feeling their muscles \"wake up\" and regain firmness within weeks. It's not about being an athlete; it's about reclaiming your independence.",
   },
   {
     question: "I'm Vegan. Is this better than plant protein?",
-    answer: "Most plant proteins are incomplete and hard to digest. Our formula is 100% Vegan, Non-GMO, and provides the 8 essential amino acids in the exact mathematical balance your body requires—without the digestive distress often caused by pea or soy powders.",
+    answer:
+      "Most plant proteins are incomplete and hard to digest. Our formula is 100% Vegan, Non-GMO, and provides the 8 essential amino acids in the exact mathematical balance your body requires—without the digestive distress often caused by pea or soy powders.",
   },
   {
     question: "Will this cause bloating or stomach upset?",
-    answer: "No. Unlike heavy powders that sit in your gut, Advanced Amino is \"pre-digested\". It bypasses the difficult digestive processes and enters your bloodstream in just 23 minutes. It is incredibly gentle, even for the most sensitive stomachs.",
+    answer:
+      'No. Unlike heavy powders that sit in your gut, Advanced Amino is "pre-digested". It bypasses the difficult digestive processes and enters your bloodstream in just 23 minutes. It is incredibly gentle, even for the most sensitive stomachs.',
   },
   {
     question: "I can't train hard every day. Will I still see results?",
-    answer: "Yes. While movement helps, Advanced Amino focuses on preserving your \"functional reserve\". It provides the necessary building blocks to maintain strength for daily activities—like climbing stairs or carrying groceries—even without an intense gym routine.",
+    answer:
+      'Yes. While movement helps, Advanced Amino focuses on preserving your "functional reserve". It provides the necessary building blocks to maintain strength for daily activities—like climbing stairs or carrying groceries—even without an intense gym routine.',
   },
   {
     question: "How soon will I feel the difference?",
-    answer: "Many users report a noticeable improvement in energy levels and recovery speed within just 15 to 30 days of consistent use. The effect is cumulative: the longer you use it, the more \"nourished\" and responsive your muscles become.",
+    answer:
+      'Many users report a noticeable improvement in energy levels and recovery speed within just 15 to 30 days of consistent use. The effect is cumulative: the longer you use it, the more "nourished" and responsive your muscles become.',
   },
   {
     question: "What if it doesn't work for my body?",
-    answer: "We take all the risk. You have a full 90-day Satisfaction Guarantee. If you don't feel stronger, more stable, and more energetic, simply return the bottles (even if they are empty) for a full refund. No questions asked.",
-  }
+    answer:
+      "We take all the risk. You have a full 90-day Satisfaction Guarantee. If you don't feel stronger, more stable, and more energetic, simply return the bottles (even if they are empty) for a full refund. No questions asked.",
+  },
 ];
 
 export const FAQ: React.FC = () => {
@@ -46,7 +53,9 @@ export const FAQ: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12 md:py-20 text-left">
       <div className="mb-16 relative z-30">
-        <span className="text-brand-blue font-bold tracking-widest text-xs uppercase mb-3 block pl-1">Common Questions</span>
+        <span className="text-brand-blue font-bold tracking-widest text-xs uppercase mb-3 block pl-1">
+          Common Questions
+        </span>
         <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6 leading-tight">
           Stop Guessing. Start Absorbing.
         </h2>
@@ -72,12 +81,13 @@ interface AccordionItemProps {
   onClick: () => void;
 }
 
-const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) => {
+const AccordionItem: React.FC<AccordionItemProps> = ({
+  item,
+  isOpen,
+  onClick,
+}) => {
   return (
-    <motion.div
-      initial={false}
-      className="relative z-10"
-    >
+    <motion.div initial={false} className="relative z-10">
       {/* 
          ACCESSIBILITY & UX FOR SENIORS:
          1. The button covers the entire card area.
@@ -90,11 +100,13 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
         aria-expanded={isOpen}
       >
         <GlassCard
-          className={`transition-all duration-300 ${isOpen ? 'bg-white border-brand-blue shadow-md' : 'bg-surface-card border-border-subtle hover:border-blue-200'}`}
+          className={`transition-all duration-300 ${isOpen ? "bg-white border-brand-blue shadow-md" : "bg-surface-card border-border-subtle hover:border-blue-200"}`}
         >
           <div className="p-6 md:p-8 flex items-start justify-between gap-6">
             <div className="flex-1">
-              <h3 className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? 'text-fg-brand' : 'text-fg-brand group-hover:text-fg-brand'}`}>
+              <h3
+                className={`text-lg md:text-xl font-bold leading-tight transition-colors ${isOpen ? "text-fg-brand" : "text-fg-brand group-hover:text-fg-brand"}`}
+              >
                 {item.question}
               </h3>
 
@@ -116,7 +128,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isOpen, onClick }) 
             </div>
 
             {/* Icon Wrapper - Big & Clear */}
-            <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${isOpen ? 'bg-brand-navy border-brand-navy text-white rotate-180' : 'bg-blue-50 border-blue-100 text-brand-blue group-hover:bg-blue-100'}`}>
+            <div
+              className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${isOpen ? "bg-brand-navy border-brand-navy text-white rotate-180" : "bg-blue-50 border-blue-100 text-brand-blue group-hover:bg-blue-100"}`}
+            >
               {isOpen ? <Minus size={24} /> : <Plus size={24} />}
             </div>
           </div>

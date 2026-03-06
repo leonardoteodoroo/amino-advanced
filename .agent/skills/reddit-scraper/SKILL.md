@@ -17,6 +17,7 @@ This skill allows you to fetch and display the latest posts from any public subr
 ## Usage
 
 ### 1. Interactive Chat Mode
+
 To start an interactive session where you can query subreddits one by one:
 
 ```bash
@@ -24,6 +25,7 @@ python3 .agent/skills/reddit-scraper/scripts/chat_interface.py
 ```
 
 ### 2. Direct Query (Single Subreddit)
+
 To fetch the latest posts for a specific subreddit (e.g., `n8n`) directly:
 
 ```bash
@@ -31,12 +33,14 @@ python3 .agent/skills/reddit-scraper/scripts/fetch_posts.py Singularity --sort t
 ```
 
 Arguments:
+
 - `subreddit`: Name of the subreddit.
 - `--sort`: Sort order (new, hot, top, rising, controversial). Default: new.
 - `--time`: Time filter (hour, day, week, month, year, all). Default: all.
 - `--limit`: Number of results. Default: 3.
 
 ### 3. Advanced Search (Filtered by Query)
+
 To search for posts within a subreddit with specific filters (query, time, sort):
 
 ```bash
@@ -44,6 +48,7 @@ python3 .agent/skills/reddit-scraper/scripts/fetch_filtered_posts.py Singularity
 ```
 
 Arguments:
+
 - `subreddit`: Name of the subreddit.
 - `query`: Search term.
 - `--sort`: Sort order (relevance, hot, top, new, comments). Default: top.
@@ -54,10 +59,13 @@ Arguments:
 
 This skill requires the `requests` library.
 Check if it's installed:
+
 ```bash
 pip list | grep requests
 ```
+
 Install if missing:
+
 ```bash
 pip install requests
 ```
@@ -65,6 +73,7 @@ pip install requests
 ## Implementation Details
 
 The scripts are located in `scripts/`:
+
 - `fetch_posts.py`: Contains the `get_latest_posts` function and CLI entry point.
 - `fetch_filtered_posts.py`: Helper script for searching posts with filters (query, time, sort).
 - `chat_interface.py`: Imports `fetch_posts` and runs the input loop.
