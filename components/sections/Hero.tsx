@@ -7,7 +7,6 @@ import {
   TrendingUp,
   Battery,
 } from "lucide-react";
-import { BackgroundLayers } from "../BackgroundLayers";
 
 interface HeroProps {
   onScrollToOffer: () => void;
@@ -46,6 +45,33 @@ const StaticToastCard: React.FC<ToastCardProps> = ({
   </div>
 );
 
+const HERO_TOAST_CARDS: ToastCardProps[] = [
+  {
+    icon: <Activity size={20} />,
+    title: "Anabolic Rate",
+    subtitle: "Restored to 99%",
+    className:
+      "top-0 -left-6 md:top-[20%] md:-left-[10%] scale-90 md:scale-100 origin-bottom-left",
+    delayClass: "css-delay-600",
+  },
+  {
+    icon: <TrendingUp size={20} />,
+    title: "Muscle Protein",
+    subtitle: "+ Synthesis",
+    className:
+      "bottom-12 -right-6 md:bottom-[20%] md:-right-[5%] scale-90 md:scale-100 origin-top-right",
+    delayClass: "css-delay-800",
+  },
+  {
+    icon: <Battery size={20} />,
+    title: "Energy Reserve",
+    subtitle: "Optimized",
+    className:
+      "top-12 -right-6 md:top-[10%] md:right-[10%] scale-90 md:scale-100 origin-bottom-right",
+    delayClass: "css-delay-1100",
+  },
+];
+
 export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
   return (
     <div className="relative">
@@ -74,6 +100,7 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
 
             <div className="flex flex-col sm:flex-row gap-4 css-fade-up css-delay-500">
               <button
+                type="button"
                 onClick={onScrollToOffer}
                 className="group relative px-8 py-4 bg-cta-accent hover:bg-cta-accent-hover text-white rounded-full font-bold text-lg shadow-lg hover:shadow-orange-500/30 transition-all overflow-hidden"
               >
@@ -97,37 +124,26 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToOffer }) => {
             <div className="absolute w-48 h-48 md:w-72 md:h-72 rounded-full border border-brand-navy/10 animate-[spin_40s_linear_infinite_reverse] motion-reduce:animate-none" />
 
             {/* Garrafa — img pura com CSS float, zero Framer Motion */}
-            <div className="relative z-20 w-full md:w-[800px] h-[500px] md:h-[800px] flex items-center justify-center css-fade-up css-delay-200">
-              <img
-                src="/test_images/advanced_amino_formula_hero_10-advanced_amino_formula-871.webp"
-                alt="Advanced Amino Formula"
-                className="w-full h-full object-contain md:drop-shadow-2xl drop-shadow-lg css-float"
-                style={{ scale: "1.8", rotate: "6deg" }}
-              />
+            <div className="relative z-20 w-full md:w-[800px] h-[500px] md:h-[800px] flex items-center justify-center">
+              <div className="absolute inset-0 w-full h-full flex items-center justify-center css-fade-up css-delay-200">
+                <div className="w-full h-full flex items-center justify-center css-float">
+                  <img
+                    src="/test_images/advanced_amino_formula_hero_10-advanced_amino_formula-871.webp"
+                    alt="Advanced Amino Formula"
+                    className="w-full h-full object-contain md:drop-shadow-2xl drop-shadow-lg sm:drop-shadow-xl"
+                    style={{
+                      transform: "scale(1.8) rotate(6deg)",
+                      filter: "drop-shadow(0 25px 50px rgba(0,0,0,0.25))",
+                    }}
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Toast Cards — CSS animation, zero Framer Motion */}
-            <StaticToastCard
-              icon={<Activity size={20} />}
-              title="Anabolic Rate"
-              subtitle="Restored to 99%"
-              className="top-0 -left-6 md:top-[20%] md:-left-[10%] scale-90 md:scale-100 origin-bottom-left"
-              delayClass="css-delay-600"
-            />
-            <StaticToastCard
-              icon={<TrendingUp size={20} />}
-              title="Muscle Protein"
-              subtitle="+ Synthesis"
-              className="bottom-12 -right-6 md:bottom-[20%] md:-right-[5%] scale-90 md:scale-100 origin-top-right"
-              delayClass="css-delay-800"
-            />
-            <StaticToastCard
-              icon={<Battery size={20} />}
-              title="Energy Reserve"
-              subtitle="Optimized"
-              className="top-12 -right-6 md:top-[10%] md:right-[10%] scale-90 md:scale-100 origin-bottom-right"
-              delayClass="css-delay-1100"
-            />
+            {HERO_TOAST_CARDS.map((card) => (
+              <StaticToastCard key={card.title} {...card} />
+            ))}
           </div>
         </div>
       </section>
