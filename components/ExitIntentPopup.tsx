@@ -15,9 +15,9 @@ const BASE_H = 640;
 // ── CONFIGURAÇÃO ──
 const WEBHOOK_URL =
   "https://script.google.com/macros/s/AKfycbznu2LV6-yVuU0URp-BrRhp5lNMrCrSak0bBuD6nUP0uIxe1DU5UjfiRBTHJAYICXd2/exec";
-// Link padrão do popup = 3 garrafas (Most Popular)
+// Link padrão do popup = 3 garrafas (Most Popular - Checkout Direto Digistore24)
 const AFFILIATE_LINK =
-  "https://www.advancedbionutritionals.com/DS24/Advanced-Amino/Muscle-Mass-Loss/HD.htm#aff=leonardoteodorol";
+  "https://www.checkout-ds24.com/product/472942?aff=leonardoteodorol";
 
 // ── Tracking helpers ──
 function getCookie(name: string): string {

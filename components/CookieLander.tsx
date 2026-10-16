@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { X } from "lucide-react";
 
 const AFFILIATE_LINK =
-  "https://www.advancedbionutritionals.com/DS24/Advanced-Amino/Muscle-Mass-Loss/HD.htm#aff=leonardoteodorol";
+  "https://www.checkout-ds24.com/product/472942?aff=leonardoteodorol";
 
 const WEBHOOK_URL =
   "https://script.google.com/macros/s/AKfycbznu2LV6-yVuU0URp-BrRhp5lNMrCrSak0bBuD6nUP0uIxe1DU5UjfiRBTHJAYICXd2/exec";
