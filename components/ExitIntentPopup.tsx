@@ -15,9 +15,9 @@ const BASE_H = 640;
 // ── CONFIGURAÇÃO ──
 const WEBHOOK_URL =
   "https://script.google.com/macros/s/AKfycbznu2LV6-yVuU0URp-BrRhp5lNMrCrSak0bBuD6nUP0uIxe1DU5UjfiRBTHJAYICXd2/exec";
-// Link padrão do popup = 3 garrafas (Most Popular - Checkout Direto Digistore24)
+// Link padrão do popup = Site Oficial via Promolink Digistore24
 const AFFILIATE_LINK =
-  "https://www.checkout-ds24.com/product/472942?aff=leonardoteodorol";
+  "https://www.checkout-ds24.com/redir/472942/leonardoteodorol";
 
 // ── Tracking helpers ──
 function getCookie(name: string): string {
